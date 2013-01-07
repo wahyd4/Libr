@@ -1,1 +1,8 @@
-p Hello
+h3 New Arrival:
+div.row-fluid
+- @books.each do |book|
+  div.span2
+    div
+      a href="/books/#{book.id}"
+         img.cover src="#{book.image}"
+      p.title  =book.name
