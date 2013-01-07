@@ -1,2 +1,6 @@
 - content_for :javascript_includes do
   = javascript_include_tag 'book'
+
+div.detail
+  h3 =@book.name
+  img.cover src="#{@book.image}"
