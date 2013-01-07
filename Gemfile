@@ -40,8 +40,14 @@ gem 'jquery-rails'
 
 group :development, :test do
 	gem 'rspec-rails'
+	gem 'github'
+	gem 'tddium'
 	gem "rails_best_practices", "~> 1.11.1"
 	gem "flay"
 	gem 'simplecov'
 	gem 'machinist'
+	gem 'cucumber-rails' , :require => false
+	gem 'capybara'
+	gem 'database_cleaner'
+	gem 'selenium-webdriver'
 end

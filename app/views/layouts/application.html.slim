@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title Ocelots
+	link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"
+    = stylesheet_link_tag '/bootstrap/css/bootstrap.min.css'
+    = stylesheet_link_tag '/bootstrap/css/bootstrap-responsive.min.css'
+    = stylesheet_link_tag 'application', media: 'all'
+    = csrf_meta_tags
+    = yield :style_includes
+
+  body
+
+    div.navbar.navbar-fixed-top
+      div.navbar-inner
+        div.container
+          a.brand href="/" Home
+          div.nav
+            ul.nav
+              li
+                a href="" books
+          ul.nav.pull-right
+            li
+              a href="" logout
+
+    div.container.main
+      = yield
+
+    div#footer
+       div.container
+          p.muted.credit  2013 ThoughtWorks
+
+    = javascript_include_tag 'application'
+    = javascript_include_tag '/bootstrap/js/bootstrap.min.js'
+    = yield :javascript_includes
