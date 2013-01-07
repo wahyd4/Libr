@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 1.9.3
+env:
+  - DB=postgresql
+script:
+  - RAILS_ENV=test bundle exec rake ci --trace db:migrate
+before_script:
+  - psql -c 'create database libr_test' -U postgres
