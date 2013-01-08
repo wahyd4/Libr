@@ -3,6 +3,7 @@ Libr::Application.routes.draw do
 	root to:'home#index'
 	match 'books/:id' => 'book#view'
 	get '/search/book/:arg' =>'book#search'
+	get '/login' => 'user#login'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
