@@ -4,6 +4,8 @@ Libr::Application.routes.draw do
 	match 'books/:id' => 'book#view'
 	get '/search/book/:arg' =>'book#search'
 	get '/login' => 'user#login'
+	get '/login/douban' => 'user#login_douban'
+	get '/douban_callback' =>'home#douban_callback'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

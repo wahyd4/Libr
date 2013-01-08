@@ -2,7 +2,7 @@ DOCTYPE html
 html lang="en"
   head
     meta charset="utf-8"
-    title Sign in
+    title 登录
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     = stylesheet_link_tag '/bootstrap/css/bootstrap.min.css'
     = stylesheet_link_tag '/bootstrap/css/bootstrap-responsive.min.css'
@@ -10,10 +10,10 @@ html lang="en"
 
   body
     div.container
-      form.form-signin
-        h2.form-signin-heading Please sign in
-        input.input-block-level type="text"  placeholder="Email address"
-        input.input-block-level type="password"  placeholder="Password"
-        label.checkbox
-          input type="checkbox" value="remember-me" Remember me
-        button.btn.btn-large.btn-primary type="submit" Sign in
+      form.form-signin style="text-align:center"
+        h2.form-signin-heading 请使用下列方式登录
+        a href="/login/douban"
+          img src="/assets/douban.png"
+        p
+        a href=""
+          img src="/assets/weibo.png"
