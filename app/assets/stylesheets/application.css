@@ -2,20 +2,23 @@ body {
     padding-top: 60px;
     padding-bottom: 40px;
 
+
     text-shadow: white 0 1px 0;
     font-weight: 100;
 }
 .main{
-    min-height: 500px;
+    min-height: 600px;
 }
 
 #footer{
+
+    bottom:0;
     background-color: whiteSmoke;
     height: 60px;
-    padding-bottom: 0;
     display: inline-block;
     width:100%;
     text-align: right;
+    padding-top:10px;
 }
 p.title{
    margin-top: 5px;
@@ -61,4 +64,8 @@ div.span2{
 
 .cover:hover{
     box-shadow: 3px 3px 12px #999;
+}
+.book-name{
+    font-color:#5A5A5A;
+    text-align: center;
 }

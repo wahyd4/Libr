@@ -1,6 +1,12 @@
 - content_for :javascript_includes do
   = javascript_include_tag 'book'
-
-div.detail
-  h3 =@book.name
-  img.cover src="#{@book.image}"
+  = javascript_include_tag 'http://www.douban.com/js/api.js?v=2'
+  = javascript_include_tag 'http://www.douban.com/js/api-parser.js?v=1'
+div.detail.row-fluid
+  h3.book-name  =@book.name
+  input.isbn hidden="true" value="#{@book.isbn}"
+  div.span3
+    img.cover
+  div.span4
+     ul.unstyled
+     div.well.summary
