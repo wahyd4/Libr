@@ -20,8 +20,16 @@ html
               li
                 a href="" 书架
           ul.nav.pull-right
-            li
-              a href="/login" 登录
+            -if @current_user != nil
+              li
+                a href="#"
+                  img.img-circle style="max-width:82%;margin:-5px" src="#{@current_user.avatar}" title="#{@current_user.name}"
+              li
+                a href="/logout" 注销
+            - else
+              li
+                a href="/login" 登录
+
 
     div.container.main
       = yield

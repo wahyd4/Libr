@@ -5,12 +5,12 @@ module Douban_Auth
 
 
 	def auth_url
-		client_id = '0858f96ac849895e190aec4058dc9c1a'
-		redirect_uri = 'http://localhost:3000/douban_callback'
 		response_type = 'code'
-		scope = 'douban_basic_common'
+		scope = 'douban_basic_common,book_basic_r'
 
-		url = 'https://www.douban.com/service/auth2/auth?client_id=' << client_id << '&redirect_uri=' << redirect_uri << '&response_type=' << response_type << '&scope='+ scope
+		url = 'https://www.douban.com/service/auth2/auth?client_id=' + ::ENV['CLIENT_ID'] +
+					'&redirect_uri=' + ::ENV['REDIRECT_URI'] +
+				  '&response_type=' + response_type + '&scope=' + scope
 
 	end
 
@@ -19,13 +19,26 @@ module Douban_Auth
 		http = Net::HTTP.new('www.douban.com', 443)
 		http.use_ssl = true
 		path ='/service/auth2/token'
-		data ='client_id=0858f96ac849895e190aec4058dc9c1a&client_secret=0c363bc78dbacb3f&redirect_uri=http://localhost:3000/douban_callback&grant_type=authorization_code&code='+code
+		data ='client_id='+ ::ENV['CLIENT_ID']+'&client_secret='+ ::ENV['CLIENT_SECRET']+'&redirect_uri=http://localhost:3000/douban_callback'+'&grant_type=authorization_code&code='+code
 		headers = {
 				'Authorization' => my_code
 		}
 
 		response = http.post(path, data, headers)
 		response = JSON.parse response.body
-		puts '111111111111111111'+ response.to_s
+
+		response['access_token']
 	end
+
+	def fetch_user_info(token)
+		http = Net::HTTP.new('api.douban.com', 443)
+		http.use_ssl = true
+		path ='/v2/user/~me'
+		header = {
+				'Authorization' => 'Bearer '+token
+		}
+		response = http.get(path,header)
+		response = JSON.parse response.body
+	end
+
 end

@@ -7,11 +7,14 @@ class UserController < ApplicationController
 		render :layout => false
 	end
 
-	def login_douban
-
+	def auth_douban
 		url = auth_url.to_s
-
-		puts "xxxxxxxxxxxx"+url
 	  redirect_to url
 	end
+
+	def logout
+		session[:name] = nil
+		redirect_to '/'
+	end
+
 end
