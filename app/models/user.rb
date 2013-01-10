@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :books, through: :user_to_books
 
   has_many :borrow_records
+  has_many :borrowed_books ,:class_name => 'Book',:source => :book, through: :borrow_records
 
 
 	def self.create_user(name,avatar)
