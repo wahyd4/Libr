@@ -3,8 +3,12 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
+
 	has_many :user_to_books
   has_many :books, through: :user_to_books
+
+  has_many :borrow_records
+
 
 	def self.create_user(name,avatar)
 		User.create name: name, avatar: avatar
