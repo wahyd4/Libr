@@ -7,4 +7,5 @@ class Book < ActiveRecord::Base
 	has_many :borrow_records
 	has_many :borrowers,:source => :user, through: :borrow_records
 
+
 end

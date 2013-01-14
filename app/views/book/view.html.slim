@@ -13,8 +13,10 @@ div.detail.row-fluid
   div.span4
     div.action style="text-align:center"
       = form_tag controller: 'book', action: 'borrow' do
-        =submit_tag  '借阅', class: "btn btn-success btn-large"
-
+        -if @can_borrow
+           =submit_tag  '借阅', class: "btn btn-success btn-large"
+        -else
+           = submit_tag '不能借阅', class:'btn btn-danger btn-large',disabled: true
     div.rent-record
       table.table.table-bordered
         caption  书籍当前情况
@@ -24,6 +26,11 @@ div.detail.row-fluid
             th width="100" 借阅者
             th width="100" 日期
         tbody
+        -@records.each do  |record|
+          tr
+            td  暂无
+            td  =record.user_name
+            td  =record.created_at
     div.reader-wall
       p 读者墙:
       div.well
