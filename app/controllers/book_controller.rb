@@ -1,6 +1,7 @@
 class BookController < ApplicationController
+	before_filter :current_user
 
-	def view
+  def view
 		@book = Book.find_by_id params[:id]
 	end
 
@@ -11,6 +12,17 @@ class BookController < ApplicationController
 		 else
 			 render json: {msg:'wrong'}
 		 end
+  end
 
-	end
+  def borrow
+    book = Book.find_by_id params[:id]
+    if book.users.count <= book.borrowers.count
+      @msg = 'Sorry, there is no more book for lend.'
+    else
+      book.borrowers << @current_user
+      @msg = 'Borrowed success.'
+    end
+
+    render json: @msg
+  end
 end

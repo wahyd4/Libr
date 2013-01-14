@@ -17,6 +17,7 @@ development:
   encoding: unicode
   database: libr_development
   pool: 5
+  host: localhost
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -43,10 +44,11 @@ test:
   database: libr_test
   pool: 5
   password:
-
+  host: localhost
 production:
   adapter: postgresql
   encoding: unicode
   database: libr_production
   pool: 5
   password:
+  host: localhost

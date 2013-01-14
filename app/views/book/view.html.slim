@@ -12,7 +12,9 @@ div.detail.row-fluid
      div.well.summary
   div.span4
     div.action style="text-align:center"
-      button.btn.btn-success.btn-large 借阅
+      = form_tag controller: 'book', action: 'borrow' do
+        =submit_tag  '借阅', class: "btn btn-success btn-large"
+
     div.rent-record
       table.table.table-bordered
         caption  书籍当前情况

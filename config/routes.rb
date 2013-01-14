@@ -2,6 +2,7 @@ Libr::Application.routes.draw do
 
 	root to:'home#index'
 	match 'books/:id' => 'book#view'
+  post  'books/:id/borrow' => 'book#borrow'
 	get '/search/book/:arg' =>'book#search'
 	get '/login' => 'user#login'
 	get '/logout' => 'user#logout'
