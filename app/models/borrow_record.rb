@@ -1,5 +1,5 @@
 class BorrowRecord < ActiveRecord::Base
-  attr_accessible :borrow_date, :return_date
+  attr_accessible :borrow_date, :return_date, :user_id, :book_id
 
 	belongs_to :user
 	belongs_to :book
@@ -7,7 +7,7 @@ class BorrowRecord < ActiveRecord::Base
 	delegate :name, :avatar, to: :user,prefix: true
 
   def self.records_of(book)
-    records = BorrowRecord.includes(:user).where("book_id = ?", book.id).where(borrow_date:nil)
+    records = BorrowRecord.includes(:user).where("book_id = ?", book.id).where(return_date:nil)
 
     puts "xxxxxx" << records.to_s
     records

@@ -3,6 +3,8 @@
   = javascript_include_tag 'http://www.douban.com/js/api.js?v=2'
   = javascript_include_tag 'http://www.douban.com/js/api-parser.js?v=1'
 div.detail.row-fluid
+  - if flash[:notice]
+     div.alert.alert-success = flash[:notice]
   h3.book-name  =@book.name
   input.isbn hidden="true" value="#{@book.isbn}"
   div.span3
@@ -30,7 +32,7 @@ div.detail.row-fluid
           tr
             td  暂无
             td  =record.user_name
-            td  =record.created_at
+            td  =record.borrow_date
     div.reader-wall
       p 读者墙:
       div.well

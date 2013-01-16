@@ -17,14 +17,18 @@ class BookController < ApplicationController
   end
 
   def borrow
+    unless @current_user
+      redirect_to '/login',alert: "You need login to borrow book."
+      return
+    end
     book = Book.find_by_id params[:id]
     if book.users.count <= book.borrowers.count
       @msg = 'Sorry, there is no more book for lend.'
     else
-      book.borrowers << @current_user
+      #book.borrowers << @current_user
+      @current_user.borrow book
       @msg = 'Borrowed success.'
     end
-
-    render json: @msg
+    redirect_to :back, notice: 'Borrowed book success.'
   end
 end
