@@ -1,6 +1,7 @@
 require "douban_auth"
 
 class UserController < ApplicationController
+  before_filter :current_user
 	include Douban_Auth
 
 	def login
@@ -15,6 +16,11 @@ class UserController < ApplicationController
 	def logout
 		session[:name] = nil
 		redirect_to '/'
-	end
+  end
+
+  def owned_books
+    @books =  @current_user.books.order 'id DESC'
+    render 'home/index'
+  end
 
 end
