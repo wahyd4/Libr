@@ -1,5 +1,6 @@
 class BookController < ApplicationController
 	before_filter :current_user
+  skip_before_filter :verify_authenticity_token ,:only => [:add_to_lib]
 
   def view
 		@book = Book.find_by_id params[:id]
@@ -29,6 +30,21 @@ class BookController < ApplicationController
       @current_user.borrow book
       @msg = 'Borrowed success.'
     end
-    redirect_to :back, notice: 'Borrowed book success.'
+    redirect_to :back, notice: @msg
+  end
+
+  def add
+     render :add
+  end
+
+  def add_to_lib
+    unless @current_user
+      redirect_to '/login',alert: "You need login."
+      return
+    end
+
+    @current_user.books.create name:params[:title], image:params[:image],isbn: params[:isbn]
+    @msg = 'This book has been succeed to add to library.'
+    redirect_to :back, notice: @msg
   end
 end

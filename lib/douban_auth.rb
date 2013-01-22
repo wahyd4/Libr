@@ -26,7 +26,6 @@ module Douban_Auth
 
 		response = http.post(path, data, headers)
 		response = JSON.parse response.body
-    puts "!!!!!!!!!!!!!!!!!!" + response.to_s
 		response['access_token']
 	end
 

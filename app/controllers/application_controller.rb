@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 			@current_user = User.find_by_name session[:name]
 		end
 
+    puts "!!~~~~~~~" +@current_user.to_s
 	end
 
   def sign_in(name,avatar)

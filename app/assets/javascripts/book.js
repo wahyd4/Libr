@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 
-    loadBook = function(){
+    var loadBook = function(){
         var isbn = $('input.isbn').val();
         if(isbn === null){
             return;
@@ -15,7 +15,7 @@ $(document).ready(function(){
             }
         });
     }
-    displayBookInfo = function(json){
+    var displayBookInfo = function(json){
         $('img.cover').attr('src',json.images.large);
         var ul = $('div.span4 ul');
         ul.append('<li><b>副标题:</b>'+json.subtitle+'</li>');
