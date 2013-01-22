@@ -26,7 +26,7 @@ module Douban_Auth
 
 		response = http.post(path, data, headers)
 		response = JSON.parse response.body
-
+    puts "!!!!!!!!!!!!!!!!!!!!" +response['access_token']
 		response['access_token']
 	end
 
@@ -35,7 +35,7 @@ module Douban_Auth
 		http.use_ssl = true
 		path ='/v2/user/~me'
 		header = {
-				'Authorization' => 'Bearer '+token
+				"Authorization" => "Bearer #{token}"
 		}
 		response = http.get(path,header)
 		response = JSON.parse response.body
