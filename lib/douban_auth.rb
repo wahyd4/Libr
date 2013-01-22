@@ -26,7 +26,8 @@ module Douban_Auth
 
 		response = http.post(path, data, headers)
 		response = JSON.parse response.body
-		response[:access_token]
+    puts "!!!!!!!!!!!!!!!!!!" + response["access_token"].to_s
+		response['access_token']
 	end
 
 	def fetch_user_info(token)
