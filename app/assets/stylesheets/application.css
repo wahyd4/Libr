@@ -74,3 +74,11 @@ div.span2{
     margin-top:1em;
     margin-bottom: 1em;
 }
+.one-item{
+    width:170px;
+    margin-left:10px;
+    float:left;
+    height:180px;
+    margin-bottom:1em;
+    text-align:center;
+}

@@ -1,8 +1,8 @@
 h3 新书推荐:
-div.row-fluid
+div.row
 - @books.each do |book|
-  div.span2
+  div.one-item
     div
       a href="/books/#{book.id}"
          img.cover src="#{book.image}"
-      p.title  =book.name
+      p.title style="font-size:0.9em;"  =book.name
