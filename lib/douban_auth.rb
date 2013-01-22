@@ -19,7 +19,7 @@ module Douban_Auth
 		http = Net::HTTP.new('www.douban.com', 443)
 		http.use_ssl = true
 		path ='/service/auth2/token'
-		data ='client_id='+ ::ENV['CLIENT_ID']+'&client_secret='+ ::ENV['CLIENT_SECRET']+'&redirect_uri=http://localhost:3000/douban_callback'+'&grant_type=authorization_code&code='+code
+		data ='client_id='+ ::ENV['CLIENT_ID']+'&client_secret='+ ::ENV['CLIENT_SECRET']+'&redirect_uri='+::ENV['REDIRECT_URI']+'&grant_type=authorization_code&code='+code
 		headers = {
 				'Authorization' => my_code
 		}
