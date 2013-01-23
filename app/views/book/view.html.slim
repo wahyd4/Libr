@@ -8,7 +8,8 @@ div.detail.row-fluid
   h3.book-name  =@book.name
   input.isbn hidden="true" value="#{@book.isbn}"
   div.span3
-    img.cover
+    a.douban-link
+      img.cover
   div.span4
      ul.unstyled
      div.well.summary
@@ -30,14 +31,23 @@ div.detail.row-fluid
         tbody
         -@records.each do  |record|
           tr
-            td  暂无
+            td  暂不提供
             td  =record.user_name
             td  =record.borrow_date
+    div.reader-wall
+          p 所有者:
+          div
+           - @owners.each do |owner|
+             div
+               a  href="/users/#{owner.id}/books"
+                 =image_tag "#{owner.avatar}", class:'avatar',title: owner.name
+    div.clearfix
+    hr
     div.reader-wall
       p 读者墙:
       div
        - @borrowers.each do |borrower|
          div
-           a
-             =image_tag "#{borrower.avatar}", class:'avatar'
+           a  href="/users/#{borrower.id}/books"
+             =image_tag "#{borrower.avatar}", class:'avatar',title: borrower.name
 

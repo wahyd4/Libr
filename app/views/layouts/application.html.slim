@@ -17,11 +17,13 @@ html
           a.brand href="/" 首页
           div.nav
             ul.nav
+              li
+                a href="/books/new" 添加图书
               - if  @current_user != nil
                 li
                   a href="/users/#{@current_user.id}/books" 我的书架
-              li
-                a href="/books/new" 添加图书
+                li
+                  a href="/users" 我的记录
           ul.nav.pull-right
             -if @current_user != nil
               li

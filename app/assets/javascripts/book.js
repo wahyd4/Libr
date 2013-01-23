@@ -22,6 +22,7 @@ $(document).ready(function(){
     }
 
     var displayBookInfo = function(json){
+        $('a.douban-link').attr('href',json.alt);
         $('img.cover').attr('src',json.images.large);
         var ul = $('div.span4 ul');
         ul.append('<li><b>副标题: </b>'+json.subtitle+'</li>');

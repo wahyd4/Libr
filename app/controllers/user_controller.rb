@@ -20,13 +20,14 @@ class UserController < ApplicationController
 
   def books
     query = params[:query]
+    user = User.find_by_id params[:id]
     case  query
       when 'borrowed'
-        @books = @current_user.borrowed_and_not_returned_books
+        @books = user.borrowed_and_not_returned_books
       when 'wanted'
         @books = nil
       else
-        @books =  @current_user.books.order 'id DESC'
+        @books =  user.books.order 'id DESC'
     end
     @query = query
     render :books
