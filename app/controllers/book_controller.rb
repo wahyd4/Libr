@@ -4,9 +4,9 @@ class BookController < ApplicationController
 
   def view
 		@book = Book.find_by_id params[:id]
-    @can_borrow = @book.users.count > @book.current_borrowers.count
+    @can_borrow = @book.book_instances.count > @book.current_borrowers.count
     @records =BorrowRecord.records_of @book
-    @borrowers = @book.borrowers.uniq
+    @borrowers = @book.total_borrowers.uniq
     @owners = @book.users.uniq
 	end
 

@@ -1,14 +1,26 @@
 class Book < ActiveRecord::Base
-  attr_accessible :author, :image, :isbn, :name, :users ,:id
+  attr_accessible :author, :image, :isbn, :name ,:id
 
-  has_many :user_to_books
-	has_many :users, through: :user_to_books
-
-	has_many :borrow_records
-	has_many :borrowers,:source => :user, through: :borrow_records
+  has_many :book_instances
+  has_many :users, through: :book_instances
 
   def current_borrowers
-    records = borrow_records.where(return_date: nil)
-    records.map {|record| User.find_by_id record.user_id }
+    borrowers = []
+    book_instances.each{|instance|
+      if instance.borrowed?
+        borrowers << instance.current_borrower
+      end
+    }
+    borrowers
   end
+
+  def total_borrowers
+     borrowers = []
+     book_instances.map{|instance|
+       unless  instance.borrowers.empty?
+         borrowers << instance.borrowers
+       end
+     }
+  end
+
 end

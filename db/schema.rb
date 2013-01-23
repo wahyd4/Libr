@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110095134) do
+ActiveRecord::Schema.define(:version => 20130123084128) do
+
+  create_table "book_instances", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.boolean  "public",     :default => true
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
 
   create_table "books", :force => true do |t|
     t.string   "name"
@@ -25,9 +33,9 @@ ActiveRecord::Schema.define(:version => 20130110095134) do
   create_table "borrow_records", :force => true do |t|
     t.date     "borrow_date"
     t.date     "return_date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "book_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "book_instance_id"
     t.integer  "user_id"
   end
 
