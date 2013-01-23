@@ -7,5 +7,8 @@ class Book < ActiveRecord::Base
 	has_many :borrow_records
 	has_many :borrowers,:source => :user, through: :borrow_records
 
-
+  def current_borrowers
+    records = borrow_records.where(return_date: nil)
+    records.map {|record| User.find_by_id record.user_id }
+  end
 end

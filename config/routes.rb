@@ -3,7 +3,8 @@ Libr::Application.routes.draw do
 	root to:'home#index'
   match 'books/new' => 'book#new'
 	match 'books/:id' => 'book#view'
-  match '/users/:id/books'=> 'user#owned_books', as: :books_url
+  match '/users/:id/books'=> 'user#books'
+  put '/users/:id/borrowedbooks/:book_id' => 'user#return_book'
   post  'books' => 'book#add_to_lib'
   post  'books/:id/borrow' => 'book#borrow'
 	get '/search/book/:arg' =>'book#search'

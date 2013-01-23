@@ -8,12 +8,13 @@ class BorrowRecord < ActiveRecord::Base
 
   def self.records_of(book)
     records = BorrowRecord.includes(:user).where("book_id = ?", book.id).where(return_date:nil)
-
-    puts "xxxxxx" << records.to_s
-    records
   end
 
   #def self.create_record(user_id,book_id)
   #  BorrowRecord.create user_id: user_id, book_id: book_id, borrow_date: DateTime.now
   #end
+
+  def return_book
+    update_attribute(:return_date,DateTime.now)
+  end
 end

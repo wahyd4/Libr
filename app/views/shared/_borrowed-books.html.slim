@@ -1,0 +1,9 @@
+div.row  style="margin-top:2em;"
+  - @books.each do |book|
+    div.one-item
+      div
+        a href="/books/#{book.id}"
+           img.cover src="#{book.image}"
+        p.title style="font-size:0.9em;"  =book.name
+        = form_tag("borrowedbooks/#{book.id}", method:'put') do
+          input.btn.btn-warning type="submit" value="归还"

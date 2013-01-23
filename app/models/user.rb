@@ -19,4 +19,10 @@ class User < ActiveRecord::Base
     record = BorrowRecord.create user_id: self.id, book_id: book.id, borrow_date: DateTime.now
     self.borrow_records << record
   end
+
+  def borrowed_and_not_returned_books
+    records = borrow_records.where(return_date: nil).order('id DESC')
+    records.map{ |record| record = Book.find_by_id record.book_id }
+
+  end
 end

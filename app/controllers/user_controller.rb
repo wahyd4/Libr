@@ -18,9 +18,29 @@ class UserController < ApplicationController
 		redirect_to '/'
   end
 
-  def owned_books
-    @books =  @current_user.books.order 'id DESC'
-    render 'home/index'
+  def books
+    query = params[:query]
+    case  query
+      when 'borrowed'
+        @books = @current_user.borrowed_and_not_returned_books
+      when 'wanted'
+        @books = nil
+      else
+        @books =  @current_user.books.order 'id DESC'
+    end
+    @query = query
+    render :books
+  end
+
+  def return_book
+    records = BorrowRecord.where(user_id: params[:id],book_id: params[:book_id],return_date: nil)
+    unless records.empty?
+      records[0].return_book
+      @message = 'Return book success.'
+    else
+      @message = "Can't find your borrow record."
+    end
+    redirect_to :back,:notice => @message
   end
 
 end

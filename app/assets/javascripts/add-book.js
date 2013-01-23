@@ -49,7 +49,7 @@ $(document).ready(function(){
                 +'</form></div>';
             var addToLib = $(tempForm);
             book.append(coverImage).append(info).append(addToLib);
-            $('.books').append(book).append('<hr>');
+            $('.books').append(book).append('<hr>').hide().show('slow');
 
         }
         $('.add-to-lib').bind('click',addBookToLib);
