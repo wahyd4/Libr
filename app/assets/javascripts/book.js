@@ -35,7 +35,7 @@ $(document).ready(function(){
         ul.append('<li><b>标签：</b></li>')
         for(var i=0;i<json.tags.length;i++){
             var tag = $('<span class="label my-label">'+json.tags[i].title+'</span>');
-            $('div.well.summary').append(tag).hide().show('slow');
+            $('div.well.summary').append(tag);
         }
 
     }

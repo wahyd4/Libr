@@ -79,8 +79,9 @@ div.span2{
     margin-left:10px;
     float:left;
     height:180px;
-    margin-bottom:1em;
+    margin-bottom:0.9em;
     text-align:center;
+    margin-top: 0.9em;
 }
 .avatar{
     float:left;
@@ -93,4 +94,7 @@ div.span2{
     margin-left:4px;
     margin-bottom:4px;
     display:block;
+}
+.my-borrow-btn{
+    margin-top:-20px;
 }
