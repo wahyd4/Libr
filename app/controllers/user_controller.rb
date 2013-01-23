@@ -20,14 +20,14 @@ class UserController < ApplicationController
 
   def books
     query = params[:query]
-    user = User.find_by_id params[:id]
+    @user = User.find_by_id params[:id]
     case  query
       when 'borrowed'
-        @books = user.borrowed_and_not_returned_books
+        @books = @user.borrowed_and_not_returned_books
       when 'wanted'
         @books = nil
       else
-        @books =  user.books.order 'id DESC'
+        @books =  @user.books.order 'id DESC'
     end
     @query = query
     render :books
@@ -42,6 +42,10 @@ class UserController < ApplicationController
       @message = "Can't find your borrow record."
     end
     redirect_to :back,:notice => @message
+  end
+
+  def view
+
   end
 
 end

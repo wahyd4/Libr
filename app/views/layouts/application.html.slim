@@ -27,7 +27,7 @@ html
           ul.nav.pull-right
             -if @current_user != nil
               li
-                a href="#"
+                a href="/users/#{@current_user.id}"
                   img.img-circle style="max-width:82%;margin:-5px" src="#{@current_user.avatar}" title="#{@current_user.name}"
               li
                 a href="/logout" 注销

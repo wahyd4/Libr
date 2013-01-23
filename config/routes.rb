@@ -12,6 +12,7 @@ Libr::Application.routes.draw do
 	get '/logout' => 'user#logout'
 	get '/login/douban' => 'user#auth_douban'
 	get '/douban_callback' =>'home#douban_callback'
+  get '/users/:id' => 'user#view'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
