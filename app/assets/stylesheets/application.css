@@ -82,3 +82,15 @@ div.span2{
     margin-bottom:1em;
     text-align:center;
 }
+.avatar{
+    float:left;
+    margin:0 ;
+    display:block;
+
+}
+.my-label{
+    float:left;
+    margin-left:4px;
+    margin-bottom:4px;
+    display:block;
+}

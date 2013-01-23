@@ -35,5 +35,9 @@ div.detail.row-fluid
             td  =record.borrow_date
     div.reader-wall
       p 读者墙:
-      div.well
+      div
+       - @borrowers.each do |borrower|
+         div
+           a
+             =image_tag "#{borrower.avatar}", class:'avatar'
 

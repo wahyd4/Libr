@@ -6,6 +6,7 @@ class BookController < ApplicationController
 		@book = Book.find_by_id params[:id]
     @can_borrow = @book.users.count > @book.current_borrowers.count
     @records =BorrowRecord.records_of @book
+    @borrowers = @book.borrowers
 	end
 
 	def search
@@ -23,7 +24,9 @@ class BookController < ApplicationController
       return
     end
     book = Book.find_by_id params[:id]
-    if book.users.count <= book.borrowers.count
+    puts "current======="+ book.current_borrowers.count.to_s
+    puts "owner=======" +book.users.count.to_s
+    if book.users.count <= book.current_borrowers.count
       @msg = 'Sorry, there is no more book for lend.'
     else
       #book.borrowers << @current_user
