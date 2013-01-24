@@ -31,7 +31,7 @@ div.detail.row-fluid
         tbody
         -@records.each do  |record|
           tr
-            td  暂不提供
+            td  =record.book_instance.user_id
             td  =record.user_name
             td  =record.borrow_date
     div.reader-wall

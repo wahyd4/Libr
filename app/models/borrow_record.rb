@@ -1,13 +1,13 @@
 class BorrowRecord < ActiveRecord::Base
-  attr_accessible :borrow_date, :return_date, :user_id, :book_id
+  attr_accessible :borrow_date, :return_date, :user_id, :book_instance_id
 
 	belongs_to :user
-	belongs_to :book
+	belongs_to :book_instance
 
 	delegate :name, :avatar, to: :user,prefix: true
 
   def self.records_of(book)
-    records = BorrowRecord.includes(:user).where("book_id = ?", book.id).where(return_date:nil)
+    records = BorrowRecord.includes(:user).where("book_instance_id = ?", book.id).where(return_date:nil)
   end
 
   #def self.create_record(user_id,book_id)
