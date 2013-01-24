@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   def borrow(book)
     record = BorrowRecord.create user_id: self.id, book_instance_id: book.id, borrow_date: DateTime.now
     self.borrow_records << record
+
+
   end
 
   def borrowed_and_not_returned_books

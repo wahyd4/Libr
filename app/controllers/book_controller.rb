@@ -7,7 +7,6 @@ class BookController < ApplicationController
     @can_borrow = @book.book_instances.count > @book.current_borrowers.count
     @records =BorrowRecord.records_of @book
     @borrowers = @book.total_borrowers.uniq
-    @owners = @book.users.uniq
 	end
 
 	def search
