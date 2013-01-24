@@ -25,8 +25,6 @@ class BookController < ApplicationController
       return
     end
     book = Book.find_by_id params[:id]
-    puts "current======="+ book.current_borrowers.count.to_s
-    puts "owner=======" +book.users.count.to_s
     if book.users.count <= book.current_borrowers.count
       @msg = 'Sorry, there is no more book for lend.'
     else
@@ -46,8 +44,8 @@ class BookController < ApplicationController
       redirect_to '/login',alert: "You need login to do the action."
       return
     end
-
-    @current_user.books.create name:params[:title], image:params[:image],isbn: params[:isbn]
+    book = Book.create name:params[:title], image:params[:image],isbn: params[:isbn]
+    @current_user.book_instances.create book_id: book.id
     @msg = 'This book has been succeed to add to library.'
     redirect_to :back, notice: @msg
   end

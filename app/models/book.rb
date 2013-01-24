@@ -16,11 +16,16 @@ class Book < ActiveRecord::Base
 
   def total_borrowers
      borrowers = []
-     book_instances.map{|instance|
+     book_instances.each{|instance|
+
        unless  instance.borrowers.empty?
          borrowers << instance.borrowers
+         puts "!!!!!!!!!!!!!!" +borrowers.count.to_s
        end
      }
+     puts "zzzzzzzzzzz" +borrowers.count.to_s
+    borrowers
   end
+
 
 end
