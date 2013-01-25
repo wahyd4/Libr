@@ -17,15 +17,26 @@ class Book < ActiveRecord::Base
   def total_borrowers
      borrowers = []
      book_instances.each{|instance|
-
        unless  instance.borrowers.empty?
-         borrowers << instance.borrowers
-         puts "!!!!!!!!!!!!!!" +borrowers.count.to_s
+         borrowers += instance.borrowers
        end
      }
-     puts "zzzzzzzzzzz" +borrowers.count.to_s
     borrowers
   end
 
+  def available_instance
+    avail_instance = nil
+    book_instances.each do |instance|
+       unless instance.borrowed?
+          avail_instance  = instance
+         break
+       end
+    end
+    return avail_instance
+  end
+
+  def new_instance_for(user)
+    book_instances.create user_id: user.id, book_id: id
+  end
 
 end

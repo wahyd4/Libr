@@ -7,6 +7,7 @@ class BookController < ApplicationController
     @can_borrow = @book.book_instances.count > @book.current_borrowers.count
     @records =BorrowRecord.records_of @book
     @borrowers = @book.total_borrowers.uniq
+    @owners = @book.users
 	end
 
 	def search
@@ -43,8 +44,10 @@ class BookController < ApplicationController
       redirect_to '/login',alert: "You need login to do the action."
       return
     end
-    book = Book.create name:params[:title], image:params[:image],isbn: params[:isbn]
-    @current_user.book_instances.create book_id: book.id
+    unless book = Book.find_by_isbn(params[:isbn])
+      book = Book.create name:params[:title], image:params[:image],isbn: params[:isbn]
+    end
+    book.new_instance_for @current_user
     @msg = 'This book has been succeed to add to library.'
     redirect_to :back, notice: @msg
   end

@@ -7,7 +7,12 @@ class BorrowRecord < ActiveRecord::Base
 	delegate :name, :avatar, to: :user,prefix: true
 
   def self.records_of(book)
-    records = BorrowRecord.includes(:user).where("book_instance_id = ?", book.id).where(return_date:nil)
+    total_records = []
+    book.book_instances.each do |instance|
+      records = BorrowRecord.includes(:user).where("book_instance_id = ?", instance.id).where(return_date:nil)
+      total_records += records
+    end
+    total_records
   end
 
   #def self.create_record(user_id,book_id)

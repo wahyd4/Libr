@@ -16,19 +16,25 @@ class User < ActiveRecord::Base
   end
 
   def borrow(book)
-    record = BorrowRecord.create user_id: self.id, book_instance_id: book.id, borrow_date: DateTime.now
-    self.borrow_records << record
+    instance = book.available_instance
+    unless instance == nil
+      borrow_records.create user_id: id, book_instance_id: instance.id, borrow_date: DateTime.now
 
-
+    end
   end
 
   def borrowed_and_not_returned_books
     records = borrow_records.where(return_date: nil).order('id DESC')
-    records.map{ |record| record = Book.find_by_id record.book_instance_id }
+    records.map{ |record| record = BookInstance.find_by_id record.book_instance_id }
 
   end
 
   def books
-    book_instances.order('id DESC').map{|instance| Book.find_by_id instance.book_id }
+    book_instances
+  end
+
+  def return_book (instance)
+    record = BorrowRecord.where(user_id: id,book_instance_id: instance.id, return_date: nil)[0]
+    record.return_book
   end
 end

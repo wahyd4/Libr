@@ -1,7 +1,7 @@
 div.row  style="margin-top:2em;"
-  - @books.each do |book|
+  - @books.each do |instance|
     div.one-item
       div
-        a href="/books/#{book.id}"
-           img.cover src="#{book.image}"
-        p.title style="font-size:0.9em;"  =book.name
+        a href="/books/#{instance.book_id}"
+           img.cover src="#{instance.image}"
+        p.title style="font-size:0.9em;"  = instance.name

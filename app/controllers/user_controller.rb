@@ -34,9 +34,9 @@ class UserController < ApplicationController
   end
 
   def return_book
-    records = BorrowRecord.where(user_id: params[:id],book_instance_id: params[:book_id],return_date: nil)
-    unless records.empty?
-      records[0].return_book
+    instance = BookInstance.find_by_book_id params[:book_id]
+    if @current_user.borrowed_and_not_returned_books.include? instance
+      @current_user.return_book
       @message = 'Return book success.'
     else
       @message = "Can't find your borrow record."
