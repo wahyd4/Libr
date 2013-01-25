@@ -27,14 +27,14 @@ class UserController < ApplicationController
       when 'wanted'
         @books = nil
       else
-        @books =  @user.books.order 'id DESC'
+        @books =  @user.books
     end
     @query = query
     render :books
   end
 
   def return_book
-    records = BorrowRecord.where(user_id: params[:id],book_id: params[:book_id],return_date: nil)
+    records = BorrowRecord.where(user_id: params[:id],book_instance_id: params[:book_id],return_date: nil)
     unless records.empty?
       records[0].return_book
       @message = 'Return book success.'

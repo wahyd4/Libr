@@ -31,18 +31,9 @@ div.detail.row-fluid
         tbody
         -@records.each do  |record|
           tr
-            td  暂不提供
+            td  =record.book_instance.to_s
             td  =record.user_name
             td  =record.borrow_date
-    div.reader-wall
-          p 所有者:
-          div
-           - @owners.each do |owner|
-             div
-               a  href="/users/#{owner.id}/books"
-                 =image_tag "#{owner.avatar}", class:'avatar',title: owner.name
-    div.clearfix
-    hr
     div.reader-wall
       p 读者墙:
       div
