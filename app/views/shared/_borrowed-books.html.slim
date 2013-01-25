@@ -6,5 +6,5 @@ div.row  style="margin-top:2em;"
            img.cover src="#{book_instance.image}"
         p.title style="font-size:0.9em;"  =book_instance.name
         -if @user == @current_user
-          = form_tag("borrowedbooks/#{book_instance.book_id}", method:'put') do
+          = form_tag("borrowedbooks/#{book_instance.id}", method:'put') do
             input.btn.btn-warning.btn-mini.my-borrow-btn type="submit" value="归还"

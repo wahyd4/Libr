@@ -34,9 +34,10 @@ class UserController < ApplicationController
   end
 
   def return_book
-    instance = BookInstance.find_by_book_id params[:book_id]
+    instance = BookInstance.find_by_id params[:instance_id]
+    puts "---------------------" +instance.to_s + "    -------"+params[:instance_id]
     if @current_user.borrowed_and_not_returned_books.include? instance
-      @current_user.return_book
+      @current_user.return_book instance
       @message = 'Return book success.'
     else
       @message = "Can't find your borrow record."
