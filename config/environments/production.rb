@@ -20,6 +20,8 @@ Libr::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  config.static_cache_control = "public, max-age=3600"
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
