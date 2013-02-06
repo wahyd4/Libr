@@ -32,7 +32,6 @@ module QQAuth
     http.use_ssl = true
     path ='/oauth2.0/me?' +
         'access_token='+access_token
-
     response = http.get(path)
     get_open_id response.body
   end
@@ -46,9 +45,6 @@ module QQAuth
         '&openid=' +openid
     response = http.get(path)
     response = JSON.parse response.body
-    puts "response====" +response.to_s
-    response
-
   end
 
   def get_open_id (str)
