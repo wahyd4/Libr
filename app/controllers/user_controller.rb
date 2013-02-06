@@ -1,8 +1,10 @@
 require "douban_auth"
+require "qq_auth"
 
 class UserController < ApplicationController
   before_filter :current_user
 	include Douban_Auth
+  include QQAuth
 
 	def login
 		render :layout => false
@@ -11,7 +13,12 @@ class UserController < ApplicationController
 	def auth_douban
 		url = auth_url.to_s
 	  redirect_to url
-	end
+  end
+
+  def auth_qq
+    url = qq_auth_url.to_s
+    redirect_to url
+  end
 
 	def logout
 		session[:name] = nil
