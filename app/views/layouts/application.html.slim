@@ -25,7 +25,7 @@ html
                 li
                   a href="/users/#{@current_user.id}/books" 我的书架
                 li
-                  a href="/users" 我的记录
+                  a href="/users/#{@current_user.id}" 个人中心
           ul.nav.pull-right
             -if @current_user != nil
               li

@@ -42,7 +42,6 @@ class UserController < ApplicationController
 
   def return_book
     instance = BookInstance.find_by_id params[:instance_id]
-    puts "---------------------" +instance.to_s + "    -------"+params[:instance_id]
     if @current_user.borrowed_and_not_returned_books.include? instance
       @current_user.return_book instance
       @message = 'Return book success.'
@@ -53,7 +52,10 @@ class UserController < ApplicationController
   end
 
   def view
+    @user = User.find_by_id params[:id]
 
+    @total_borrowed_books = @user.borrowed_books
+    @total_books = @user.book_instances
   end
 
 end

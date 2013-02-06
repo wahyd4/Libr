@@ -1,0 +1,13 @@
+div.container-narrow style="text-align:center;"
+  div style="margin-top:-25px;"
+    img.img-circle.cool-border src="#{@user.avatar}"
+  h3  =@user.name
+  div.record-info
+    p 近一个月借书#{0}本
+    p
+    p 近一年借书#{0}本
+    p
+    p 至今共借书#{@total_borrowed_books.count}本
+    p
+    p 共拥有图书#{@total_books.count}本
+

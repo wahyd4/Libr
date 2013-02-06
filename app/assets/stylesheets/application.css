@@ -98,3 +98,23 @@ div.span2{
 .my-borrow-btn{
     margin-top:-20px;
 }
+
+.container-narrow{
+    margin: 0 auto;
+    max-width: 700px;
+    min-height: 500px;
+    margin-bottom: 10px;
+    border: 1px solid #9EAA99;
+    border-radius: 3px;
+    box-shadow: 0 0 4px rgba(0,0,0,.25);
+    margin-top: 20px;
+}
+.cool-border{
+    border: 1px solid #9EAA99;
+    box-shadow: 0 0 4px rgba(0,0,0,.25);
+}
+.record-info{
+    color: #c67605;
+    font-size: 25px;
+    line-height: 35px;
+}
