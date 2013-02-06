@@ -15,7 +15,7 @@ Libr::Application.routes.draw do
 	get '/douban_callback' =>'home#douban_callback'
   get '/qq_callback'=>'home#qq_callback'
   get '/users/:id' => 'user#view'
-  post '/search' =>'search#do_search'
+  get '/search' =>'search#do_search'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

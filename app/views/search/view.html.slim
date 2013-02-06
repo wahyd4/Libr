@@ -1,0 +1,14 @@
+div style="text-align:center;"
+   form.form-search method="get" action="/search"
+      div.input-append
+        input.span2.search-query type="text" name="keyword" value="#{params[:keyword]}"
+        button.btn type="submit" 搜索
+b.pull-left  搜索结果:共#{@books.count}条结果。（最多显示24条结果，如结果太多，请输入更详细的关键字）
+div.clearfix
+div.row
+- @books.each do |book|
+  div.one-item
+    div
+      a href="/books/#{book.id}"
+         img.cover src="#{book.image}"
+      p.title style="font-size:0.9em;"  =book.name

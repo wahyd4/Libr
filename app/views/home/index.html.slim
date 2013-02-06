@@ -1,9 +1,9 @@
 div.pull-right
-  form.form-search method="post" action="/search"
+  form.form-search method="get" action="/search"
     div.input-append
       input.span2.search-query type="text" name="keyword"
       button.btn type="submit" 搜索
-h3.pull-left  新书推荐:
+h3.pull-left  新入库图书:
 div.clearfix
 div.row
 - @books.each do |book|

@@ -21,6 +21,8 @@ html
             ul.nav
               li
                 a href="/books/new" 添加图书
+              li
+                a href="" 书单
               - if  @current_user != nil
                 li
                   a href="/users/#{@current_user.id}/books" 我的书架
