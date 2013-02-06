@@ -7,7 +7,7 @@ class HomeController < ApplicationController
 	 before_filter :current_user
 
 	def index
-		@books = Book.order 'id DESC'
+		@books = Book.order('id DESC').limit(24)
 	end
 
 	def douban_callback
