@@ -22,7 +22,7 @@ module QQAuth
         '&redirect_uri='+::ENV['QQ_REDIRECT_URI']+
         '&grant_type=authorization_code&code='+code
 
-    response = http.get(path, nil)
+    response = http.get(path)
     response = JSON.parse response.body
     response['access_token']
 
@@ -34,7 +34,7 @@ module QQAuth
     path ='/oauth2.0/me?' +
         '&access_token='+access_token
 
-    response = http.get(path, nil)
+    response = http.get(path)
     response = JSON.parse response.body
     response['openid']
   end
@@ -46,7 +46,7 @@ module QQAuth
         '&access_token='+access_token +
         '&oauth_consumer_key=' +::ENV['QQ_CLIENT_ID'] +
         '&openid=' +openid
-    response = http.get(path, nil)
+    response = http.get(path)
     response = JSON.parse response.body
     puts "response====" +response.to_s
     response
