@@ -5,10 +5,29 @@ div.pull-right
       button.btn type="submit" 搜索
 h3.pull-left  新入库图书:
 div.clearfix
-div.row
-- @books.each do |book|
-  div.one-item
-    div
-      a href="/books/#{book.id}"
-         img.cover src="#{book.image}"
-      p.title style="font-size:0.9em;"  =book.name
+div.row-fluid
+  div.span9
+    - @books.each do |book|
+      div.one-item
+        div
+          a href="/books/#{book.id}"
+             img.cover src="#{book.image}"
+          p.title style="font-size:0.9em;"  =book.name
+  div.span3
+    ul.nav.nav-list.well
+      li.nav-header style="font-size:14px;" 拥有书最多的8名用户
+      - @top_10_owners.each do |user|
+        li
+          a href="/users/#{user.id}/books"
+            img.img-circle style="max-width:50%;" src="#{user.avatar}"
+            span style="margin-left:5px;"
+              b =user.name
+    hr
+    ul.nav.nav-list.well
+          li.nav-header style="font-size:14px;" 借书书最多的8名用户
+          - @top_10_borrowers.each do |user|
+            li
+              a href="/users/#{user.id}/books"
+                img.img-circle style="max-width:50%;" src="#{user.avatar}"
+                span style="margin-left:5px;"
+                  b =user.name
