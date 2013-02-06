@@ -19,15 +19,15 @@ div.row-fluid
       - @top_10_owners.each do |user|
         li
           a href="/users/#{user.id}/books"
-            img.img-circle style="max-width:50%;" src="#{user.avatar}"
+            img.img-circle style="max-width:25px;" src="#{user.avatar}"
             span style="margin-left:5px;"
               b =user.name
     hr
     ul.nav.nav-list.well
-          li.nav-header style="font-size:14px;" 借书书最多的8名用户
+          li.nav-header style="font-size:14px;" 借书最多的8名用户
           - @top_10_borrowers.each do |user|
             li
               a href="/users/#{user.id}/books"
-                img.img-circle style="max-width:50%;" src="#{user.avatar}"
+                img.img-circle style="max-width:25px;" src="#{user.avatar}"
                 span style="margin-left:5px;"
                   b =user.name
