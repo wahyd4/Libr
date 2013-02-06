@@ -25,7 +25,6 @@ module QQAuth
     response = http.get(path)
     token = response.body.to_s.split('&')[0].split('=')[1]
 
-
   end
 
   def fetch_qq_open_id(access_token)
@@ -35,8 +34,7 @@ module QQAuth
         'access_token='+access_token
 
     response = http.get(path)
-    response = JSON.parse response.body
-    response['openid']
+    get_open_id response.body
   end
 
   def fetch_qq_user_info(access_token, openid)
@@ -51,5 +49,11 @@ module QQAuth
     puts "response====" +response.to_s
     response
 
+  end
+
+  def get_open_id (str)
+    upper = str.index ('"openid":"')
+    lower = str.index('"} );')
+    str[(upper+10)..(lower-1)]
   end
 end
