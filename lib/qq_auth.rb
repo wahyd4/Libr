@@ -22,6 +22,7 @@ module QQAuth
         '&redirect_uri='+::ENV['QQ_REDIRECT_URI']+
         '&grant_type=authorization_code&code='+code
 
+    puts "=====111111======" +path
     response = http.get(path)
     response = JSON.parse response.body
     response['access_token']
