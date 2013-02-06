@@ -12,7 +12,7 @@ div.detail.row-fluid
       img.cover
   div.span4
      ul.unstyled
-     div.well.summary
+     div.well.tags
   div.span4
     div.action style="text-align:center"
       = form_tag controller: 'book', action: 'borrow' do
@@ -50,4 +50,8 @@ div.detail.row-fluid
          div
            a  href="/users/#{borrower.id}/books"
              =image_tag "#{borrower.avatar}", class:'avatar',title: borrower.name
+div.clearfix
+div style="margin-top:20px;"
+  b 摘要：
+div.hero-unit.summary
 
