@@ -1,6 +1,8 @@
 div.row  style="margin-top:2em;"
-  div.pull-right
-    button.btn.btn-danger.delete-books 删除书籍
+  -@user = User.find_by_id params[:user_id]
+  -if @user == @current_user
+    div.pull-right
+      button.btn.btn-danger.delete-books 删除书籍
   div.pull-left
     - @books.each do |instance|
       div.one-item
