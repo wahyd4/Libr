@@ -8,10 +8,10 @@ class HomeController < ApplicationController
 
   def index
     @books = Book.order('id DESC').limit(20)
-    @top_10_owners = BookInstance.select('user_id').group('user_id').order('count("user_id") DESC').limit(8).map! { |instance|
+    @top_10_owners = BookInstance.select('user_id').group('user_id').order('count("user_id") DESC').limit(10).map! { |instance|
       User.find_by_id instance.user_id
     }
-    @top_10_borrowers = BorrowRecord.select('user_id').group('user_id').order('count("user_id") DESC').limit(8).map! { |record|
+    @top_10_borrowers = BorrowRecord.select('user_id').group('user_id').order('count("user_id") DESC').limit(10).map! { |record|
       User.find_by_id record.user_id
     }
 

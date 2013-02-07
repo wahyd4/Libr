@@ -15,7 +15,7 @@ div.row-fluid
           p.title style="font-size:0.9em;"  =book.name
   div.span3
     ul.nav.nav-list.well
-      li.nav-header style="font-size:14px;" 拥有书最多的8名用户
+      li.nav-header style="font-size:14px;" 拥有书最多的10名用户
       - @top_10_owners.each do |user|
         li
           a href="/users/#{user.id}/books"
@@ -24,7 +24,7 @@ div.row-fluid
               b =user.name
     hr
     ul.nav.nav-list.well
-          li.nav-header style="font-size:14px;" 借书最多的8名用户
+          li.nav-header style="font-size:14px;" 借书最多的10名用户
           - @top_10_borrowers.each do |user|
             li
               a href="/users/#{user.id}/books"
