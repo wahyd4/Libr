@@ -38,6 +38,7 @@ module Douban_Auth
 		}
 		response = http.get(path,header)
 		response = JSON.parse response.body
+    response
 	end
 
 end

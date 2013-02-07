@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 	  end
 	  unless User.find_by_name name
 		  User.create_user(name,avatar)
-	  end
+    end
 	  session[:name] = name
   end
 
