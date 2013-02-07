@@ -1,6 +1,6 @@
 div.row  style="margin-top:2em;"
-  -@user = User.find_by_id params[:user_id]
-  -if @user == @current_user
+  -@user = User.find_by_id params[:id]
+  -if @user== @current_user
     div.pull-right
       button.btn.btn-danger.delete-books 删除书籍
   div.pull-left
