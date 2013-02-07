@@ -46,6 +46,8 @@ class UserController < ApplicationController
     if @current_user.borrowed_and_not_returned_books.include? instance
       @current_user.return_book instance
       @message = 'Return book success.'
+      redirect_to :back, :alert => @message
+      return
     else
       @message = "Can't find your borrow record."
     end
@@ -65,7 +67,7 @@ class UserController < ApplicationController
     if user != @current_user
       @message = "error,illagle."
       redirect_to :back, :notice => @message
-      return;
+      return
     end
 
     instance = BookInstance.find_by_id params[:instance_id]
@@ -73,7 +75,7 @@ class UserController < ApplicationController
     if instance.current_borrower !=nil
       @message = "This book can't be delete, because there is still have a borrower"
       redirect_to :back, :notice => @message
-      return;
+      return
     end
 
     if instance != nil && user.book_instances.include?(instance)
