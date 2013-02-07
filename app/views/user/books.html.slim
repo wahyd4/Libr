@@ -1,18 +1,27 @@
+- content_for :javascript_includes do
+  = javascript_include_tag 'user'
+
 - if flash[:notice]
-     div.alert.alert-success = flash[:notice]
-- case @query
-- when 'borrowed'
-  div.btn-group
-    a.btn href="?query=owned" 我的图书
-    a.btn.active 已借阅图书
-    a.btn 想读图书
-  = render 'shared/borrowed-books'
-- when 'wanted'
-  p No more books.
-- else
-  div.btn-group
-    a.btn.active 我的图书
-    a.btn href="?query=borrowed" 已借阅图书
-    a.btn 想读图书
-  = render 'shared/booklist'
+     div.alert = flash[:notice]
+- if flash[:alert]
+   div.alert.alert-success = flash[:alert]
+div.pull-left
+  - case @query
+  - when 'borrowed'
+    div.btn-group
+      a.btn href="?query=owned" 我的图书
+      a.btn.active 已借阅图书
+      a.btn 想读图书
+    = render 'shared/borrowed-books'
+  - when 'wanted'
+    p No more books.
+  - else
+    div.btn-group
+      a.btn.active 我的图书
+      a.btn href="?query=borrowed" 已借阅图书
+      a.btn 想读图书
+div.pull-right
+  button.btn.btn-danger.delete-books 删除书籍
+div.clearfix
+= render 'shared/booklist'
 

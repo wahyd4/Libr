@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :avatar, :id
 
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name,:email
 
 
 	has_many :book_instances

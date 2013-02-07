@@ -14,6 +14,7 @@ class HomeController < ApplicationController
     @top_10_borrowers = BorrowRecord.select('user_id').group('user_id').order('count("user_id") DESC').limit(8).map! { |record|
       User.find_by_id record.user_id
     }
+
   end
 
   def douban_callback

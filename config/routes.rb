@@ -16,6 +16,7 @@ Libr::Application.routes.draw do
   get '/qq_callback'=>'home#qq_callback'
   get '/users/:id' => 'user#view'
   get '/search' =>'search#do_search'
+  delete '/users/:user_id/books/:instance_id'=> 'user#delete_book'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

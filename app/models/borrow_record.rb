@@ -1,6 +1,6 @@
 class BorrowRecord < ActiveRecord::Base
   attr_accessible :borrow_date, :return_date, :user_id, :book_instance_id
-
+  validates_presence_of :user_id,:book_instance_id
 	belongs_to :user
 	belongs_to :book_instance
 

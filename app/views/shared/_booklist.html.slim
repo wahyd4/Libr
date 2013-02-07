@@ -1,7 +1,9 @@
 div.row  style="margin-top:2em;"
   - @books.each do |instance|
     div.one-item
-      div
+      div style="text-align:center;"
         a href="/books/#{instance.book_id}"
-           img.cover src="#{instance.image}"
+           img.cover  src="#{instance.image}"
         p.title style="font-size:0.9em;"  = instance.name
+        = form_tag("books/#{instance.id}", :method => "delete")  do
+           button.btn.btn-danger.btn-mini.hidden 删除

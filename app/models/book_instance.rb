@@ -1,6 +1,6 @@
 class BookInstance < ActiveRecord::Base
   attr_accessible :book_id, :user_id, :public
-
+  validates_presence_of :book_id, :user_id
   belongs_to :book
   belongs_to :user
 

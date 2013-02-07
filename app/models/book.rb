@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
   attr_accessible :author, :image, :isbn, :name ,:id
-
+  validates_presence_of :image,:isbn, :name
+  validates_uniqueness_of :isbn, :image
   has_many :book_instances
   has_many :users, through: :book_instances
 
