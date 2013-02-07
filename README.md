@@ -17,3 +17,6 @@ Build Status
         export QQ_CLIENT_ID=***
         export QQ_CLIENT_SECRET=***
         export QQ_REDIRECT_URI=***
+
+#### License
+        The MIT License (MIT)
