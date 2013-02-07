@@ -31,6 +31,7 @@ class UserController < ApplicationController
     case query
       when 'borrowed'
         @books = @user.borrowed_and_not_returned_books
+        puts "sssssss" +@books.size.to_s
       when 'wanted'
         @books = nil
       else
@@ -63,7 +64,7 @@ class UserController < ApplicationController
     user = User.find_by_id params[:user_id]
     if user != @current_user
       @message = "error,illagle."
-      redirect_to :back,:notice =>@message
+      redirect_to :back, :notice => @message
       return;
     end
 
@@ -71,7 +72,7 @@ class UserController < ApplicationController
 
     if instance.current_borrower !=nil
       @message = "This book can't be delete, because there is still have a borrower"
-      redirect_to :back,:notice =>@message
+      redirect_to :back, :notice => @message
       return;
     end
 
