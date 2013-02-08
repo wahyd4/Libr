@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -41,7 +41,6 @@ group :development, :test do
 	gem 'rspec-rails'
 	gem 'github'
 	gem 'tddium'
-	gem "rails_best_practices", "~> 1.11.1"
 	gem "flay"
 	gem 'simplecov'
 	gem 'machinist'
@@ -49,4 +48,5 @@ group :development, :test do
 	gem 'capybara'
 	gem 'database_cleaner'
 	gem 'selenium-webdriver'
+  gem 'rails_best_practices'
 end
