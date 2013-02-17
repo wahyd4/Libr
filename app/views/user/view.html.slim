@@ -14,6 +14,8 @@ div.container-narrow style="text-align:center;"
     img.img-circle.cool-border src="#{@user.avatar}"
   div.user-info
     h3   =@user.name
+    p   =@user.email
+    p   =@user.location
     - user = User.find_by_id params[:id]
     - if user == @current_user
       a.icon-edit.edit-btn
