@@ -20,6 +20,10 @@ div.container-narrow style="text-align:center;"
     - user = User.find_by_id params[:id]
     - if user == @current_user
       a.icon-edit.edit-btn
+      br
+      button.btn.btn-mini.key-btn key_value="#{@user.api_key}" Key
+      a.icon-refresh style="margin-left:10px;" title="重新生成KEY"
+      br
     div.record-info
       p 近一个月借书#{0}本
       p

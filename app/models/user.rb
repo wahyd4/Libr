@@ -1,5 +1,8 @@
+require 'utils'
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :avatar, :id, :location, :preferred_name
+
+  include Utils
+  attr_accessible :email, :name, :avatar, :id, :location, :preferred_name, :api_key
 
 
   has_many :book_instances
@@ -10,7 +13,7 @@ class User < ActiveRecord::Base
 
 
   def self.create_user(name, avatar)
-    User.create name: name, avatar: avatar
+    User.create name: name, avatar: avatar, api_key: Utils.random_key
   end
 
   def borrow(book)
