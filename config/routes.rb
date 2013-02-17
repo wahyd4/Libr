@@ -15,6 +15,7 @@ Libr::Application.routes.draw do
 	get '/douban_callback' =>'home#douban_callback'
   get '/qq_callback'=>'home#qq_callback'
   get '/users/:id' => 'user#view'
+  put '/users/:id' => 'user#update'
   get '/search' =>'search#do_search'
   delete '/users/:user_id/books/:instance_id'=> 'user#delete_book'
 

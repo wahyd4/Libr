@@ -39,7 +39,6 @@ gem 'jquery-rails'
 
 group :development, :test do
 	gem 'rspec-rails'
-	gem 'github'
 	gem 'tddium'
 	gem "flay"
 	gem 'simplecov'

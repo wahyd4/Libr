@@ -73,16 +73,29 @@ class UserController < ApplicationController
     instance = BookInstance.find_by_id params[:instance_id]
 
     if instance.current_borrower !=nil
-      @message = "This book can't be delete, because there is still have a borrower"
+      @message = 'This book can"t be delete, because there is still have a borrower'
       redirect_to :back, :notice => @message
       return
     end
 
     if instance != nil && user.book_instances.include?(instance)
       @current_user.book_instances.destroy instance
-      @message = "delete book success"
+      @message = 'delete book success'
       redirect_to :back, :alert => @message
     end
+  end
+
+  def update
+    user = User.find_by_id params[:id]
+    if User.check_email_existed params[:email]
+      redirect_to :back, :notice => 'Email address already has been taken,please choose another one.'
+      return
+    end
+    @current_user.update_name params[:username]
+    @current_user.update_email params[:email]
+    @current_user.update_location params[:city]
+    redirect_to :back, :alert => 'Update information success.'
+
   end
 
 end

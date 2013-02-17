@@ -51,4 +51,16 @@ describe :User do
     end
 
   end
+
+  describe :check_email_existed do
+    it 'ensure return false when there is no user has a email equals test@qq.com' do
+      @user.update_attributes email: 'test@gmail.com'
+      User.check_email_existed('test@qq.com').should be_false
+    end
+
+    it 'ensure return true when there is someone has a email named test@qq.com' do
+      User.create name:'Testme', email:'test@qq.com'
+      User.check_email_existed('test@qq.com').should be_true
+    end
+  end
 end

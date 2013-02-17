@@ -1,7 +1,7 @@
 class Book < ActiveRecord::Base
   attr_accessible :author, :image, :isbn, :name ,:id
-  validates_presence_of :image,:isbn, :name
-  validates_uniqueness_of :isbn, :image
+  validates_presence_of :image,:isbn, :name,message: 'cannot be blank.'
+  validates_uniqueness_of :isbn, :image,message: 'should be unique.'
   has_many :book_instances
   has_many :users, through: :book_instances
 
@@ -29,11 +29,11 @@ class Book < ActiveRecord::Base
     avail_instance = nil
     book_instances.each do |instance|
        unless instance.borrowed?
-          avail_instance  = instance
+         avail_instance  = instance
          break
        end
     end
-    return avail_instance
+    avail_instance
   end
 
   def new_instance_for(user)

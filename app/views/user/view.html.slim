@@ -1,13 +1,39 @@
+- content_for :style_includes do
+  = stylesheet_link_tag '/city_select/citySelector.css'
+
+- content_for :javascript_includes do
+   = javascript_include_tag 'edit-user'
+   = javascript_include_tag '/city_select/citySelector-min.js'
+
+- if flash[:notice]
+     div.alert.alert-danger = flash[:notice]
+- if flash[:alert]
+     div.alert.alert-success = flash[:alert]
 div.container-narrow style="text-align:center;"
-  div style="margin-top:-30px;"
+  div style="margin-top:-30px;margin-bottom:15px;"
     img.img-circle.cool-border src="#{@user.avatar}"
-  h3  =@user.name
-  div.record-info
-    p 近一个月借书#{0}本
-    p
-    p 近一年借书#{0}本
-    p
-    p 至今共借书#{@total_borrowed_books.count}本
-    p
-    p 共拥有图书#{@total_books.count}本
+  div.user-info
+    h3   =@user.name
+    - user = User.find_by_id params[:id]
+    - if user == @current_user
+      a.icon-edit.edit-btn
+    div.record-info
+      p 近一个月借书#{0}本
+      p
+      p 近一年借书#{0}本
+      p
+      p 至今共借书#{@total_borrowed_books.count}本
+      p
+      p 共拥有图书#{@total_books.count}本
+
+  div.edit-user style="display:none;"
+    = form_tag("", method:'put') do
+      input type="text" name="username" placeholder="请输入你的昵称"  value="#{@user.name}"
+      br
+      input type="email" name="email" placeholder="请输入你的真实邮箱，以便接收信息" value="#{@user.email}"
+      br
+      input.cityinput type="text" name="city" id="city_to_choose" placeholder="请选择你所在的城市"  value="#{@user.location}"
+      br
+      a.btn.btn-danger href="" style="margin-right:10px;" 取消
+      input.btn.btn-primary type="submit" value="提交"
 
