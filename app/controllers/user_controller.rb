@@ -87,7 +87,7 @@ class UserController < ApplicationController
 
   def update
     user = User.find_by_id params[:id]
-    if User.check_email_existed params[:email]
+    if User.check_email_existed params[:email] &&  user != @current_user
       redirect_to :back, :notice => 'Email address already has been taken,please choose another one.'
       return
     end
