@@ -51,4 +51,9 @@ class BookController < ApplicationController
     @msg = 'This book has been succeed to add to library.'
     redirect_to :back, notice: @msg
   end
+
+  def list
+    @books = Book.paginate(:page => params[:page], :per_page => 24)
+    render :index
+  end
 end

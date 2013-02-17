@@ -1,0 +1,17 @@
+div.pull-right
+  form.form-search method="get" action="/search"
+    div.input-append
+      input.span2.search-query type="text" name="keyword"
+      button.btn type="submit" 搜索
+h3.pull-left  所有图书:
+div.clearfix
+div.row-fluid
+  div
+    - @books.each do |book|
+      div.one-item
+        div
+          a href="/books/#{book.id}"
+             img.cover src="#{book.image}"
+          p.title style="font-size:0.9em;"  =book.name
+
+=will_paginate @books
