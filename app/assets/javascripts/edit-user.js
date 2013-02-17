@@ -9,5 +9,6 @@ $(document).ready(function(){
     $('.key-btn').click(function(){
         var key = $(this).attr('key_value');
         $(this).text(key);
+        $('.key-btn').unbind('click');
     });
 });
