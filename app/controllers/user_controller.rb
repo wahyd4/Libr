@@ -91,7 +91,12 @@ class UserController < ApplicationController
       redirect_to :back, :notice => 'Email address already has been taken,please choose another one.'
       return
     end
-    @current_user.update_name params[:username]
+
+    if params[:email] =='' || params[:username] == '' || params[:city] == ''
+      redirect_to :back, :notice => 'All of the input areas should be filled.'
+      return
+    end
+    @current_user.update_preferred_name params[:username]
     @current_user.update_email params[:email]
     @current_user.update_location params[:city]
     redirect_to :back, :alert => 'Update information success.'

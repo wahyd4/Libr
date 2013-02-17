@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :avatar, :id, :location
+  attr_accessible :email, :name, :avatar, :id, :location, :preferred_name
 
 
   has_many :book_instances
@@ -35,8 +35,8 @@ class User < ActiveRecord::Base
     record.return_book
   end
 
-  def update_name(name)
-    update_attributes name: name
+  def update_preferred_name(name)
+    update_attributes preferred_name: name
   end
 
   def update_email(email)

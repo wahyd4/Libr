@@ -13,9 +13,10 @@ div.container-narrow style="text-align:center;"
   div style="margin-top:-30px;margin-bottom:15px;"
     img.img-circle.cool-border src="#{@user.avatar}"
   div.user-info
-    h3   =@user.name
-    p   =@user.email
-    p   =@user.location
+    h3  = @user.name
+    p   = @user.preferred_name
+    p   = @user.email
+    p   = @user.location
     - user = User.find_by_id params[:id]
     - if user == @current_user
       a.icon-edit.edit-btn
@@ -30,11 +31,11 @@ div.container-narrow style="text-align:center;"
 
   div.edit-user style="display:none;"
     = form_tag("", method:'put') do
-      input type="text" name="username" placeholder="请输入你的昵称"  value="#{@user.name}"
+      input type="text" name="username" placeholder="请输入你的昵称（必填）"  value="#{@user.preferred_name}"  required="true"
       br
-      input type="email" name="email" placeholder="请输入你的真实邮箱，以便接收信息" value="#{@user.email}"
+      input type="email" name="email" placeholder="请输入你的真实邮箱（必填）" value="#{@user.email}" required="true"
       br
-      input.cityinput type="text" name="city" id="city_to_choose" placeholder="请选择你所在的城市"  value="#{@user.location}"
+      input.cityinput type="text" name="city" id="city_to_choose" placeholder="请选择你所在的城市（必填）"  value="#{@user.location}" required="true"
       br
       a.btn.btn-danger href="" style="margin-right:10px;" 取消
       input.btn.btn-primary type="submit" value="提交"
