@@ -7,7 +7,7 @@ class ApiController < ApplicationController
       render json: {book: nil, message: 'There is no mathched book.'}
       return
     end
-    render json: book.to_json(include: [{:users => {except: [:api_key]}}, :available_instance])
+    render json: book.to_json(include: [{:users => {except: [:api_key,:email,:created_at]}}, :available_instance])
   end
 
   def user_info
@@ -16,7 +16,7 @@ class ApiController < ApplicationController
       render json: {user: nil, message: 'There is no mathched user.'}
       return
     end
-    render json: user.to_json(except: [:api_key, :created_at], include: [:books])
+    render json: user.to_json(except: [:api_key, :created_at,:email], include: [:books])
   end
 
   def books
