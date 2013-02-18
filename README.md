@@ -24,7 +24,7 @@ Build Status
  * 2013.2.17 为图书列表添加分页功能
  * 2013.2.18 添加基本API：图书信息、用户信息、图书列表
 
-#### API 客户端json API使用指南
+#### JSON API使用指南
 
         * GET /api/userinfo/:user_id 用户用户的相关信息
         * GET /api/bookinfo/:isbn  需要传入书籍的13位ISBN号，获取书籍的相关信息，拥有书籍的用户，和当前可借的用户信息
