@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   has_many :borrowed_books, :source => :book_instance, through: :borrow_records
 
+  has_many :auth_keys
+
 
   def self.create_user(name, avatar)
     User.create name: name, avatar: avatar, api_key: Utils.random_key
@@ -30,7 +32,7 @@ class User < ActiveRecord::Base
   end
 
   def books
-    book_instances.map{|instance| instance.book}
+    book_instances.map { |instance| instance.book }
   end
 
   def return_book (instance)
@@ -54,5 +56,9 @@ class User < ActiveRecord::Base
     flag = false
     flag = true if User.find_by_email email
     flag
+  end
+
+  def generate_auth_key
+    auth_keys.create value: Utils.random_key, user_id: id
   end
 end

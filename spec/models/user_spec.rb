@@ -63,4 +63,15 @@ describe :User do
       User.check_email_existed('test@qq.com').should be_true
     end
   end
+
+  describe :generate_auth_key do
+    it 'ensure generate a auth key for a user' do
+      @user.auth_keys.count.should == 0
+      lambda do
+        @user.generate_auth_key
+      end.should change(@user.auth_keys,:count).by(1)
+      @user.auth_keys[0].value.size.should == 8
+    end
+
+  end
 end
