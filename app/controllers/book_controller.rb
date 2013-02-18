@@ -45,7 +45,7 @@ class BookController < ApplicationController
       return
     end
     unless book = Book.find_by_isbn(params[:isbn])
-      book = Book.create name:params[:title], image:params[:image],isbn: params[:isbn]
+      book = Book.create name:params[:title], image:params[:image],isbn: params[:isbn],author: params[:author]
     end
     book.new_instance_for @current_user
     @msg = 'This book has been succeed to add to library.'

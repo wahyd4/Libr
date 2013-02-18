@@ -20,6 +20,12 @@ Libr::Application.routes.draw do
   get '/search' => 'search#do_search'
   delete '/users/:user_id/books/:instance_id' => 'user#delete_book'
 
+
+  # api will return json
+  get 'api/bookinfo/:isbn' =>'api#book_info'
+  get 'api/userinfo/:user_id' =>'api#user_info'
+  get 'api/books' => 'api#books'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -67,9 +73,7 @@ Libr::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+
 
   # See how all your routes lay out with "rake routes"
 

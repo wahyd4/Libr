@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   end
 
   def books
-    book_instances
+    book_instances.map{|instance| instance.book}
   end
 
   def return_book (instance)
