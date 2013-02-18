@@ -12,7 +12,6 @@ class ApiController < ApplicationController
 
   def user_info
     user = User.find_by_id params[:user_id]
-
     if user == nil
       render json: {user: nil, message: 'There is no mathched user.'}
       return
@@ -24,6 +23,10 @@ class ApiController < ApplicationController
     count = 10
     @books = Book.paginate(:page => params[:page], :per_page => count)
     params[:page] ? current_page = params[:page] : current_page = '1'
-    render json: {books: @books, current_page: current_page, total_page: (Book.count / count) +1}
+    render json: {books: @books, current_page: current_page, total_page: total_page(Book.count, count), total_count: Book.count}
+  end
+
+  def total_page(count, per_page)
+    count%per_page == 0 ? count/per_page : (count/per_page) +1
   end
 end

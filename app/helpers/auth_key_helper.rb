@@ -1,0 +1,2 @@
+module AuthKeyHelper
+end
