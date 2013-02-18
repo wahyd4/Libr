@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
 
   def self.create_user(name, avatar)
-    User.create name: name, avatar: avatar, api_key: Utils.random_key
+    User.create name: name, avatar: avatar
   end
 
   def borrow(book)

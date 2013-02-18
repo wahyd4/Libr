@@ -19,10 +19,10 @@ div.container-narrow style="text-align:center;"
     p   = @user.location
     - user = User.find_by_id params[:id]
     - if user == @current_user
-      a.icon-edit.edit-btn
+      a.icon-edit.edit-btn  title="编辑个人信息"
       br
-      button.btn.btn-mini.key-btn key_value="#{@user.api_key}" Key
-      br
+      div.clearfix
+      a.icon-lock href="/users/#{@current_user.id}/keys" title="查看和管理KEY"
     div.record-info
       p 近一个月借书#{0}本
       p

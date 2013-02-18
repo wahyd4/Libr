@@ -1,0 +1,27 @@
+- content_for :style_includes do
+  = stylesheet_link_tag '/circle-button/style.css'
+
+- content_for :javascript_includes do
+   = javascript_include_tag 'auth_key'
+
+- if flash[:notice]
+     div.alert.alert-danger = flash[:notice]
+- if flash[:alert]
+     div.alert.alert-success = flash[:alert]
+
+div.container-narrow style="margin-top:80px;"
+  div
+    ul.mynav style="margin-top:-110px;margin-left:0;"
+        li
+          a.generate-key href="#" 生成一个KEY
+
+  div.clearfix
+  div
+    blockquote KEY可以用来授权客户端登录，如：Android、IOS客户端、或者微信等。每个key被使用后将不能再被查看，用户可以选择删除该KEY，则使用其激活的客户端不能再继续使用。点击生成KEY，即可生成，将其输入客户端即可完成验证，成功登录。
+  div
+    h5 Keys:
+    div  style="height:260px;overflow: scroll;"
+      ol
+        -@keys.each do |key|
+          li
+            p.well.well-small 生成于#{key.updated_at}

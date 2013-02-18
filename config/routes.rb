@@ -20,7 +20,8 @@ Libr::Application.routes.draw do
   get '/search' => 'search#do_search'
   delete '/users/:user_id/books/:instance_id' => 'user#delete_book'
 
-
+  get '/users/:id/keys' =>'auth_key#index'
+  post '/users/:id/keys' =>'auth_key#new'
   # api will return json
   get 'api/bookinfo/:isbn' =>'api#book_info'
   get 'api/userinfo/:user_id' =>'api#user_info'

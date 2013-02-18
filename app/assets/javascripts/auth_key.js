@@ -1,0 +1,9 @@
+$(document).ready(function(){
+    $('a.generate-key').click(function(){
+        $.post('',function(json){
+            console.log(json.value);
+            $('a.generate-key').text(json.value).unbind('click').css('font-weight','bold')
+                .css('color','#5a5a5a').css('font-size','20px');
+        })
+    });
+});

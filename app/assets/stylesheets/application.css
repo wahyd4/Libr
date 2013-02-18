@@ -105,14 +105,13 @@ div.span2 {
 }
 
 .container-narrow {
-    margin: 0 auto;
+    margin: 30px auto 0 auto;
     max-width: 700px;
     min-height: 500px;
-    margin-bottom: 10px;
     border: 1px solid #9EAA99;
     border-radius: 3px;
     box-shadow: 0 0 4px rgba(0, 0, 0, .25);
-    margin-top: 20px;
+    padding:0 10px ;
 }
 
 .cool-border {
