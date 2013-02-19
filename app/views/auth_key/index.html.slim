@@ -29,6 +29,6 @@ div.container-narrow style="margin-top:80px;"
               = form_tag("/users/#{@current_user.id}/keys/#{key.id}",method: 'delete',style:'margin-left:10px;display:inline;') do
                 button.close href="#"   data-dismiss="alert"&times;
               -if key.actived
-                span.label.success = '已使用'
+                span.label.label-success = '已使用'
               -else
                 span.label = '未使用'

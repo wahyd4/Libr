@@ -10,4 +10,8 @@ class AuthKey < ActiveRecord::Base
   def self.create_key_for(user)
     AuthKey.create value: Utils.random_key, user_id: user.id
   end
+
+  def active
+    update_attributes actived: true
+  end
 end

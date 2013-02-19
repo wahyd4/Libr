@@ -7,7 +7,7 @@ class ApiController < ApplicationController
       render json: {book: nil, message: 'There is no mathched book.'}
       return
     end
-    render json: book.to_json(include: [{:users => {except: [:api_key,:email,:created_at]}}, :available_instance])
+    render json: book.to_json(include: [{:users => {except: [:api_key, :email, :created_at]}}, :available_instance])
   end
 
   def user_info
@@ -16,7 +16,7 @@ class ApiController < ApplicationController
       render json: {user: nil, message: 'There is no mathched user.'}
       return
     end
-    render json: user.to_json(except: [:api_key, :created_at,:email], include: [:books])
+    render json: user.to_json(except: [:api_key, :created_at, :email], include: [:books])
   end
 
   def books
@@ -28,5 +28,20 @@ class ApiController < ApplicationController
 
   def total_page(count, per_page)
     count%per_page == 0 ? count/per_page : (count/per_page) +1
+  end
+
+  def auth
+    key = AuthKey.find_by_value params[:key].to_s.upcase
+    user = nil
+    if  key== nil || key.actived == true
+      message = 'Sorry, The key is invalid,please change another one.'
+      status = 'error'
+    else
+      key.active
+      message = 'Authentication success.'
+      user = key.user
+      status = 'success'
+    end
+    render json: {user: user, message: message, status: status, key: params[:key]}
   end
 end

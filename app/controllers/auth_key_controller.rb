@@ -25,4 +25,6 @@ class AuthKeyController < ApplicationController
     end
 
   end
+
+
 end
