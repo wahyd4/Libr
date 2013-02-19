@@ -20,11 +20,12 @@ Libr::Application.routes.draw do
   get '/search' => 'search#do_search'
   delete '/users/:user_id/books/:instance_id' => 'user#delete_book'
 
-  get '/users/:id/keys' =>'auth_key#index'
-  post '/users/:id/keys' =>'auth_key#new'
+  get '/users/:id/keys' => 'auth_key#index'
+  post '/users/:id/keys' => 'auth_key#new'
+  delete '/users/:id/keys/:key_id' => 'auth_key#delete'
   # api will return json
-  get 'api/bookinfo/:isbn' =>'api#book_info'
-  get 'api/userinfo/:user_id' =>'api#user_info'
+  get 'api/bookinfo/:isbn' => 'api#book_info'
+  get 'api/userinfo/:user_id' => 'api#user_info'
   get 'api/books' => 'api#books'
 
   # The priority is based upon order of creation:
@@ -73,7 +74,6 @@ Libr::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
 
 
   # See how all your routes lay out with "rake routes"

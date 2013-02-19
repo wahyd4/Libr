@@ -9,10 +9,6 @@
 }
 
 
-h1, p, p + p, ul{
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
-}
 
 h1 {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;

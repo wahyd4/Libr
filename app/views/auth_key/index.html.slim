@@ -23,5 +23,12 @@ div.container-narrow style="margin-top:80px;"
     div  style="height:260px;overflow: scroll;"
       ol
         -@keys.each do |key|
-          li
-            p.well.well-small 生成于#{key.updated_at}
+          li.well.well-small
+            span.pull-left 生成于#{key.updated_at}
+            span.pull-right
+              = form_tag("/users/#{@current_user.id}/keys/#{key.id}",method: 'delete',style:'margin-left:10px;display:inline;') do
+                button.close href="#"   data-dismiss="alert"&times;
+              -if key.actived
+                span.label.success = '已使用'
+              -else
+                span.label = '未使用'

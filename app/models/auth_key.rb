@@ -1,7 +1,7 @@
 require 'utils'
 class AuthKey < ActiveRecord::Base
   include Utils
-  attr_accessible :name, :user_id, :value
+  attr_accessible :name, :user_id, :value, :actived
 
   validates_presence_of :value, :user_id, message: 'cannot be blank.'
   validates_uniqueness_of :value, message: 'must be unique.'
