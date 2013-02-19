@@ -2,7 +2,7 @@ require 'utils'
 class User < ActiveRecord::Base
 
   include Utils
-  attr_accessible :email, :name, :avatar, :id, :location, :preferred_name, :api_key
+  attr_accessible :email, :name, :avatar, :id, :location, :preferred_name
 
 
   has_many :book_instances
