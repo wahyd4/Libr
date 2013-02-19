@@ -31,7 +31,7 @@ Build Status
         * GET /api/userinfo/:user_id 用户用户的相关信息
         * GET /api/bookinfo/:isbn  需要传入书籍的13位ISBN号，获取书籍的相关信息，拥有书籍的用户，和当前可借的用户信息
         * GET /api/books  以列表形式获取图书信息，每页10条信息，如要获取第二页信息地址则为 /api/books/?page=2,依次类推
-        * POST /api/auth 客户端使用auth key,进行验证登录，验证成功后，可以使用该key,进行所有需要认证的操作。必填参数key,auth在用户中心，点击小锁图片即可进入KEY管理页面。
+        * POST /api/auth 客户端使用auth key,进行验证登录，验证成功后，可以使用该key,进行所有需要认证的操作。必填参数key,auth在用户中心，点击小锁图片即可进入KEY管理页面。(KEY不区分大小写)
 
 
 #### Road map:
