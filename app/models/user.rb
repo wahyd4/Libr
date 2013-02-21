@@ -61,4 +61,12 @@ class User < ActiveRecord::Base
   def generate_auth_key
     auth_keys.create value: Utils.random_key, user_id: id
   end
+
+  def create_book_instance(isbn)
+    book = Book.find_by_isbn isbn
+    unless  book
+      book = Book.create_book_by_isbn isbn
+    end
+    book.new_instance_for self
+  end
 end

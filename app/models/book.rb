@@ -41,4 +41,21 @@ class Book < ActiveRecord::Base
     book_instances.create user_id: user.id, book_id: id
   end
 
+  def self.create_book_by_isbn(isbn)
+    book_info = fetch_book_info_from_douban isbn
+    Book.create name: book_info['title'],
+                image: book_info['image'],
+                isbn: book_info['isbn13'],
+                author: book_info['author'][0]
+
+  end
+
+  def self.fetch_book_info_from_douban(isbn)
+    http = Net::HTTP.new('api.douban.com', 443)
+    http.use_ssl = true
+    path ='/v2/book/isbn/' + isbn
+    response = http.get(path)
+    JSON.parse response.body
+  end
+
 end

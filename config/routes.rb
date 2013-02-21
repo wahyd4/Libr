@@ -29,6 +29,7 @@ Libr::Application.routes.draw do
   get 'api/books' => 'api#books'
   post 'api/auth' =>'api#auth'
   get 'api/books/search/:keyword'=>'api#search'
+  post 'api/books/add' => 'api#add_book'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -44,7 +44,7 @@ module QQAuth
         '&oauth_consumer_key=' +::ENV['QQ_CLIENT_ID'] +
         '&openid=' +openid
     response = http.get(path)
-    response = JSON.parse response.body
+    JSON.parse response.body
   end
 
   def get_open_id (str)
