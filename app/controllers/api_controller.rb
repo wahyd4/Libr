@@ -44,4 +44,9 @@ class ApiController < ApplicationController
     end
     render json: {user: user, message: message, status: status, key: params[:key]}
   end
+
+  def search
+    @books = Book.where('name ilike ?',"%#{params[:keyword]}%").limit(24)
+    render json:{books:@books,total_count:@books.count}
+  end
 end

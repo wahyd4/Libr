@@ -61,6 +61,6 @@ module Libr
 
     # set beijing time zone
     config.active_record.default_timezone = :local
-    config.time_zone = 'Beijing'
+    config.time_zone = 'Chongqing'
   end
 end
