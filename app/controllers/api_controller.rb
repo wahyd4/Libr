@@ -23,7 +23,7 @@ class ApiController < ApplicationController
 
   def books
     count = 10
-    @books = Book.paginate(:page => params[:page], :per_page => count)
+    @books = Book.order('id DESC').paginate(:page => params[:page], :per_page => count)
     params[:page] ? current_page = params[:page] : current_page = '1'
     render json: {books: @books,
                   current_page: current_page,

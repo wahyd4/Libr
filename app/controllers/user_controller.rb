@@ -49,7 +49,7 @@ class UserController < ApplicationController
       redirect_to :back, :alert => @message
       return
     else
-      @message = "Can't find your borrow record."
+      @message = 'Can not find your borrow record.'
     end
     redirect_to :back, :notice => @message
   end
@@ -65,7 +65,7 @@ class UserController < ApplicationController
 
     user = User.find_by_id params[:user_id]
     if user != @current_user
-      @message = "error,illagle."
+      @message = 'Sorry, you do not have the rights to delete this book'
       redirect_to :back, :notice => @message
       return
     end
