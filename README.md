@@ -1,7 +1,8 @@
 Libr
 ====
 
-tw-libr
+tw-libr 是一个用户分享、借阅、管理、展示图书的小应用，目前正在为Thoughtworks Chengdu 办公室服务。我们正不断地为更好的方便同事借书而升级改造Libr。后期我们希望Libr 可以为公开为所有用户服务。
+目前已经有成都办公室同事[hoverruan][1]和 [xiaoboa][2]分别为Libr开发Android和IOS客户端。
 
 Build Status
 ====
@@ -18,6 +19,11 @@ Build Status
         export QQ_CLIENT_SECRET=***
         export QQ_REDIRECT_URI=***
 
+#### 移动平台客户端
+
+[Android][3]
+[IOS][4]
+
 #### 更新日志
  * 2013.2.17 添加个人信息编辑，设置昵称、电子邮箱、所在城市
  * 2013.2.17 添加API KEY 为后期在微信上借书、查询等做准备
@@ -26,6 +32,7 @@ Build Status
  * 2013.2.18 添加Auth key 功能，用户可以生成自己的key
  * 2013.2.19 用户可以删除自己的key
  * 2013.2.21 添加图书搜索API
+ * 2013.2.26 添加归还已经借阅图书的API
 
 #### JSON API使用指南
 
@@ -35,7 +42,8 @@ Build Status
         * GET /api/book/search/:keyword 图书搜索，最多返回20条相关记录
         * POST /api/auth 客户端使用auth key,进行验证登录，验证成功后，可以使用该key,进行所有需要认证的操作。
           必填参数key,auth在用户中心，点击小锁图片即可进入KEY管理页面。(KEY不区分大小写)
-        * POST 'api/books/add', 添加图书，必须填入图书的ISBN(isbn),和Auth key(key)。括号为传递参数的实际名称
+        * POST '/api/books/add', 添加图书，必须填入图书的ISBN(isbn),和Auth key(key)。括号为传递参数的实际名称
+        * POST '/api/book/return' 归还已经借阅的图书，必需参数Auth key(key),Book binstance id(instance_id )
 
 
 #### Road map:
@@ -52,3 +60,8 @@ Build Status
 
 #### License
         The MIT License (MIT)
+
+[1]:https://github.com/hoverruan
+[2]:https://github.com/xiaoboa
+[3]:https://github.com/hoverruan/libr-android
+[4]:https://github.com/xiaoboa/Libr-client
