@@ -16,7 +16,7 @@ Libr::Application.routes.draw do
   get '/douban_callback' => 'home#douban_callback'
   get '/qq_callback' => 'home#qq_callback'
   get '/users/:id' => 'user#view'
-  get '/users/:id/edit' =>'user#edit'
+  get '/users/:id/edit' => 'user#edit'
   put '/users/:id' => 'user#update'
   get '/search' => 'search#do_search'
   delete '/users/:user_id/books/:instance_id' => 'user#delete_book'
@@ -28,10 +28,11 @@ Libr::Application.routes.draw do
   get 'api/bookinfo/:isbn' => 'api#book_info'
   get 'api/userinfo/:user_id' => 'api#user_info'
   get 'api/books' => 'api#books'
-  post 'api/auth' =>'api#auth'
-  get 'api/books/search/:keyword'=>'api#search'
+  post 'api/auth' => 'api#auth'
+  get 'api/books/search/:keyword' => 'api#search'
   post 'api/books/add' => 'api#add_book'
-  post  'api/books/return' =>'api#return_book'
+  post 'api/books/return' => 'api#return_book'
+  post 'api/books/borrow' =>'api#borrow_book'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -9,7 +9,7 @@ class ApiController < ApplicationController
     end
     render json: book.to_json(include: [{:users =>
                                              {except: [:api_key, :email, :created_at]}},
-                                        :available_instance])
+                                        :total_available_instances])
   end
 
   def user_info
@@ -72,6 +72,22 @@ class ApiController < ApplicationController
 
   end
 
+  def borrow_book
+    key = AuthKey.find_by_value params[:key]
+    unless key
+      render json: {status: 'error', message: 'key is invalid,please change an other key.'}
+      return
+    end
+    instance = BookInstance.find_by_id params[:instance_id]
+    if instance!=nil && instance.borrowed? != true
+      user = User.find_by_id key.user_id
+      user.borrow instance
+      render json: {message: 'Borrow book success.', status: 'success'}
+      return
+    end
+    render json: {message: 'Sorry, you can not borrow this book right now.', status: 'error'}
+  end
+
   def return_book
     key = AuthKey.find_by_value params[:key]
     unless key
@@ -79,8 +95,9 @@ class ApiController < ApplicationController
       return
     end
     instance = BookInstance.find_by_id params[:instance_id]
-    if @current_user.borrowed_and_not_returned_books.include? instance
-      @current_user.return_book instance
+    user = User.find_by_id key.user_id
+    if user.borrowed_and_not_returned_books.include? instance
+      user.return_book instance
       render json: {message: 'Return book success.', status: 'success'}
       return
     end
