@@ -25,15 +25,17 @@ class BookController < ApplicationController
       redirect_to '/login', notice: 'You need login to do the action.'
       return
     end
-    book = Book.find_by_id params[:id]
-    if book.users.count <= book.current_borrowers.count
-      @msg = 'Sorry, there is no more book for lend.'
-    else
-      #book.borrowers << @current_user
-      @current_user.borrow book
-      @msg = 'Borrowed success.'
-    end
-    redirect_to :back, alert: @msg
+    #book = Book.find_by_id params[:id]
+    #if book.users.count <= book.current_borrowers.count
+    #  @msg = 'Sorry, there is no more book for lend.'
+    #else
+    #  #book.borrowers << @current_user
+    #  @current_user.borrow book
+    #  @msg = 'Borrowed success.'
+    #end
+    instance = BookInstance.find_by_id params[:instance_id].to_s
+    @current_user.borrow instance
+    redirect_to :back, alert: 'Borrow book success.'
   end
 
   def new

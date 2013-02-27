@@ -13,9 +13,9 @@ describe :Book do
 
     it 'when a book has two instances,ensure there is still one when another has been borrowed' do
       instance_1 = BookInstance.create book_id: @book.id, user_id: @user.id
-      @user.borrow @book
+      @user.borrow @instance
       @book.available_instance.should ==  instance_1
-      @user.borrow @book
+      @user.borrow instance_1
       @book.available_instance.should == nil
     end
   end
@@ -27,7 +27,7 @@ describe :Book do
 
     it 'ensure there should be one borrower' do
       instance_1 = BookInstance.create book_id: @book.id, user_id: @user.id
-      @user.borrow @book
+      @user.borrow @instance
       @book.current_borrowers.count.should == 1
       @book.current_borrowers[0].should == @user
     end
@@ -37,7 +37,7 @@ describe :Book do
     it 'ensure current_borrowers count equals total_borrowers count,when there isn"t some return books "' do
       instance_1 = BookInstance.create book_id: @book.id, user_id: @user.id
       @book.total_borrowers.count.should == 0
-      @user.borrow @book
+      @user.borrow instance_1
       @book.current_borrowers.count.should == 1
       @book.total_borrowers.count.should == 1
       @book.total_borrowers[0].name.should == @user.name
@@ -47,8 +47,8 @@ describe :Book do
     it 'ensure total_borrowers will count the user who returned the book' do
       instance_1 = BookInstance.create book_id: @book.id, user_id: @user.id
       user_1 = User.create name:'Tom'
-      @user.borrow @book
-      user_1.borrow @book
+      @user.borrow @instance
+      user_1.borrow instance_1
       @user.should_not == nil
       @user.return_book @instance
       @book.total_borrowers.count.should == 2
@@ -62,16 +62,16 @@ describe :Book do
      it 'ensure total available instance should be 1 after borrowed' do
        instance_1 = BookInstance.create book_id: @book.id, user_id: @user.id
        @book.total_available_instances.count.should == 2
-       @user.borrow @book
+       @user.borrow instance_1
        @book.total_available_instances.count.should == 1
      end
 
     it 'ensure total available instances should be two when someone return back his borrowed books' do
       instance_1 = BookInstance.create book_id: @book.id, user_id: @user.id
       @book.total_available_instances.count.should == 2
-      @user.borrow @book
+      @user.borrow instance_1
       @book.total_available_instances.count.should == 1
-      @user.return_book @instance
+      @user.return_book instance_1
       @book.total_available_instances.count.should == 2
     end
 

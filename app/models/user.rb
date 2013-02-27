@@ -18,8 +18,7 @@ class User < ActiveRecord::Base
     User.create name: name, avatar: avatar
   end
 
-  def borrow(book)
-    instance = book.available_instance
+  def borrow(instance)
     unless instance == nil
       borrow_records.create user_id: id, book_instance_id: instance.id, borrow_date: DateTime.now
     end

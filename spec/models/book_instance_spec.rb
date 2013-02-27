@@ -13,7 +13,7 @@ describe BookInstance do
   end
 
   it 'ensure when someone borrowed this book,borrowed? should return true' do
-    @user.borrow @book
+    @user.borrow @instance
     @instance.borrowed?.should == true
   end
 
