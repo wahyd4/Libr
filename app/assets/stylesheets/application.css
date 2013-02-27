@@ -3,7 +3,7 @@ body {
     padding-bottom: 20px;
     text-shadow: white 0 1px 0;
     font-weight: 100;
-    font: 10pt/1.6em Avenir,Lucida Grande,Calibri,Trebuchet MS,Helvetica,Arial,Hiragino Sans GB,WenQuanYi Micro Hei,STHeiti,Microsoft Jhenghei,Nanum Gothic,sans-serif;
+    font: 10pt/1.6em Avenir, Lucida Grande, Calibri, Trebuchet MS, Helvetica, Arial, Hiragino Sans GB, WenQuanYi Micro Hei, STHeiti, Microsoft Jhenghei, Nanum Gothic, sans-serif;
 }
 
 .main {
@@ -111,7 +111,7 @@ div.span2 {
     border: 1px solid #9EAA99;
     border-radius: 3px;
     box-shadow: 0 0 4px rgba(0, 0, 0, .25);
-    padding:0 10px ;
+    padding: 0 10px;
 }
 
 .cool-border {
@@ -142,8 +142,17 @@ form button.boxclose {
     z-index: 100;
 }
 
-.edit-user{
+.edit-user {
     width: 450px;
     text-align: center;
     margin: 0 0 0 40px;
+}
+
+select {
+    width: 120px;
+}
+
+
+.borrow-btn{
+    margin: -0.79em 0 0 0.7em;
 }

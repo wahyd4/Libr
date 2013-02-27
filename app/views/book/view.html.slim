@@ -16,7 +16,9 @@ div.detail.row-fluid
     div.action style="text-align:center"
       = form_tag controller: 'book', action: 'borrow' do
         -if @can_borrow
-           =submit_tag  '借阅', class: "btn btn-success btn-large"
+           span style="font-size: 1.5em;margin-right: 0.4em;" 向
+           =select_tag 'instance_id', options_for_select(@available_instances.collect{ |instance| [instance.user_preferred_name, instance.id] })
+           =submit_tag  '借阅', class: " borrow-btn btn btn-success"
         -else
            = submit_tag '不能借阅', class:'btn btn-danger btn-large',disabled: true
     div.rent-record

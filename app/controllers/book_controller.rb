@@ -8,6 +8,7 @@ class BookController < ApplicationController
     @records =BorrowRecord.records_of @book
     @borrowers = @book.total_borrowers.uniq
     @owners = @book.users
+    @available_instances = @book.total_available_instances
   end
 
   def search

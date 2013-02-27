@@ -58,4 +58,24 @@ describe :Book do
   end
 
 
+  describe :total_available_instances do
+     it 'ensure total available instance should be 1 after borrowed' do
+       instance_1 = BookInstance.create book_id: @book.id, user_id: @user.id
+       @book.total_available_instances.count.should == 2
+       @user.borrow @book
+       @book.total_available_instances.count.should == 1
+     end
+
+    it 'ensure total available instances should be two when someone return back his borrowed books' do
+      instance_1 = BookInstance.create book_id: @book.id, user_id: @user.id
+      @book.total_available_instances.count.should == 2
+      @user.borrow @book
+      @book.total_available_instances.count.should == 1
+      @user.return_book @instance
+      @book.total_available_instances.count.should == 2
+    end
+
+  end
+
+
 end

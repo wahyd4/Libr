@@ -37,6 +37,16 @@ class Book < ActiveRecord::Base
     avail_instance
   end
 
+  def total_available_instances
+    instances = []
+    book_instances.map { |instance|
+      unless instance.borrowed?
+        instances << instance
+      end
+    }
+    instances
+  end
+
   def new_instance_for(user)
     book_instances.create user_id: user.id, book_id: id
   end
