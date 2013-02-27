@@ -10,8 +10,8 @@ html lang="en"
 
   body
     div.container
-      - if flash[:alert]
-        div.alert = flash[:alert]
+      - if flash[:notice]
+        div.alert = flash[:notice]
       form.form-signin style="text-align:center"
         h2.form-signin-heading 请使用下列方式登录
         a href="/login/douban"

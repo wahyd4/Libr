@@ -1,10 +1,6 @@
 - content_for :javascript_includes do
   = javascript_include_tag 'user'
 
-- if flash[:notice]
-     div.alert = flash[:notice]
-- if flash[:alert]
-   div.alert.alert-success = flash[:alert]
 - case @query
 - when 'borrowed'
   div.btn-group

@@ -103,4 +103,9 @@ class UserController < ApplicationController
 
   end
 
+  def edit
+    @user = @current_user
+    render :edit
+  end
+
 end

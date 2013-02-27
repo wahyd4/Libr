@@ -39,8 +39,11 @@ html
               li
                 a href="/login" 登录
 
-
     div.container.main
+      - if flash[:notice]
+           div.alert.alert-danger = flash[:notice]
+      - if flash[:alert]
+           div.alert.alert-success = flash[:alert]
       = yield
 
     div#footer

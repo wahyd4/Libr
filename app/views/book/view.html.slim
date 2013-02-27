@@ -3,8 +3,7 @@
   = javascript_include_tag 'http://www.douban.com/js/api.js?v=2'
   = javascript_include_tag 'http://www.douban.com/js/api-parser.js?v=1'
 div.detail.row-fluid
-  - if flash[:notice]
-     div.alert.alert-success = flash[:notice]
+
   h3.book-name  =@book.name
   input.isbn hidden="true" value="#{@book.isbn}"
   div.span3

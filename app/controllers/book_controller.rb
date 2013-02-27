@@ -21,7 +21,7 @@ class BookController < ApplicationController
 
   def borrow
     unless @current_user
-      redirect_to '/login', alert: 'You need login to do the action.'
+      redirect_to '/login', notice: 'You need login to do the action.'
       return
     end
     book = Book.find_by_id params[:id]
@@ -32,7 +32,7 @@ class BookController < ApplicationController
       @current_user.borrow book
       @msg = 'Borrowed success.'
     end
-    redirect_to :back, notice: @msg
+    redirect_to :back, alert: @msg
   end
 
   def new
@@ -41,12 +41,12 @@ class BookController < ApplicationController
 
   def add_to_lib
     unless @current_user
-      redirect_to '/login', alert: 'You need login to do the action.'
+      redirect_to '/login', notice: 'You need login to do the action.'
       return
     end
     @current_user.create_book_instance params[:isbn]
     @msg = 'This book has been succeed to add to library.'
-    redirect_to :back, notice: @msg
+    redirect_to :back, alert: @msg
   end
 
   def list
