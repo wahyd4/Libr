@@ -141,3 +141,9 @@ form button.boxclose {
     padding: 11px 2px;
     z-index: 100;
 }
+
+.edit-user{
+    width: 450px;
+    text-align: center;
+    margin: 0 0 0 40px;
+}
