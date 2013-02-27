@@ -4,11 +4,11 @@ class BookInstance < ActiveRecord::Base
   belongs_to :book
   belongs_to :user
 
-  delegate :name, :image,:isbn, to: :book, prefix:false
-  delegate :name, to: :user,prefix: true
-
+  delegate :name, :image, :isbn, to: :book, prefix: false
+  delegate :name, to: :user, prefix: true
+  delegate :preferred_name, to: :user, prefix: true
   has_many :borrow_records
-  has_many :borrowers,:source => :user , through: :borrow_records
+  has_many :borrowers, :source => :user, through: :borrow_records
 
 
   def borrowed?
@@ -17,7 +17,7 @@ class BookInstance < ActiveRecord::Base
 
   def current_borrower
     if borrowed?
-        User.find_by_id borrow_records.where(return_date: nil)[0].user_id
+      User.find_by_id borrow_records.where(return_date: nil)[0].user_id
     end
   end
 

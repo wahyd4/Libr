@@ -11,7 +11,7 @@
      div.alert.alert-success = flash[:alert]
 div.container-narrow style="text-align:center;"
   div style="margin-top:-30px;margin-bottom:15px;"
-    img.img-circle.cool-border src="#{@user.avatar}"
+    img.img-circle.cool-border src="#{@user.avatar}" title="#{@user.preferred_name}"
   div.user-info
     h3  = @user.name
     p   = @user.preferred_name

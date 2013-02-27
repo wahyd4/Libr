@@ -32,7 +32,7 @@ html
             -if @current_user != nil
               li
                 a href="/users/#{@current_user.id}"
-                  img.img-circle style="max-width:82%;margin:-5px" src="#{@current_user.avatar}" title="#{@current_user.name}"
+                  img.img-circle style="max-width:82%;margin:-5px" src="#{@current_user.avatar}" title="#{@current_user.preferred_name}"
               li
                 a href="/logout" 注销
             - else
@@ -48,6 +48,8 @@ html
           p.muted.credit  © 2013 ThoughtWorks
           span
             a  href="https://github.com/wahyd4/Libr/blob/master/README.md" 了解更多信息
+          span style="margin-left:20px;"
+            a href="https://github.com/wahyd4/Libr/commits/master" 更新日志
 
     = javascript_include_tag 'application'
     = javascript_include_tag 'ga'

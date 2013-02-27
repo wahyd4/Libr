@@ -31,8 +31,8 @@ div.detail.row-fluid
         tbody
         -@records.each do  |record|
           tr
-            td  =record.book_instance.user_name
-            td  =record.user_name
+            td  =record.book_instance.user_preferred_name
+            td  =record.user_preferred_name
             td  =record.borrow_date
     div.reader-wall
           p 拥有者:
@@ -40,7 +40,7 @@ div.detail.row-fluid
            - @owners.each do |owner|
              div
                a  href="/users/#{owner.id}/books"
-                 =image_tag "#{owner.avatar}", class:'avatar',title: owner.name
+                 =image_tag "#{owner.avatar}", class:'avatar',title: owner.preferred_name
     div.clearfix
     hr
     div.reader-wall
@@ -49,7 +49,7 @@ div.detail.row-fluid
        - @borrowers.each do |borrower|
          div
            a  href="/users/#{borrower.id}/books"
-             =image_tag "#{borrower.avatar}", class:'avatar',title: borrower.name
+             =image_tag "#{borrower.avatar}", class:'avatar',title: borrower.preferred_name
 div.clearfix
 div style="margin-top:20px;"
   b 摘要：
