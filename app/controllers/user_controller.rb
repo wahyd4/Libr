@@ -35,7 +35,7 @@ class UserController < ApplicationController
       when 'wanted'
         @books = nil
       else
-        @books = @user.books
+        @books = @user.book_instances
     end
     @query = query
     render :books

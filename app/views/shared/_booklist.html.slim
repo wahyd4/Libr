@@ -6,7 +6,7 @@ div.row  style="margin-top:2em;"
     - @books.each do |book|
       div.one-item
         div style="text-align:center;"
-          a href="/books/#{book.id}"
+          a href="/books/#{book.book_id}"
              img.cover  src="#{book.image}"
           p.title style="font-size:0.9em;"  = book.name
           = form_tag("books/#{book.id}", :method => "delete")  do
