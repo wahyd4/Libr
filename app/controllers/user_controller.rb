@@ -36,6 +36,7 @@ class UserController < ApplicationController
         @books = nil
       else
         @books = @user.book_instances
+        @open_books = @user.open_books
     end
     @query = query
     render :books

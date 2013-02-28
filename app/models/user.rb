@@ -69,8 +69,12 @@ class User < ActiveRecord::Base
     instance = book.new_instance_for self
 
     if is_public == 'false'
-      instance.change_to_private
+      instance.be_private
     end
 
+  end
+
+  def open_books
+    book_instances.where(public:true)
   end
 end

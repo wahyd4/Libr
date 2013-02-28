@@ -4,10 +4,10 @@ class BookController < ApplicationController
 
   def view
     @book = Book.find_by_id params[:id]
-    @can_borrow = @book.book_instances.count > @book.current_borrowers.count
+    @can_borrow = @book.total_available_instances.count > @book.current_borrowers.count
     @records =BorrowRecord.records_of @book
     @borrowers = @book.total_borrowers.uniq
-    @owners = @book.users
+    @owners = @book.open_owners
     @available_instances = @book.total_available_instances
   end
 
@@ -25,14 +25,6 @@ class BookController < ApplicationController
       redirect_to '/login', notice: 'You need login to do the action.'
       return
     end
-    #book = Book.find_by_id params[:id]
-    #if book.users.count <= book.current_borrowers.count
-    #  @msg = 'Sorry, there is no more book for lend.'
-    #else
-    #  #book.borrowers << @current_user
-    #  @current_user.borrow book
-    #  @msg = 'Borrowed success.'
-    #end
     instance = BookInstance.find_by_id params[:instance_id].to_s
     @current_user.borrow instance
     redirect_to :back, alert: 'Borrow book success.'
@@ -47,7 +39,7 @@ class BookController < ApplicationController
       redirect_to '/login', notice: 'You need login to do the action.'
       return
     end
-    @current_user.create_book_instance params[:isbn],params[:is_public]
+    @current_user.create_book_instance params[:isbn], params[:is_public]
     @msg = 'This book has been succeed to add to library.'
     redirect_to :back, alert: @msg
   end

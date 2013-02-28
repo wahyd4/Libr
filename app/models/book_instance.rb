@@ -21,8 +21,12 @@ class BookInstance < ActiveRecord::Base
     end
   end
 
-  def change_to_private
-     update_attribute :public, false
+  def be_private
+    update_attributes public: false
+  end
+
+  def be_public
+    update_attributes public: true
   end
 
 end

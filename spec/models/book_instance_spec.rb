@@ -17,4 +17,10 @@ describe BookInstance do
     @instance.borrowed?.should == true
   end
 
+  it 'ensure change book instance to private' do
+    @instance.be_private
+    instance = BookInstance.find_by_id @instance.id
+    instance.public.should == false
+  end
+
 end

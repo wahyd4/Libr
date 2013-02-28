@@ -39,10 +39,8 @@ class Book < ActiveRecord::Base
 
   def total_available_instances
     instances = []
-    book_instances.map { |instance|
-      unless instance.borrowed?
-        instances << instance
-      end
+    book_instances.each { |instance|
+      instances << instance  if  instance.public && !instance.borrowed?
     }
     instances
   end
@@ -67,5 +65,13 @@ class Book < ActiveRecord::Base
     response = http.get(path)
     JSON.parse response.body
   end
+
+
+  def open_owners
+    total_available_instances.map{|instance|
+      instance.user
+    }
+  end
+
 
 end
