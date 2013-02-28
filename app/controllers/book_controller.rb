@@ -47,7 +47,7 @@ class BookController < ApplicationController
       redirect_to '/login', notice: 'You need login to do the action.'
       return
     end
-    @current_user.create_book_instance params[:isbn]
+    @current_user.create_book_instance params[:isbn],params[:is_public]
     @msg = 'This book has been succeed to add to library.'
     redirect_to :back, alert: @msg
   end

@@ -71,4 +71,10 @@ describe :User do
     end
 
   end
+
+  describe :create_book_instance do
+     it 'ensure create a book instance for a user' do
+       # how to test with network ,mock
+     end
+  end
 end

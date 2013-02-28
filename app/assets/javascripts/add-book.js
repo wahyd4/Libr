@@ -46,6 +46,7 @@ $(document).ready(function () {
                 + '<input hidden="true" name="title" value="' + books[i].title + '"/>'
                 + '<input hidden="true" name="isbn" value="' + books[i].isbn13 + '"/>'
                 + '<input hidden="true" name="author" value="' + books[i].author[0] + '"/>'
+                + '<select name="is_public" style="margin: 0px 10px 0 0;"><option value="true">公开</option><option value="false">不公开</option></select>'
                 + '<button class="btn btn-primary add-to-lib"><i class="icon-plus"></i>添加至书库</button>'
                 + '</form></div>';
             var addToLib = $(tempForm);
