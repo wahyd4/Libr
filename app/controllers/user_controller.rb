@@ -31,12 +31,11 @@ class UserController < ApplicationController
     case query
       when 'borrowed'
         @books = @user.borrowed_and_not_returned_books
-        puts "sssssss" +@books.size.to_s
-      when 'wanted'
-        @books = nil
+      when 'private'
+        @books = @user.private_books
       else
-        @books = @user.book_instances
-        @open_books = @user.open_books
+        @books = @user.open_books
+        puts "========empty?===="+@books.empty?.to_s
     end
     @query = query
     render :books

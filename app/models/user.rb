@@ -77,4 +77,8 @@ class User < ActiveRecord::Base
   def open_books
     book_instances.where(public:true)
   end
+
+  def private_books
+    book_instances.where(public:false)
+  end
 end
