@@ -57,8 +57,8 @@ class ApiController < ApplicationController
 
   def add_book
     key = AuthKey.find_by_value params[:key]
-    unless key
-      render json: {status: 'error', message: 'key is invalid,please change an other key.'}
+    if !key || !key.actived
+      render json: {status: 'error', message: 'key is invalid or not be actived, please change an other key.'}
       return
     end
     book_info = Book.fetch_book_info_from_douban params[:isbn]
@@ -74,8 +74,8 @@ class ApiController < ApplicationController
 
   def borrow_book
     key = AuthKey.find_by_value params[:key]
-    unless key
-      render json: {status: 'error', message: 'key is invalid,please change an other key.'}
+    if !key || !key.actived
+      render json: {status: 'error', message: 'key is invalid or not be actived, please change an other key.'}
       return
     end
     instance = BookInstance.find_by_id params[:instance_id]
@@ -90,8 +90,8 @@ class ApiController < ApplicationController
 
   def return_book
     key = AuthKey.find_by_value params[:key]
-    unless key
-      render json: {status: 'error', message: 'key is invalid,please change an other key.'}
+    if !key || !key.actived
+      render json: {status: 'error', message: 'key is invalid or not be actived, please change an other key.'}
       return
     end
     instance = BookInstance.find_by_id params[:instance_id]
