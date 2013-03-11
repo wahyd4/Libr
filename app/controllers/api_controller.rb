@@ -31,6 +31,17 @@ class ApiController < ApplicationController
                   total_count: Book.count}
   end
 
+  def user_books
+    user = User.find_by_id params[:user_id]
+    count = 10
+    @books = user.open_books.order('id DESC').paginate(:page => params[:page], :per_page => count)
+    params[:page] ? current_page = params[:page] : current_page = '1'
+    render json: {books: @books,
+                  current_page: current_page,
+                  total_page: total_page(user.open_books.count, count),
+                  total_count: user.open_books.count}
+  end
+
   def total_page(count, per_page)
     count%per_page == 0 ? count/per_page : (count/per_page) +1
   end

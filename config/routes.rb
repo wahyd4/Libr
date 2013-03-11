@@ -28,6 +28,7 @@ Libr::Application.routes.draw do
   get 'api/bookinfo/:isbn' => 'api#book_info'
   get 'api/userinfo/:user_id' => 'api#user_info'
   get 'api/books' => 'api#books'
+  get 'api/users/:user_id/books' => 'api#user_books'
   post 'api/auth' => 'api#auth'
   get 'api/books/search/:keyword' => 'api#search'
   post 'api/books/add' => 'api#add_book'

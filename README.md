@@ -35,12 +35,14 @@ Build Status
  * 2013.2.26 添加归还已经借阅图书的API
  * 2013.2.27 修改借书逻辑，由之前的系统自动查找合适人选，变为借书者自行选择合适的拥有书者。修改bookinfo API增加返回所有当前可借的实例信息
  * 2013.2.28 添加私有书籍选项，用户在添加书籍是可以设置书籍为私有书籍，私有书籍他人不可见，仅用户自己可见
+ * 2013.3.11 添加用户书籍API
 
 #### JSON API使用指南
 
         * GET /api/userinfo/:user_id 用户用户的相关信息
         * GET /api/bookinfo/:isbn  需要传入书籍的13位ISBN号，获取书籍的相关信息，拥有书籍的用户，和当前所有可借的用户信息
         * GET /api/books  以列表形式获取图书信息，每页10条信息，如要获取第二页信息地址则为 /api/books/?page=2,依次类推
+        * GET /api/users/:user_id/books 以列表的形式获取某个用户的图书信息，使用方式和/api/books 类似
         * GET /api/book/search/:keyword 图书搜索，最多返回20条相关记录
         * POST /api/auth 客户端使用auth key,进行验证登录，验证成功后，可以使用该key,进行所有需要认证的操作。
           必填参数key,auth在用户中心，点击小锁图片即可进入KEY管理页面。(KEY不区分大小写)
