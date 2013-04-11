@@ -2,7 +2,11 @@ Libr
 ====
    
 tw-libr 是一个用户分享、借阅、管理、展示图书的小应用，目前正在为Thoughtworks Chengdu 办公室服务。我们正不断地为更好的方便同事借书而升级改造Libr。后期我们希望Libr 可以为公开为所有用户服务。
-目前已经有成都办公室同事[hoverruan][1]和 [xiaoboa][2]分别为Libr开发Android和IOS客户端。
+目前已经有成都办公室同事[hoverruan][1]和 [xiaoboa][2]分别为Libr开发Android和IOS客户端。  
+
+Screen shot:
+====  
+![Screen shot]('Libr.png')
 
 Build Status
 ====
