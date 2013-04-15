@@ -213,7 +213,7 @@ DEPENDENCIES
   jquery-rails
   machinist
   pg
-  rails
+  rails (= 3.2.11)
   rails_best_practices
   rspec-rails
   sass-rails (~> 3.2.3)
