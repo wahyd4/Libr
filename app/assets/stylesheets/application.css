@@ -156,3 +156,6 @@ select {
 .borrow-btn{
     margin: -0.79em 0 0 0.7em;
 }
+.a-record span{
+    margin-right: 20px;
+}

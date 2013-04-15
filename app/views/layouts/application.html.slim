@@ -28,6 +28,8 @@ html
               - if  @current_user != nil
                 li
                   a href="/users/#{@current_user.id}/books" 我的书架
+                li
+                  a href="/records/" 历史记录
           ul.nav.pull-right
             -if @current_user != nil
               li

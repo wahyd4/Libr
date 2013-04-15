@@ -24,6 +24,8 @@ Libr::Application.routes.draw do
   get '/users/:id/keys' => 'auth_key#index'
   post '/users/:id/keys' => 'auth_key#new'
   delete '/users/:id/keys/:key_id' => 'auth_key#delete'
+  get '/records'=>'record#index'
+
   # api will return json
   get 'api/bookinfo/:isbn' => 'api#book_info'
   get 'api/userinfo/:user_id' => 'api#user_info'
@@ -34,6 +36,7 @@ Libr::Application.routes.draw do
   post 'api/books/add' => 'api#add_book'
   post 'api/books/return' => 'api#return_book'
   post 'api/books/borrow' =>'api#borrow_book'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
