@@ -1,0 +1,16 @@
+- if @user
+ h3 #{@user.preferred_name}的借阅记录
+-@records.each do |record|
+  div.well.well-small.a-record
+    span.pull-left
+      span
+        a href="/users/#{record.user_id}/records" =record.user.preferred_name
+      span
+        -if record.return_date
+          strong 归还
+        -else
+          strong 借阅
+      span
+        a href="/books/#{record.book_instance.book_id}" =record.book_instance.name
+    span.pull-right
+      span =record.updated_at

@@ -24,8 +24,8 @@ Libr::Application.routes.draw do
   get '/users/:id/keys' => 'auth_key#index'
   post '/users/:id/keys' => 'auth_key#new'
   delete '/users/:id/keys/:key_id' => 'auth_key#delete'
-  get '/records'=>'record#index'
-  get '/users/:user_id/records' =>'record#records_for_user'
+  get '/records'=>'history#index'
+  get '/users/:user_id/records' =>'history#records_for_user'
 
   # api will return json
   get 'api/bookinfo/:isbn' => 'api#book_info'

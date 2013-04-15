@@ -49,7 +49,7 @@ class UserController < ApplicationController
       redirect_to :back, :alert => @message
       return
     else
-      @message = 'Can not find your borrow record.'
+      @message = 'Can not find your borrow history.'
     end
     redirect_to :back, :notice => @message
   end
