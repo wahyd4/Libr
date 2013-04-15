@@ -13,4 +13,20 @@
       span
         a href="/books/#{record.book_instance.book_id}" =record.book_instance.name
     span.pull-right
-      span =record.updated_at
+      span
+       -if record.return_date
+        =record.return_date
+       -else
+        =record.borrow_date
+
+  -if record.return_date
+    div.well.well-small.a-record
+      span.pull-left
+            span
+              a href="/users/#{record.user_id}/records" =record.user.preferred_name
+            span
+              strong 借阅
+            span
+              a href="/books/#{record.book_instance.book_id}" =record.book_instance.name
+      span.pull-right
+        span =record.borrow_date
