@@ -1,0 +1,2 @@
+module WeiXinHelper
+end

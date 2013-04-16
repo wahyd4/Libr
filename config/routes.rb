@@ -39,6 +39,10 @@ Libr::Application.routes.draw do
   post 'api/books/borrow' =>'api#borrow_book'
 
 
+  #for weixin
+  get 'wx/verify' =>'wei_xin#verify'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
