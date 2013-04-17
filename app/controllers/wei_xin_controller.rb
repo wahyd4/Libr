@@ -11,7 +11,7 @@ class WeiXinController < ApplicationController
     message = parse_xml_to_hash(params[:xml])
     case message.content
       when '1'
-        books = Book.order('id DESC').limit(5)
+        book = Book.order("RANDOM()").first
         reply_message = build_reply(message)
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.xml {
@@ -19,15 +19,13 @@ class WeiXinController < ApplicationController
             xml.ToUserName reply_message.to_user
             xml.CreateTime reply_message.create_time
             xml.MsgType 'news'
-            xml.ArticleCount books.count
+            xml.ArticleCount 1
             xml.Articles {
-              books.each do |book|
                 xml.item {
                   xml.Title book.name
                   xml.Description book.author
                   xml.PicUrl book.image
                 }
-              end
             }
           }
         end
