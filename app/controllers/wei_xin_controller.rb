@@ -52,7 +52,7 @@ class WeiXinController < ApplicationController
 
   def reply_text_message(message)
     reply_message = build_reply(message)
-    reply_message.content = "Hello Thoughtworks"
+    reply_message.content = "Hello Thoughtworks, please input 1 to see something defferent."
 
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.xml {
