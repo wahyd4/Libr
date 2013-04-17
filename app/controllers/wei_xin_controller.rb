@@ -9,15 +9,14 @@ class WeiXinController < ApplicationController
 
   def query
     xml_string = request.raw_post
-    puts "================" +xml_string.to_s
-    message = parse_xml(xml_string)
+    message = parse_xml_to_hash(params[:xml])
     reply_message = BasicMessage.new
     reply_message.create_time = Time.now.to_i
     reply_message.from_user = message.to_user
     reply_message.to_user = message.from_user
     reply_message.message_type = message.message_type
     reply_message.message_id=''
-    reply_message.content = "Hello...."
+    reply_message.content = "Hello Thoughtworks"
 
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.xml {
@@ -42,6 +41,18 @@ class WeiXinController < ApplicationController
     message.message_type = xml.xpath('//MsgType').text
     message.content = xml.xpath('//Content').text
     message.message_id = xml.xpath('//MsgId').text
+    message.save
+    message
+  end
+
+  def parse_xml_to_hash(xml)
+    message = BasicMessage.new
+    message.from_user = xml[:FromUserName]
+    message.to_user = xml[:ToUserName]
+    message.create_time = xml[:CreateTime]
+    message.message_type = xml[:MsgType]
+    message.content = xml[:Content]
+    message.message_id = xml[:MsgId]
     message.save
     message
   end
