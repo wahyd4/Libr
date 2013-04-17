@@ -212,6 +212,7 @@ DEPENDENCIES
   flay
   jquery-rails
   machinist
+  nokogiri
   pg
   rails (= 3.2.11)
   rails_best_practices

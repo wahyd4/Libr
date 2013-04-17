@@ -40,7 +40,7 @@ Libr::Application.routes.draw do
 
 
   #for weixin
-  get 'wx/verify' =>'wei_xin#verify'
+  get 'wx/query' =>'wei_xin#verify'
 
 
   # The priority is based upon order of creation:

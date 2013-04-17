@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219045507) do
+ActiveRecord::Schema.define(:version => 20130417050322) do
 
   create_table "auth_keys", :force => true do |t|
     t.integer  "user_id"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(:version => 20130219045507) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.boolean  "actived",    :default => false
+  end
+
+  create_table "basic_messages", :force => true do |t|
+    t.string   "to_user"
+    t.string   "from_user"
+    t.datetime "create_time"
+    t.string   "message_type"
+    t.string   "content"
+    t.integer  "message_id",   :limit => 8
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.string   "pic_url"
   end
 
   create_table "book_instances", :force => true do |t|
