@@ -11,32 +11,34 @@ class WeiXinController < ApplicationController
     message = parse_xml_to_hash(params[:xml])
     case message.content
       when '1'
-        book = Book.order("RANDOM()").first
+        books = Book.order("RANDOM()").limit(5)
         reply_message = build_reply(message)
-        builder = Nokogiri::XML::Builder.new do |xml|
+        builder = Nokogiri::XML::Builder.new(encoding: 'UTF-8')  do |xml|
           xml.xml {
             xml.FromUserName reply_message.from_user
             xml.ToUserName reply_message.to_user
             xml.CreateTime reply_message.create_time
             xml.MsgType 'news'
             xml.ArticleCount{
-              xml.cdata 1
+              xml.cdata books.count
             }
             xml.Articles {
-                xml.item {
-                  xml.Title{
-                    xml.cdata book.name
+               books.each do |book|
+                  xml.item {
+                    xml.Title{
+                      xml.cdata book.name
+                    }
+                    xml.Description{
+                      xml.cdata book.author
+                    }
+                    xml.PicUrl {
+                      xml.cdata book.image
+                    }
+                    xml.Url{
+                      xml.cdata "http://libr.herokuapp.com/books/#{book.id}"
+                    }
                   }
-                  xml.Description{
-                    xml.cdata book.author
-                  }
-                  xml.PicUrl {
-                    xml.cdata book.image
-                  }
-                  xml.Url{
-                    xml.cdata "http://libr.herokuapp.com/books/#{book.id}"
-                  }
-                }
+              end
             }
           }
         end
