@@ -9,6 +9,7 @@ class WeiXinController < ApplicationController
 
   def query
     xml_string = request.raw_post
+    puts "================" +xml_string.to_s
     message = parse_xml(xml_string)
     reply_message = BasicMessage.new
     reply_message.create_time = Time.now.to_i
