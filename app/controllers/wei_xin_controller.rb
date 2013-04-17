@@ -19,12 +19,23 @@ class WeiXinController < ApplicationController
             xml.ToUserName reply_message.to_user
             xml.CreateTime reply_message.create_time
             xml.MsgType 'news'
-            xml.ArticleCount 1
+            xml.ArticleCount{
+              xml.cdata 1
+            }
             xml.Articles {
                 xml.item {
-                  xml.Title book.name
-                  xml.Description book.author
-                  xml.PicUrl book.image
+                  xml.Title{
+                    xml.cdata book.name
+                  }
+                  xml.Description{
+                    xml.cdata book.author
+                  }
+                  xml.PicUrl {
+                    xml.cdata book.image
+                  }
+                  xml.Url{
+                    xml.cdata "http://libr.herokuapp.com/books/#{book.id}"
+                  }
                 }
             }
           }
