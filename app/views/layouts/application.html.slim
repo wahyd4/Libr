@@ -25,11 +25,11 @@ html
                 a href="/books" 图书列表
               li
                 a href="" 书单
+              li
+                a href="/records/" 历史记录
               - if  @current_user != nil
                 li
                   a href="/users/#{@current_user.id}/books" 我的书架
-                li
-                  a href="/records/" 历史记录
           ul.nav.pull-right
             -if @current_user != nil
               li
