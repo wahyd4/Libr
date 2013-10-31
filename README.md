@@ -77,3 +77,7 @@ Build Status
 [2]:https://github.com/xiaoboa
 [3]:https://github.com/hoverruan/libr-android
 [4]:https://github.com/xiaoboa/Libr-client
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/wahyd4/libr/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
