@@ -1,6 +1,6 @@
-#source 'https://rubygems.org'
+source 'https://rubygems.org'
 
-source 'http://ruby.taobao.org'
+#source 'http://ruby.taobao.org'
 
 gem 'rails','4.0.0'
 
