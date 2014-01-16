@@ -1,6 +1,8 @@
-source 'https://rubygems.org'
+#source 'https://rubygems.org'
 
-#source 'http://ruby.taobao.org'
+source 'http://ruby.taobao.org'
+
+ruby '2.0.0'
 
 gem 'rails','4.0.0'
 
@@ -14,6 +16,7 @@ gem 'will_paginate'
 gem 'nokogiri'
 
 
+gem 'activesupport','4.0.0'
 
 gem 'jquery-rails'
 

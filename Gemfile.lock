@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://ruby.taobao.org/
   specs:
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
@@ -188,6 +188,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport (= 4.0.0)
   capybara
   cucumber-rails
   database_cleaner
