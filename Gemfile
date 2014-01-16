@@ -34,6 +34,13 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
+# Cache
+
+gem 'rack-cache'
+gem 'dalli'
+gem 'kgio'
+gem 'memcachier'
+
 gem 'protected_attributes'
 
 group :development, :test do

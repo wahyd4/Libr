@@ -63,5 +63,7 @@ module Libr
     # set beijing time zone
     config.active_record.default_timezone = :local
     config.time_zone = 'Chongqing'
+
+    config.cache_store = :dalli_store
   end
 end
