@@ -13,7 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-/.idea/*
+/.idea/**
+
+/db/.idea/**
 
 /export.txt
 /rails_best_practices_output.html

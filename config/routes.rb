@@ -1,9 +1,9 @@
 Libr::Application.routes.draw do
 
   root to: 'home#index'
-  match 'books/new' => 'book#new'
-  match 'books/:id' => 'book#view'
-  match '/users/:id/books' => 'user#books'
+  get 'books/new' => 'book#new'
+  get 'books/:id' => 'book#view'
+  get '/users/:id/books' => 'user#books'
   put '/users/:id/borrowedbooks/:instance_id' => 'user#return_book'
   post 'books' => 'book#add_to_lib'
   get 'books' => 'book#list'

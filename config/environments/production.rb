@@ -70,4 +70,6 @@ Libr::Application.configure do
   config.assets.precompile << '*.js'
   config.assets.precompile << '*.css'
 
+  config.eager_load = true
+
 end

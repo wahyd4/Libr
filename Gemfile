@@ -1,6 +1,8 @@
-source 'https://rubygems.org'
+#source 'https://rubygems.org'
 
-gem 'rails','3.2.11'
+source 'http://ruby.taobao.org'
+
+gem 'rails','4.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -10,17 +12,8 @@ gem 'thin'
 gem 'slim'
 gem 'will_paginate'
 gem 'nokogiri'
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
-end
 
 gem 'jquery-rails'
 
@@ -33,10 +26,12 @@ gem 'jquery-rails'
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Deploy with Capistrano
+# Deploy with CapistranoCapistrano
 # gem 'capistrano'
 # To use debugger
 # gem 'debugger'
+
+gem 'protected_attributes'
 
 group :development, :test do
 	gem 'rspec-rails'
