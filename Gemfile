@@ -10,10 +10,11 @@ gem 'rails','4.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'thin'
 gem 'slim'
+gem 'thin'
 gem 'will_paginate'
 gem 'nokogiri'
+gem 'unicorn'
 
 
 gem 'activesupport','4.0.0'
