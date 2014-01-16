@@ -6,4 +6,4 @@ require File.expand_path('../config/application', __FILE__)
 
 Libr::Application.load_tasks
 
-task :ci => %w(db:migrate db:test:prepare  simplecov stats )
+task :ci => %w(db:migrate db:test:prepare  simplecov stats assets:precompile)

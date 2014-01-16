@@ -1,0 +1,161 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 20px;
+    text-shadow: white 0 1px 0;
+    font-weight: 100;
+    font: 10pt/1.6em Avenir, Lucida Grande, Calibri, Trebuchet MS, Helvetica, Arial, Hiragino Sans GB, WenQuanYi Micro Hei, STHeiti, Microsoft Jhenghei, Nanum Gothic, sans-serif;
+}
+
+.main {
+    min-height: 600px;
+}
+
+#footer {
+
+    bottom: 0;
+    background-color: whiteSmoke;
+    height: 60px;
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    padding-top: 10px;
+}
+
+p.title {
+    margin-top: 5px;
+}
+
+div.span2 {
+    text-align: center;
+
+}
+
+.cover {
+    position: relative;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.cover:before, .cover:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    -moz-border-radius: 100px / 10px;
+    border-radius: 100px / 10px;
+}
+
+.cover:after {
+    right: 10px;
+    left: auto;
+    -webkit-transform: skew(8deg) rotate(3deg);
+    -moz-transform: skew(8deg) rotate(3deg);
+    -ms-transform: skew(8deg) rotate(3deg);
+    -o-transform: skew(8deg) rotate(3deg);
+    transform: skew(8deg) rotate(3deg);
+}
+
+.cover:hover {
+    box-shadow: 3px 3px 12px #999;
+}
+
+.book-name {
+    font-color: #5A5A5A;
+    text-align: center;
+}
+
+.rent-record {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.one-item {
+    width: 170px;
+    margin-left: 10px;
+    float: left;
+    height: 180px;
+    margin-bottom: 0.9em;
+    text-align: center;
+    margin-top: 0.9em;
+}
+
+.avatar {
+    float: left;
+    margin: 0;
+    display: block;
+
+}
+
+.my-label {
+    float: left;
+    margin-left: 4px;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.my-borrow-btn {
+    margin-top: -20px;
+}
+
+.container-narrow {
+    margin: 30px auto 0 auto;
+    max-width: 700px;
+    min-height: 500px;
+    border: 1px solid #9EAA99;
+    border-radius: 3px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .25);
+    padding: 0 10px;
+}
+
+.cool-border {
+    border: 1px solid #9EAA99;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .25);
+}
+
+.record-info {
+    color: #c67605;
+    font-size: 25px;
+    line-height: 35px;
+}
+
+form button.boxclose {
+    float: right;
+    margin-top: -10px;
+    margin-left: -30px;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 30px;
+    background: #605F61;
+    font-size: 31px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 11px 2px;
+    z-index: 100;
+}
+
+.edit-user {
+    width: 450px;
+    text-align: center;
+    margin: 0 0 0 40px;
+}
+
+select {
+    width: 120px;
+}
+
+
+.borrow-btn{
+    margin: -0.79em 0 0 0.7em;
+}
+.a-record span{
+    margin-right: 20px;
+}
