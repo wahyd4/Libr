@@ -67,9 +67,6 @@ Libr::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.assets.precompile += '*.js'
-  config.assets.precompile += '*.css'
-
   config.eager_load = true
 
   client = Dalli::Client.new(ENV["MEMCACHIER_SERVERS"], :value_max_bytes => 10485760)
