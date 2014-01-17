@@ -67,5 +67,8 @@ module Libr
     config.cache_store = :dalli_store
 
     config.assets.initialize_on_precompile = false
+
+    config.assets.precompile += [ Proc.new {|path| File.basename(path) =~ /^[^_].*\.\w+$/} ]
+
   end
 end
