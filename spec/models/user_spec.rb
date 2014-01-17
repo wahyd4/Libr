@@ -15,7 +15,7 @@ describe :User do
       @user.borrowed_and_not_returned_books.count.should == 1
     end
     it 'ensure when there are two books,users can borrow these two books.' do
-      user_1 = User.create name: 'Nick'
+      user_1 = User.create name: 'Nick',email: 'a@a.com'
       book_1 = Book.create name: 'Big data',image:'none', isbn:'1234567890123'
       instance = BookInstance.create book_id: book_1.id, user_id: user_1.id
       instance_2 = BookInstance.create book_id: book_1.id, user_id: user_1.id

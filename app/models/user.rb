@@ -1,5 +1,11 @@
 require 'utils'
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  #devise :database_authenticatable, :registerable,
+  #       :recoverable, :rememberable, :trackable, :validatable
+
+  devise :database_authenticatable, :recoverable, :stretches => 20
 
   include Utils
   attr_accessible :email, :name, :avatar, :id, :location, :preferred_name
@@ -16,6 +22,7 @@ class User < ActiveRecord::Base
 
   def self.create_user(name, avatar)
     User.create name: name, avatar: avatar
+
   end
 
   def borrow(instance)

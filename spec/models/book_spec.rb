@@ -46,7 +46,7 @@ describe :Book do
 
     it 'ensure total_borrowers will count the user who returned the book' do
       instance_1 = BookInstance.create book_id: @book.id, user_id: @user.id
-      user_1 = User.create name: 'Tom'
+      user_1 = User.create name: 'Tom', email: 'a@a.com'
       @user.borrow @instance
       user_1.borrow instance_1
       @user.should_not == nil
@@ -56,7 +56,6 @@ describe :Book do
     end
 
   end
-
 
   describe :total_available_instances do
     it 'ensure total available instance should be 1 after borrowed' do
@@ -76,7 +75,7 @@ describe :Book do
     end
 
     it 'ensure total available instance will not include the private book' do
-      user_1 = User.create name: 'Nick'
+      user_1 = User.create name: 'Nick', email: 'a@a.com'
       book_1 = Book.create name: 'Big data', image: 'none', isbn: '1234567890123'
       instance = BookInstance.create book_id: book_1.id, user_id: user_1.id
       instance_2 = BookInstance.create book_id: book_1.id, user_id: user_1.id

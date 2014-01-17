@@ -70,5 +70,7 @@ module Libr
 
     config.assets.precompile += [ Proc.new {|path| File.basename(path) =~ /^[^_].*\.\w+$/} ]
 
+    config.i18n.enforce_available_locales = true
+
   end
 end

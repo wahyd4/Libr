@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://ruby.taobao.org/
   specs:
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
@@ -29,6 +29,7 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     awesome_print (1.2.0)
+    bcrypt-ruby (3.1.2)
     builder (3.1.4)
     capybara (2.2.1)
       mime-types (>= 1.16)
@@ -55,6 +56,12 @@ GEM
     daemons (1.1.9)
     dalli (2.6.4)
     database_cleaner (1.2.0)
+    devise (3.2.2)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.2)
     erubis (2.7.0)
@@ -89,6 +96,7 @@ GEM
     multi_test (0.0.3)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.3)
     protected_attributes (1.0.3)
@@ -189,6 +197,8 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    warden (1.2.3)
+      rack (>= 1.0)
     websocket (1.0.7)
     will_paginate (3.0.5)
     xpath (2.0.0)
@@ -203,6 +213,7 @@ DEPENDENCIES
   cucumber-rails
   dalli
   database_cleaner
+  devise
   flay
   jquery-rails
   kgio

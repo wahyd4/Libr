@@ -1,5 +1,6 @@
 Libr::Application.routes.draw do
 
+  devise_for :users
   root to: 'home#index'
   get 'books/new' => 'book#new'
   get 'books/:id' => 'book#view'

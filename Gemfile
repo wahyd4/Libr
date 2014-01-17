@@ -1,6 +1,6 @@
-source 'https://rubygems.org'
+#source 'https://rubygems.org'
 
-#source 'http://ruby.taobao.org'
+source 'http://ruby.taobao.org'
 
 ruby '2.0.0'
 
@@ -15,6 +15,7 @@ gem 'thin'
 gem 'will_paginate'
 gem 'nokogiri'
 gem 'unicorn'
+gem 'devise'
 
 
 gem 'activesupport','4.0.0'
