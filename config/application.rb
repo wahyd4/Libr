@@ -65,5 +65,7 @@ module Libr
     config.time_zone = 'Chongqing'
 
     config.cache_store = :dalli_store
+
+    config.assets.initialize_on_precompile = false
   end
 end
