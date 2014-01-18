@@ -1,8 +1,7 @@
 Libr
 ====
-             
-tw-libr 是一个用户分享、借阅、管理、展示图书的小应用，目前正在为Thoughtworks Chengdu 办公室服务。我们正不断地为更好的方便同事借书而升级改造Libr。后期我们希望Libr 可以为公开为所有用户服务。
-目前已经有成都办公室同事[hoverruan][1]和 [xiaoboa][2]分别为Libr开发Android和IOS客户端。ma  
+
+基于图书与阅读的社交应用。
 
 Website:
 ====
@@ -44,6 +43,7 @@ Build Status
  * 2013.4.16 开始添加微信公共账号feature
  * 2013.4.17 通过添加go_serv 微信公共账号，输入1 即可获取书籍信息。please give a try.
  * 2014.1.16 升级到Rails4，并为Libr 2做准备
+ * 开始Libr2, 引入Devise,重新加入用户注册等功能，原有功能基本以不能再使用了。
 
 #### JSON API使用指南
 

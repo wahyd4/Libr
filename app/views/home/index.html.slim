@@ -16,18 +16,7 @@ div.row-fluid
   div.span3
     ul.nav.nav-list.well
       li.nav-header style="font-size:14px;" 拥有书最多的10名用户
-      - @top_10_owners.each do |user|
-        li
-          a href="/users/#{user.id}/books"
-            img.img-circle style="max-width:25px;" src="#{user.avatar}"
-            span style="margin-left:5px;"
-              b =user.preferred_name
+
     hr
     ul.nav.nav-list.well
           li.nav-header style="font-size:14px;" 借书最多的10名用户
-          - @top_10_borrowers.each do |user|
-            li
-              a href="/users/#{user.id}/books"
-                img.img-circle style="max-width:25px;" src="#{user.avatar}"
-                span style="margin-left:5px;"
-                  b =user.preferred_name
