@@ -16,6 +16,7 @@ gem 'will_paginate'
 gem 'nokogiri'
 gem 'unicorn'
 gem 'devise'
+gem 'sqlite3'
 
 
 gem 'activesupport','4.0.0'

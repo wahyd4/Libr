@@ -36,7 +36,7 @@ class BookController < ApplicationController
 
   def add_to_lib
     unless @current_user
-      redirect_to '/login', notice: 'You need login to do the action.'
+      redirect_to new_user_session_path, notice: 'You need login to do the action.'
       return
     end
     @current_user.create_book_instance params[:isbn], params[:is_public]

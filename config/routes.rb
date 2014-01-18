@@ -39,10 +39,20 @@ Libr::Application.routes.draw do
   post 'api/books/return' => 'api#return_book'
   post 'api/books/borrow' => 'api#borrow_book'
 
-  devise_for :users
 
   #for weixin
   get 'wx/query' => 'wei_xin#verify'
   post 'wx/query' => 'wei_xin#query'
+
+  devise_for :users
+
+  namespace :api do
+    namespace :v1 do
+      devise_for :users
+      devise_scope :user do
+        resources :sessions, :only => [:create, :destroy, :failure]
+      end
+    end
+  end
 
 end
