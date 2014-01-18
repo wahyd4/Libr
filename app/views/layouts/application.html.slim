@@ -36,10 +36,12 @@ html
                 a href="/users/#{@current_user.id}"
                   img.img-circle style="max-width:82%;margin:-5px" src="#{@current_user.avatar}" title="#{@current_user.preferred_name}"
               li
-                a href="/logout" 注销
+                =link_to '注销',destroy_user_session_path
             - else
               li
-                a href="/login" 登录
+                =link_to '登录', new_user_session_path
+              li
+                =link_to '注册',new_user_registration_path
 
     div.container.main
       - if flash[:notice]

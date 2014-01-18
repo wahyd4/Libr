@@ -1,13 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :current_user
 
-  def current_user
-    @current_user = nil
+  before_filter :current_user!
 
-    if session[:name]
-      @current_user = User.find_by_name session[:name]
-    end
+  def current_user!
+    @current_user = current_user
   end
 
   def sign_in(name, avatar)
@@ -23,7 +20,7 @@ class ApplicationController < ActionController::Base
   def same_user(controller)
     user = User.find_by_id params[:id]
     if user== nil || user!= @current_user
-      redirect_to  :root , notice: 'You do not have the right to see others keys.'
+      redirect_to :root, notice: 'You do not have the right to see others keys.'
     end
   end
 

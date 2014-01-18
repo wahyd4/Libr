@@ -2,21 +2,21 @@ require 'spec_helper'
 
 describe :User do
   before(:each) do
-    @user = User.create name: 'Mary'
-    @book = Book.create name:'See', image:'http:\/\/img3.douban.com\/mpic\/s24514758.jpg',isbn:'9787549529322'
+    @user = User.create name: 'Mary', email: 'mary@qq.com', password: 'passworD1'
+    @book = Book.create name: 'See', image: 'http:\/\/img3.douban.com\/mpic\/s24514758.jpg', isbn: '9787549529322'
   end
 
   describe 'user borrow a book' do
 
-    it 'ensure user can borrow a existed book'  do
+    it 'ensure user can borrow a existed book' do
       instance = BookInstance.create book_id: @book.id, user_id: @user.id
       @user.borrow instance
       @user.borrowed_and_not_returned_books.empty?.should be_false
       @user.borrowed_and_not_returned_books.count.should == 1
     end
     it 'ensure when there are two books,users can borrow these two books.' do
-      user_1 = User.create name: 'Nick',email: 'a@a.com'
-      book_1 = Book.create name: 'Big data',image:'none', isbn:'1234567890123'
+      user_1 = User.create name: 'Nick', email: 'a@a.com', password: 'passworD1'
+      book_1 = Book.create name: 'Big data', image: 'none', isbn: '1234567890123'
       instance = BookInstance.create book_id: book_1.id, user_id: user_1.id
       instance_2 = BookInstance.create book_id: book_1.id, user_id: user_1.id
       user_1.borrowed_and_not_returned_books.count.should == 0
@@ -56,7 +56,7 @@ describe :User do
     end
 
     it 'ensure return true when there is someone has a email named test@qq.com' do
-      User.create name:'Testme', email:'test@qq.com'
+      User.create name: 'Testme', email: 'test@qq.com', password: 'passworD1'
       User.check_email_existed('test@qq.com').should be_true
     end
   end
@@ -66,15 +66,15 @@ describe :User do
       @user.auth_keys.count.should == 0
       lambda do
         @user.generate_auth_key
-      end.should change(@user.auth_keys,:count).by(1)
+      end.should change(@user.auth_keys, :count).by(1)
       @user.auth_keys[0].value.size.should == 8
     end
 
   end
 
   describe :create_book_instance do
-     it 'ensure create a book instance for a user' do
-       # how to test with network ,mock
-     end
+    it 'ensure create a book instance for a user' do
+      # how to test with network ,mock
+    end
   end
 end

@@ -4,7 +4,7 @@ require "qq_auth"
 class HomeController < ApplicationController
   include Douban_Auth
   include QQAuth
-  before_filter :current_user
+  before_filter :current_user!
 
   def index
     @books = Book.order('id DESC').limit(20)

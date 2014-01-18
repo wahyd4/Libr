@@ -1,5 +1,5 @@
 class BookController < ApplicationController
-  before_filter :current_user
+  before_filter :current_user!
   skip_before_filter :verify_authenticity_token, :only => [:add_to_lib]
 
   def view

@@ -2,13 +2,14 @@ require 'utils'
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  #devise :database_authenticatable, :registerable,
-  #       :recoverable, :rememberable, :trackable, :validatable
 
-  devise :database_authenticatable, :recoverable, :stretches => 20
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   include Utils
-  attr_accessible :email, :name, :avatar, :id, :location, :preferred_name
+  attr_accessible :email, :name, :avatar, :id, :location, :preferred_name, :encrypted_password, :password,
+                  :password_confirmation
+
 
 
   has_many :book_instances

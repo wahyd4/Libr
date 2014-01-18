@@ -2,7 +2,7 @@ require "douban_auth"
 require "qq_auth"
 
 class UserController < ApplicationController
-  before_filter :current_user
+  before_filter :current_user!
   include Douban_Auth
   include QQAuth
 
