@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140117135051) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "auth_keys", force: true do |t|
     t.integer  "user_id"
     t.string   "name"
@@ -89,7 +86,7 @@ ActiveRecord::Schema.define(version: 20140117135051) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
