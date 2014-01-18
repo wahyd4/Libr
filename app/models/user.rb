@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   include Utils
   attr_accessible :email, :name, :avatar, :id, :location, :preferred_name, :encrypted_password, :password,
-                  :password_confirmation
+                  :password_confirmation, :remember_me
 
 
 

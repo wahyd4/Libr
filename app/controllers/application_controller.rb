@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   before_filter :current_user!
 
   def current_user!
-    @current_user = current_user
+    @current_user = nil
+    @current_user = current_user if user_signed_in?
   end
 
   def sign_in(name, avatar)

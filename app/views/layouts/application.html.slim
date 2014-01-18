@@ -35,8 +35,9 @@ html
               li
                 a href="/users/#{@current_user.id}"
                   img.img-circle style="max-width:82%;margin:-5px" src="#{@current_user.avatar}" title="#{@current_user.preferred_name}"
+                  = @current_user.email
               li
-                =link_to '注销',destroy_user_session_path
+                =link_to '注销',destroy_user_session_path, :method => :delete
             - else
               li
                 =link_to '登录', new_user_session_path

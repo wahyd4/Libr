@@ -1,6 +1,5 @@
 Libr::Application.routes.draw do
 
-  devise_for :users
   root to: 'home#index'
   get 'books/new' => 'book#new'
   get 'books/:id' => 'book#view'
@@ -16,17 +15,18 @@ Libr::Application.routes.draw do
   get '/login/qq' => 'user#auth_qq'
   get '/douban_callback' => 'home#douban_callback'
   get '/qq_callback' => 'home#qq_callback'
-  get '/users/:id' => 'user#view'
-  get '/users/:id/edit' => 'user#edit'
-  put '/users/:id' => 'user#update'
+
+  get '/users/:id' => 'user#view', id: /\d{1,8}/
+  get '/users/:id/edit' => 'user#edit', id: /\d{1,8}/
+  put '/users/:id' => 'user#update', id: /\d{1,8}/
   get '/search' => 'search#do_search'
   delete '/users/:user_id/books/:instance_id' => 'user#delete_book'
 
-  get '/users/:id/keys' => 'auth_key#index'
-  post '/users/:id/keys' => 'auth_key#new'
-  delete '/users/:id/keys/:key_id' => 'auth_key#delete'
-  get '/records'=>'history#index'
-  get '/users/:user_id/records' =>'history#records_for_user'
+  get '/users/:id/keys' => 'auth_key#index', id: /\d{1,8}/
+  post '/users/:id/keys' => 'auth_key#new', id: /\d{1,8}/
+  delete '/users/:id/keys/:key_id' => 'auth_key#delete', id: /\d{1,8}/
+  get '/records' => 'history#index'
+  get '/users/:user_id/records' => 'history#records_for_user', id: /\d{1,8}/
 
   # api will return json
   get 'api/bookinfo/:isbn' => 'api#book_info'
@@ -37,11 +37,12 @@ Libr::Application.routes.draw do
   get 'api/books/search/:keyword' => 'api#search'
   post 'api/books/add' => 'api#add_book'
   post 'api/books/return' => 'api#return_book'
-  post 'api/books/borrow' =>'api#borrow_book'
+  post 'api/books/borrow' => 'api#borrow_book'
 
+  devise_for :users
 
   #for weixin
-  get 'wx/query' =>'wei_xin#verify'
-  post 'wx/query'=>'wei_xin#query'
+  get 'wx/query' => 'wei_xin#verify'
+  post 'wx/query' => 'wei_xin#query'
 
 end
