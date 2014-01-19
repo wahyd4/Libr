@@ -63,11 +63,11 @@ describe :User do
 
   describe :generate_auth_key do
     it 'ensure generate a auth key for a user' do
-      @user.auth_keys.count.should == 0
+      @user.auth_keys.count.should == 1
       lambda do
         @user.generate_auth_key
       end.should change(@user.auth_keys, :count).by(1)
-      @user.auth_keys[0].value.size.should == 8
+      @user.auth_keys[0].value.size.should == 20
     end
 
   end
@@ -76,5 +76,13 @@ describe :User do
     it 'ensure create a book instance for a user' do
       # how to test with network ,mock
     end
+  end
+
+  describe :generate_authentication_token do
+    it 'should generate a not nil token when create a user' do
+      @user.auth_keys.empty?.should == false
+      @user.auth_keys.size.should == 1
+    end
+
   end
 end

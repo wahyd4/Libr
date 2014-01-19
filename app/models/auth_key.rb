@@ -8,7 +8,11 @@ class AuthKey < ActiveRecord::Base
   belongs_to :user
 
   def self.create_key_for(user)
-    AuthKey.create value: Utils.random_key, user_id: user.id
+    token = Devise.friendly_token
+    if user.auth_keys.include? token
+      token = Devise.friendly_token
+    end
+    AuthKey.create value: token, user_id: user.id
   end
 
   def active

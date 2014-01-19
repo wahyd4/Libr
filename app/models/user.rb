@@ -1,25 +1,26 @@
 require 'utils'
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  after_save :ensure_authentication_token
 
   include Utils
   attr_accessible :email, :name, :avatar, :id, :location, :preferred_name, :encrypted_password, :password,
                   :password_confirmation, :remember_me
 
-
-
   has_many :book_instances
-
   has_many :borrow_records
-
   has_many :borrowed_books, :source => :book_instance, through: :borrow_records
-
   has_many :auth_keys
 
+
+  def ensure_authentication_token
+    if auth_keys.empty?
+      generate_auth_key
+    end
+  end
 
   def self.create_user(name, avatar)
     User.create name: name, avatar: avatar
@@ -66,7 +67,7 @@ class User < ActiveRecord::Base
   end
 
   def generate_auth_key
-    auth_keys.create value: Utils.random_key, user_id: id
+    AuthKey.create_key_for self
   end
 
   def create_book_instance(isbn, is_public = 'true')
@@ -79,14 +80,14 @@ class User < ActiveRecord::Base
     if is_public == 'false'
       instance.be_private
     end
-
   end
 
   def open_books
-    book_instances.where(public:true)
+    book_instances.where(public: true)
   end
 
   def private_books
-    book_instances.where(public:false)
+    book_instances.where(public: false)
   end
+
 end

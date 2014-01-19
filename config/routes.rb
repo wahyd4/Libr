@@ -48,7 +48,6 @@ Libr::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      devise_for :users
       devise_scope :user do
         resources :sessions, :only => [:create, :destroy, :failure]
       end

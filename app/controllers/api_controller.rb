@@ -1,5 +1,8 @@
 class ApiController < ApplicationController
 
+  before_filter :authenticate_user_from_token!, only: :books
+  #before_filter :authenticate_user!
+
   def book_info
     book = Book.find_by_isbn params[:isbn]
 
