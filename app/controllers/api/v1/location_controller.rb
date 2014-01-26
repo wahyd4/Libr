@@ -1,6 +1,7 @@
 class Api::V1::LocationController < ApplicationController
 
   #before_filter :authenticate_user_from_token!
+  before_filter :allow_cors
 
   def get_location
     lat = params[:lat]
