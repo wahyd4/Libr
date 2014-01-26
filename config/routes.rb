@@ -51,6 +51,8 @@ Libr::Application.routes.draw do
       devise_scope :user do
         resources :sessions, :only => [:create, :destroy, :failure]
       end
+
+      get 'location' => 'location#get_location'
     end
   end
 

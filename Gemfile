@@ -21,6 +21,7 @@ gem 'devise'
 gem 'activesupport','4.0.0'
 
 gem 'jquery-rails'
+gem 'rest-client'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

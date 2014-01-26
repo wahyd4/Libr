@@ -21,6 +21,7 @@ Build Status
         export QQ_CLIENT_ID=***
         export QQ_CLIENT_SECRET=***
         export QQ_REDIRECT_URI=***
+        export export BAIDU_MAP_KEY= ***
 
 #### 移动平台客户端
 
@@ -46,6 +47,7 @@ Build Status
  * 2014.1.17 开始Libr2, 引入Devise,重新加入用户注册等功能，原有功能基本以不能再使用了。
  * 2014.1.19 添加基于token的客户端API 授权，验证。方便在移动断进行调用。
  * 2014.1.23 取消通过API调用时的CROS 验证。
+ * 2014.1.26 添加百度地图API，根据经纬度返回目前所在地址
 
 #### JSON API使用指南
 
