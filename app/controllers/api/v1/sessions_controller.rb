@@ -1,5 +1,7 @@
 class Api::V1::SessionsController < Devise::SessionsController
 
+  before_filter :allow_cors
+
   def create
     warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#failure")
     render :json => {:success => true, token: current_user.auth_keys.last.value}
