@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :borrow_records
   has_many :borrowed_books, :source => :book_instance, through: :borrow_records
   has_many :auth_keys
+  has_many :locations
 
 
   def ensure_authentication_token

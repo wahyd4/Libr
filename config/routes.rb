@@ -53,6 +53,8 @@ Libr::Application.routes.draw do
       end
 
       get 'location' => 'location#get_location'
+
+      resource :location, :only => [:new]
     end
   end
 
