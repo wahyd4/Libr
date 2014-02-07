@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user_from_token!
     user_email = params[:user_email].presence
-    user       = user_email && User.find_by_email(user_email)
+    user = user_email && User.find_by_email(user_email)
     token = AuthKey.find_by_value params[:user_token]
 
     if user && user.auth_keys.include?(token)
@@ -43,11 +43,9 @@ class ApplicationController < ActionController::Base
 
   def allow_cors
     headers["Access-Control-Allow-Origin"] = "*"
-    headers["Access-Control-Allow-Methods"] = %w{GET POST PUT DELETE}.join(",")
-    headers["Access-Control-Allow-Headers"] = %w{Origin Accept Content-Type X-Requested-With X-CSRF-Token}.join(",")
+    headers["Access-Control-Allow-Methods"] = %w{GET POST PUT DELETE HEAD}.join(",")
+    headers["Access-Control-Allow-Headers"] = %w{Accept Accept-Language Content-Language Last-Event-ID Content-Type}.join(",")
     head(:ok) if request.request_method == "OPTIONS"
-    # or, render text: ''
-    # if that's more your style
   end
 
 
