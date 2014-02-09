@@ -52,9 +52,10 @@ Libr::Application.routes.draw do
         resources :sessions, :only => [:create, :destroy, :failure]
       end
 
-      get 'location' => 'location#get_location'
+      get 'locations/detail' => 'locations#get_location'
 
-      resource :location, :only => [:new]
+      resource :locations, :only => [:create]
+      get 'locations' => 'locations#index'
     end
   end
 

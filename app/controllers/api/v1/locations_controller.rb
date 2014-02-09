@@ -1,4 +1,4 @@
-class Api::V1::LocationController < ApplicationController
+class Api::V1::LocationsController < ApplicationController
 
   before_filter :authenticate_user_from_token!, only: :new
   before_filter :allow_cors
@@ -11,13 +11,18 @@ class Api::V1::LocationController < ApplicationController
     render json: response
   end
 
-  def new
+  def create
     user = User.find_by_email params[:user_email]
     lat = params[:lat]
     lng= params[:lng]
     location = user.locations.create lat: lat, lng: lng
     render json: location
 
+  end
+
+  def index
+    user = User.find_by_email params[:user_email]
+    render json: user.locations
   end
 
 end
