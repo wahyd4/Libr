@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'rails','4.0.0'
+gem 'rails', '4.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -18,7 +18,7 @@ gem 'unicorn'
 gem 'devise'
 
 
-gem 'activesupport','4.0.0'
+gem 'activesupport', '4.0.0'
 
 gem 'jquery-rails'
 gem 'rest-client'
@@ -47,14 +47,14 @@ gem 'memcachier'
 gem 'protected_attributes'
 
 group :development, :test do
-	gem 'rspec-rails'
-	gem 'tddium'
-	gem "flay"
-	gem 'simplecov'
-	gem 'machinist'
-	gem 'cucumber-rails' , :require => false
-	gem 'capybara'
-	gem 'database_cleaner'
-	gem 'selenium-webdriver'
+  gem 'rspec-rails'
+  gem 'tddium'
+  gem "flay"
+  gem 'simplecov'
+  gem 'machinist'
+  gem 'cucumber-rails', :require => false
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver'
   gem 'rails_best_practices'
 end

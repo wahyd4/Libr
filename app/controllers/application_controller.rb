@@ -45,7 +45,8 @@ class ApplicationController < ActionController::Base
     headers["Access-Control-Allow-Origin"] = "*"
     headers["Access-Control-Allow-Methods"] = %w{GET POST PUT DELETE HEAD}.join(",")
     headers["Access-Control-Allow-Headers"] = %w{Accept Accept-Language Content-Language Last-Event-ID Content-Type}.join(",")
-    head(:ok) if request.request_method == "OPTIONS"
+    headers["Access-Control-Request-Method"] = "*"
+    head(:ok) if request.request_method == " OPTIONS "
   end
 
 
