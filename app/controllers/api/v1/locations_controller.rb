@@ -26,4 +26,16 @@ class Api::V1::LocationsController < ApplicationController
     render json: user.locations
   end
 
+  def destroy
+    location = Location.find_by_id params[:id]
+    user = User.find_by_email params[:user_email]
+
+    if user.locations.include? location
+      Location.delete params[:id]
+      render json: {success: 'true'}
+    else
+      render json: {success: 'false'}
+    end
+  end
+
 end
