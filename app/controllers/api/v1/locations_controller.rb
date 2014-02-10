@@ -15,7 +15,8 @@ class Api::V1::LocationsController < ApplicationController
     user = User.find_by_email params[:user_email]
     lat = params[:lat]
     lng= params[:lng]
-    location = user.locations.create lat: lat, lng: lng
+    address = params[:address]
+    location = user.locations.create lat: lat, lng: lng, address: address
     render json: location
 
   end
