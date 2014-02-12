@@ -73,9 +73,6 @@ class User < ActiveRecord::Base
 
   def create_book_instance(isbn, is_public = 'true')
     book = Book.find_by_isbn isbn
-    unless  book
-      book = Book.create_book_by_isbn isbn
-    end
     instance = book.new_instance_for self
 
     if is_public == 'false'

@@ -40,7 +40,7 @@ class Book < ActiveRecord::Base
   def total_available_instances
     instances = []
     book_instances.each { |instance|
-      instances << instance  if  instance.public && !instance.borrowed?
+      instances << instance if  instance.public && !instance.borrowed?
     }
     instances
   end
@@ -49,8 +49,7 @@ class Book < ActiveRecord::Base
     book_instances.create user_id: user.id, book_id: id
   end
 
-  def self.create_book_by_isbn(isbn)
-    book_info = fetch_book_info_from_douban isbn
+  def self.create_book_by_isbn(book_info)
     Book.create name: book_info['title'],
                 image: book_info['image'],
                 isbn: book_info['isbn13'],
@@ -63,12 +62,13 @@ class Book < ActiveRecord::Base
     http.use_ssl = true
     path ='/v2/book/isbn/' + isbn
     response = http.get(path)
-    JSON.parse response.body
+    book_info = JSON.parse response.body
+    self.create_book_by_isbn book_info
   end
 
 
   def open_owners
-    total_available_instances.map{|instance|
+    total_available_instances.map { |instance|
       instance.user
     }
   end
