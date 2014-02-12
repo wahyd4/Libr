@@ -78,6 +78,7 @@ class User < ActiveRecord::Base
     if is_public == 'false'
       instance.be_private
     end
+    instance
   end
 
   def open_books

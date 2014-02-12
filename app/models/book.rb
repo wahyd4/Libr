@@ -1,5 +1,7 @@
 class Book < ActiveRecord::Base
-  attr_accessible :author, :image, :isbn, :name, :id
+  attr_accessible :author, :image, :isbn, :name, :id, :publisher, :price, :sub_title,
+                  :pages, :image_large, :translators, :publish_date
+
   validates_presence_of :image, :isbn, :name, message: 'cannot be blank.'
   validates_uniqueness_of :isbn, :image, message: 'should be unique.'
 
@@ -53,7 +55,13 @@ class Book < ActiveRecord::Base
     Book.create name: book_info['title'],
                 image: book_info['image'],
                 isbn: book_info['isbn13'],
-                author: book_info['author'][0]
+                author: book_info['author'][0],
+                publisher: book_info['publisher'],
+                price: book_info['price'],
+                sub_title: book_info['subtitle'],
+                pages: book_info['pages'],
+                image_large: book_info['images']['large'],
+                publish_date: book_info['pubdate']
 
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207124537) do
+ActiveRecord::Schema.define(version: 20140212073818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(version: 20140207124537) do
     t.string   "author"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "publisher"
+    t.string   "price"
+    t.string   "sub_title"
+    t.string   "pages"
+    t.string   "image_large"
+    t.string   "translators"
+    t.string   "publish_date"
   end
 
   create_table "borrow_records", force: true do |t|
