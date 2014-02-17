@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
   end
 
   def create_book_instance(isbn, is_public = 'true')
-    book = Book.find_by_isbn isbn
+    book = Book.fetch_book_info_from_douban isbn
     instance = book.new_instance_for self
 
     if is_public == 'false'
