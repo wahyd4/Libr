@@ -1,7 +1,7 @@
 class Api::V1::BooksController < ApplicationController
 
   before_filter :allow_cors
-  before_filter :authenticate_user_from_token!
+  before_filter :authenticate_user_from_token!, except: :book_info
 
   def create
 
@@ -28,8 +28,21 @@ class Api::V1::BooksController < ApplicationController
                   total_count: user.open_books.count}
   end
 
+
   def total_page(count, per_page)
     count%per_page == 0 ? count/per_page : (count/per_page) +1
+  end
+
+  def book_info
+    book = Book.fetch_book_info_from_douban params[:isbn]
+
+    if book == nil
+      render json: {book: nil, message: 'Cannot find mathched book.'}
+      return
+    end
+    render json: book.to_json(include: [{:users =>
+                                             {except: [:api_key, :email, :created_at]}},
+                                        :total_available_instances])
   end
 
 end

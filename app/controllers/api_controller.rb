@@ -5,7 +5,7 @@ class ApiController < ApplicationController
   #before_filter :authenticate_user!
 
   def book_info
-    book = Book.find_by_isbn params[:isbn]
+    book = Book.fetch_book_info_from_douban params[:isbn]
 
     if book == nil
       render json: {book: nil, message: 'There is no mathched book.'}
