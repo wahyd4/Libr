@@ -45,6 +45,7 @@ gem 'kgio'
 gem 'memcachier'
 
 gem 'protected_attributes'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'rspec-rails'

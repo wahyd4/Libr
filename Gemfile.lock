@@ -94,6 +94,7 @@ GEM
     msgpack (0.5.6)
     multi_json (1.8.4)
     multi_test (0.0.3)
+    newrelic_rpm (3.7.2.192)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
@@ -221,6 +222,7 @@ DEPENDENCIES
   kgio
   machinist
   memcachier
+  newrelic_rpm
   nokogiri
   pg
   protected_attributes
