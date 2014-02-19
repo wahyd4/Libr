@@ -2,6 +2,8 @@ class Api::V1::BooksController < ApplicationController
 
   before_filter :allow_cors
   before_filter :authenticate_user_from_token!, except: :book_info
+  skip_before_filter :verify_authenticity_token, :only => [:create]
+
 
   def create
 
