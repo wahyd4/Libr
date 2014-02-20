@@ -69,11 +69,13 @@ Libr::Application.configure do
 
   config.eager_load = true
 
-  client = Dalli::Client.new(ENV["MEMCACHIER_SERVERS"], :value_max_bytes => 10485760)
-  config.action_dispatch.rack_cache = {
-      :metastore => client,
-      :entitystore => client
-  }
+  #client = Dalli::Client.new(ENV["MEMCACHIER_SERVERS"], :value_max_bytes => 10485760)
+  #config.action_dispatch.rack_cache = {
+  #    :metastore => client,
+  #    :entitystore => client
+  #}
+
+  config.action_dispatch.rack_cache = nil
 
 
 end
