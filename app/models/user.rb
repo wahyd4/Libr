@@ -90,12 +90,13 @@ class User < ActiveRecord::Base
   end
 
   def fetch_new_books(after_book_id)
+    books_count = (GlobalConstants::BOOKS_PER_PAGE_MOBILE).to_i
     target_book_instance_id = BookInstance.find_by_book_id(after_book_id).id
 
     books = self.book_instances.select { |instance|
       instance.id > target_book_instance_id
     }
-    (books.count >10) ? books[1, 10] : books
+    (books.count >books_count) ? books[1, books_count] : books
 
   end
 
