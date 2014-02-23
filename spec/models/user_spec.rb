@@ -85,4 +85,18 @@ describe :User do
     end
 
   end
+
+  describe :fetch_new_books do
+    it 'should return user"s book after the one parsed to program' do
+      book_one = @user.book_instances.create book_id: 1
+      book_two = @user.book_instances.create book_id: 2
+      book_three = @user.book_instances.create book_id: 3
+
+      @user.fetch_new_books(2).count.should ==1
+      @user.fetch_new_books(3).should == []
+
+
+    end
+
+  end
 end

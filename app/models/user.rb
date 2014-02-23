@@ -89,4 +89,14 @@ class User < ActiveRecord::Base
     book_instances.where(public: false)
   end
 
+  def fetch_new_books(after_book_id)
+    target_book_instance_id = BookInstance.find_by_book_id(after_book_id).id
+
+    books = self.book_instances.select { |instance|
+      instance.id > target_book_instance_id
+    }
+    (books.count >10) ? books[1, 10] : books
+
+  end
+
 end

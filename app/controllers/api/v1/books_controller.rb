@@ -20,7 +20,7 @@ class Api::V1::BooksController < ApplicationController
 
   def index
     user = User.find_by_email params[:user_email]
-    count = 10
+    count = GlobalConstants::BOOKS_PER_PAGE_MOBILE
     @books = user.open_books.order('id DESC').paginate(:page => params[:page], :per_page => count)
     books = @books.map! { |book_instance| book_instance.book }
     params[:page] ? current_page = params[:page] : current_page = '1'
@@ -45,6 +45,11 @@ class Api::V1::BooksController < ApplicationController
     render json: book.to_json(include: [{:users =>
                                              {except: [:api_key, :email, :created_at]}},
                                         :total_available_instances])
+  end
+
+  def fetch_new_books
+    user = User.find_by_email params[:user_email]
+    user.fetch_new_books params[:after_book_id]
   end
 
 end
