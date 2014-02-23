@@ -6,16 +6,18 @@ class Api::V1::BooksController < ApplicationController
 
 
   def create
-
-    book_info = Book.fetch_book_info_from_douban params[:isbn]
+    book_info = Book.find_book params[:isbn]
     if book_info['code'] == 6000
       render json: {status: 'error', message: 'ISBN is invalid, we can not find your book.'}
       return
     end
     user = User.find_by_email params[:user_email]
     instance = user.create_book_instance params[:isbn]
-    render json: {status: 'success', book: instance.book}
-
+    if instance
+      render json: {status: 'success', book: instance.book}
+    else
+      render json: {status: 'error', message: 'please do not create duplicated book  instance.'}
+    end
   end
 
   def index

@@ -73,8 +73,10 @@ class User < ActiveRecord::Base
 
   def create_book_instance(isbn, is_public = 'true')
     book = Book.find_book isbn
+    if book.users.include? self
+      return nil
+    end
     instance = book.new_instance_for self
-
     if is_public == 'false'
       instance.be_private
     end

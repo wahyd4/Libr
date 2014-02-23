@@ -75,19 +75,13 @@ class Book < ActiveRecord::Base
   end
 
   def self.find_book(isbn)
-    if Book.find_by_isbn isbn
-      Book.find_by_isbn isbn
-    else
-      Book.fetch_book_info_from_douban isbn
-    end
+    book = Book.find_by_isbn isbn
+    book ? book : Book.fetch_book_info_from_douban(isbn)
 
   end
 
-
   def open_owners
-    total_available_instances.map { |instance|
-      instance.user
-    }
+    total_available_instances.map { |instance| instance.user }
   end
 
 
