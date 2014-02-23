@@ -51,7 +51,8 @@ class Api::V1::BooksController < ApplicationController
 
   def fetch_new_books
     user = User.find_by_email params[:user_email]
-    user.fetch_new_books params[:after_book_id]
+    books = user.fetch_new_books params[:after_book_id]
+    render json: {books: books}
   end
 
 end
