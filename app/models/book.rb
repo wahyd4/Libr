@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
   attr_accessible :author, :image, :isbn, :name, :id, :publisher, :price, :sub_title,
-                  :pages, :image_large, :translators, :publish_date
+                  :pages, :image_large, :translators, :publish_date, :sort_id
 
   validates_presence_of :image, :isbn, :name, message: 'cannot be blank.'
   validates_uniqueness_of :isbn, :image, message: 'should be unique.'

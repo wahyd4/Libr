@@ -14,7 +14,7 @@ class Api::V1::BooksController < ApplicationController
     user = User.find_by_email params[:user_email]
     instance = user.create_book_instance params[:isbn]
     if instance
-      render json: {status: 'success', book: instance.book}
+      render json: {status: 'success', book: instance.sortable_book}
     else
       render json: {status: 'error', message: 'please do not create duplicated book  instance.'}
     end
@@ -23,8 +23,8 @@ class Api::V1::BooksController < ApplicationController
   def index
     user = User.find_by_email params[:user_email]
     count = GlobalConstants::BOOKS_PER_PAGE_MOBILE
-    @books = user.open_books.order('id DESC').paginate(:page => params[:page], :per_page => count)
-    books = @books.map! { |book_instance| book_instance.book }
+    @books = user.open_books.paginate(:page => params[:page], :per_page => count)
+    books = @books.map! { |book_instance| book_instance.sortable_book }
     params[:page] ? current_page = params[:page] : current_page = '1'
     render json: {books: books,
                   current_page: current_page,
@@ -52,7 +52,7 @@ class Api::V1::BooksController < ApplicationController
   def fetch_new_books
     user = User.find_by_email params[:user_email]
     books = user.fetch_new_books params[:after_book_id]
-    books = books.map! { |book_instance| book_instance.book }
+    books = books.map! { |book_instance| book_instance.sortable_book }
     render json: {books: books}
   end
 

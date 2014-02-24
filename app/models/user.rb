@@ -84,7 +84,7 @@ class User < ActiveRecord::Base
   end
 
   def open_books
-    book_instances.where(public: true)
+    book_instances.where(public: true).order('id DESC')
   end
 
   def private_books

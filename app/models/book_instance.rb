@@ -29,4 +29,11 @@ class BookInstance < ActiveRecord::Base
     update_attributes public: true
   end
 
+  def sortable_book
+    sortable_book = self.book
+    sortable_book.sort_id = self.id
+    sortable_book
+
+  end
+
 end

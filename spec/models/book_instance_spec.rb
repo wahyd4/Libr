@@ -23,4 +23,9 @@ describe BookInstance do
     instance.public.should == false
   end
 
+  it 'should return book with sort_id' do
+    sortable_book = @instance.sortable_book
+    sortable_book.sort_id.should_not be_nil
+  end
+
 end
