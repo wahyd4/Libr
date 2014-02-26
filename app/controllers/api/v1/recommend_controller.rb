@@ -12,7 +12,11 @@ class Api::V1::RecommendController < ApplicationController
     end
     users = location.users_within_kilos_of 5
     recommend_service = RecommendService.new
-    books = recommend_service.sort_users_books_by_popularity users
+    books_hash = recommend_service.sort_users_books_by_popularity users
+    books = books_hash.map { |book, v|
+      book.sort_id = v
+      book
+    }
     render json: books
   end
 
