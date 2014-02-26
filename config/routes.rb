@@ -62,6 +62,8 @@ Libr::Application.routes.draw do
       get 'books/bookinfo/:isbn' => 'books#book_info'
 
       get 'books/newbooks/:after_book_id' => 'books#fetch_new_books'
+
+      get 'recommend/locations/:location_id' => 'recommend#popular_books_around_me'
     end
   end
 

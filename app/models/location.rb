@@ -13,7 +13,7 @@ class Location < ActiveRecord::Base
   def users_within_kilos_of(kilo)
     locations_within_kilos_of(kilo).map { |location|
       location.user
-    }
+    }.uniq
   end
 
 end
