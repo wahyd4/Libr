@@ -46,6 +46,8 @@ gem 'memcachier'
 
 gem 'protected_attributes'
 gem 'newrelic_rpm'
+gem 'gis-distance'
+
 
 group :development, :test do
   gem 'rspec-rails'
