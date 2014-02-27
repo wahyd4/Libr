@@ -16,4 +16,10 @@ class RecommendService
     sort_books_by_popularity get_books_from_users(users)
   end
 
+
+  def get_similar_users(target_user)
+    filtered_user = User.all.select { |user| (user.book_ids & target_user.book_ids).length > 0 }
+    filtered_user.sort_by { |user| (user.book_ids & target_user.book_ids).length }.reverse
+  end
+
 end

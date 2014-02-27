@@ -44,6 +44,10 @@ class User < ActiveRecord::Base
     book_instances.map { |instance| instance.book }
   end
 
+  def book_ids
+    books.map { |book| book.id }
+  end
+
   def return_book (instance)
     record = BorrowRecord.where(user_id: id, book_instance_id: instance.id, return_date: nil)[0]
     record.return_book
