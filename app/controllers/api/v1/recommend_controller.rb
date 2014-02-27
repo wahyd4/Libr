@@ -19,7 +19,8 @@ class Api::V1::RecommendController < ApplicationController
   def recommend_books_by_similarity_for_me
     user = User.find_by_email params[:user_email]
     recommend_service = RecommendService.new
-    recommend_service.recommend_books_by_similarity user
+    books = recommend_service.recommend_books_by_similarity user
+    render json: books
   end
 
 end
