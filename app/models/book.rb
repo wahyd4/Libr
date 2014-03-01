@@ -71,7 +71,11 @@ class Book < ActiveRecord::Base
     path ='/v2/book/isbn/' + isbn
     response = http.get(path)
     book_info = JSON.parse response.body
-    self.create_book_by_isbn book_info
+    if book_info['code'] == 6000
+      book_info
+    else
+      self.create_book_by_isbn book_info
+    end
   end
 
   def self.find_book(isbn)
