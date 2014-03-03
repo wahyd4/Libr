@@ -66,6 +66,10 @@ Libr::Application.routes.draw do
       get 'recommend/locations/:location_id' => 'recommend#popular_books_around_me'
 
       get 'recommend/me' => 'recommend#recommend_books_by_similarity_for_me'
+
+      post 'books/:book_id/comments' => 'comments#create'
+      get 'books/:book_id/comments' => 'comments#index'
+
     end
   end
 

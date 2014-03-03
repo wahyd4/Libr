@@ -47,6 +47,7 @@ gem 'memcachier'
 gem 'protected_attributes'
 gem 'newrelic_rpm'
 gem 'gis-distance'
+gem 'acts_as_commentable_with_threading'
 
 
 group :development, :test do

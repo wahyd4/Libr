@@ -8,6 +8,8 @@ class Book < ActiveRecord::Base
   has_many :book_instances
   has_many :users, through: :book_instances
 
+  acts_as_commentable
+
   def current_borrowers
     borrowers = []
     book_instances.each { |instance|
