@@ -97,7 +97,7 @@ class User < ActiveRecord::Base
 
   def fetch_new_books(after_book_id)
     books_count = (GlobalConstants::BOOKS_PER_PAGE_MOBILE).to_i
-    target_book_instance_id = BookInstance.find_by_book_id(after_book_id).id
+    target_book_instance_id = (book_instances & BookInstance.where(book_id: after_book_id)).last.id
 
     books = self.book_instances.select { |instance|
       instance.id > target_book_instance_id
