@@ -38,8 +38,7 @@ class Api::V1::BooksController < ApplicationController
   end
 
   def book_info
-    book = Book.fetch_book_info_from_douban params[:isbn]
-
+    book = Book.find_book params[:isbn]
     if book == nil
       render json: {book: nil, message: 'Cannot find mathched book.'}
       return
