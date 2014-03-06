@@ -106,4 +106,8 @@ class User < ActiveRecord::Base
 
   end
 
+  def avatar_url
+    Gravatar.new(:email).image_url
+  end
+
 end

@@ -49,6 +49,8 @@ gem 'newrelic_rpm'
 gem 'gis-distance'
 gem 'acts_as_commentable_with_threading'
 
+gem 'gravatar-ultimate'
+
 
 group :development, :test do
   gem 'rspec-rails'
