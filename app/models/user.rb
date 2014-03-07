@@ -4,11 +4,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  before_save :set_avatar
+
   after_save :ensure_authentication_token
+
 
   include Utils
   attr_accessible :email, :name, :avatar, :id, :location, :preferred_name, :encrypted_password, :password,
                   :password_confirmation, :remember_me
+
 
   has_many :book_instances
   has_many :borrow_records
@@ -22,6 +26,11 @@ class User < ActiveRecord::Base
       generate_auth_key
     end
   end
+
+  def set_avatar
+    self.avatar = Gravatar.new(self.email).image_url
+  end
+
 
   def self.create_user(name, avatar)
     User.create name: name, avatar: avatar

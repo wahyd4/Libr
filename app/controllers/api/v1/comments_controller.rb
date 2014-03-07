@@ -16,7 +16,7 @@ class Api::V1::CommentsController < ApplicationController
   def index
     book = Book.find_by_id params[:book_id]
     comments = book.comment_threads
-    render json: comments
+    render json: comments.to_json(include: {user: {only: [:avatar, :preferred_name]}})
   end
 
 end
