@@ -9,7 +9,7 @@ class Api::V1::CommentsController < ApplicationController
     user = User.find_by_email params[:user_email]
     comment = Comment.build_from(book, user.id, params[:content])
     comment.save
-    render json: {status: 'success', comment: comment}
+    render json: comment.to_json(include: {user: {only: [:avatar, :preferred_name]}})
 
   end
 
