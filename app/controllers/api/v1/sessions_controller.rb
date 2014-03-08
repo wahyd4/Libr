@@ -11,7 +11,7 @@ class Api::V1::SessionsController < Devise::SessionsController
         user: {
             token: current_user.auth_keys.last.value,
             avatar: current_user.avatar,
-            name: current_user.preferred_name
+            name: current_user.preferred_name ? current_user.preferred_name : '匿名'
 
         }
 
