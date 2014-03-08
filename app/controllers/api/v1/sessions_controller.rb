@@ -6,7 +6,16 @@ class Api::V1::SessionsController < Devise::SessionsController
 
   def create
     warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#failure")
-    render :json => {:success => true, token: current_user.auth_keys.last.value}
+    render :json => {
+        success: true,
+        user: {
+            token: current_user.auth_keys.last.value,
+            avatar: current_user.avatar,
+            name: current_user.preferred_name
+
+        }
+
+    }
   end
 
 
