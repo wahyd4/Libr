@@ -1,0 +1,74 @@
+html lang="en"
+head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    meta name="description" content=""
+    meta name="author" content=""
+    link rel="shortcut icon" href="../../assets/ico/favicon.ico"
+
+    title Libr
+
+    link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    = stylesheet_link_tag 'home', media: 'all'
+
+
+body
+
+div class="navbar navbar-default navbar-static-top" role="navigation"
+    div class="container"
+        div class="navbar-header"
+            button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+
+            a class="navbar-brand" href="#" Libr
+        div class="navbar-collapse collapse"
+            ul class="nav navbar-nav"
+                li
+                  a href="/books/new" 添加图书
+                li
+                  a href="/books" 图书列表
+                li
+                  a href="" 书单
+                li
+                  a href="/records/" 历史记录
+                - if  @current_user != nil
+                  li
+                    a href="/users/#{@current_user.id}/books" 我的书架
+                -if @current_user != nil
+                  li
+                    a href="/users/#{@current_user.id}"
+                      img.img-circle style="max-width:30px;margin:-5px" src="#{@current_user.avatar}" title="#{@current_user.preferred_name}"
+                      = @current_user.email
+                  li
+                    =link_to '注销',destroy_user_session_path, :method => :delete
+                - else
+                  li
+                    =link_to '登录', new_user_session_path
+                  li
+                    =link_to '注册',new_user_registration_path
+
+
+
+div.container.home-container
+
+    div.libr
+      h1 Libr
+      img src="/assets/libr.png"
+      h2 图书社交；帮你找到你附近的好人、好书；推荐你最爱的书
+      p 即将开放下载，敬请期待
+      div.downloads
+        a href="#" class="btn btn-default btn-large" Android版应用下载
+        a href="#" class="btn btn-default btn-large" Iphone版应用下载
+
+div#footer
+       div.container
+          p.muted.credit  © 2014 Junv
+          span
+            a  href="https://github.com/wahyd4/Libr/blob/master/README.md" 了解更多信息
+          span style="margin-left:20px;"
+            a href="https://github.com/wahyd4/Libr/commits/master" 更新日志
+
+
+script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"
+script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"
+

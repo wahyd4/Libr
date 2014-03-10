@@ -1,22 +1,22 @@
-div.pull-right
-  form.form-search method="get" action="/search"
-    div.input-append
-      input.span2.search-query type="text" name="keyword"
-      button.btn type="submit" 搜索
-h3.pull-left  新入库图书:
-div.clearfix
-div.row-fluid
-  div.span9
-    - @books.each do |book|
-      div.one-item
-        div
-          a href="/books/#{book.id}"
-             img.cover src="#{book.image}"
-          p.title style="font-size:0.9em;"  =book.name
-  div.span3
-    ul.nav.nav-list.well
-      li.nav-header style="font-size:14px;" 拥有书最多的10名用户
-
-    hr
-    ul.nav.nav-list.well
-          li.nav-header style="font-size:14px;" 借书最多的10名用户
+/div.pull-right
+/  form.form-search method="get" action="/search"
+/    div.input-append
+/      input.span2.search-query type="text" name="keyword"
+/      button.btn type="submit" 搜索
+/h3.pull-left  新入库图书:
+/div.clearfix
+/div.row-fluid
+/  div.span9
+/    - @books.each do |book|
+/      div.one-item
+/        div
+/          a href="/books/#{book.id}"
+/             img.cover src="#{book.image}"
+/          p.title style="font-size:0.9em;"  =book.name
+/  div.span3
+/    ul.nav.nav-list.well
+/      li.nav-header style="font-size:14px;" 拥有书最多的10名用户
+/
+/    hr
+/    ul.nav.nav-list.well
+/          li.nav-header style="font-size:14px;" 借书最多的10名用户
