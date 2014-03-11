@@ -50,6 +50,7 @@ Libr::Application.routes.draw do
     namespace :v1 do
       devise_scope :user do
         resources :sessions, :only => [:create, :destroy, :failure]
+        resources :registrations, :only => [:create]
       end
 
       get 'locations/detail' => 'locations#get_location'
