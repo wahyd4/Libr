@@ -23,7 +23,7 @@ class Api::V1::SessionsController < Devise::SessionsController
   end
 
   def failure
-    render :json => {:success => false, :errors => ["Login Failed"]}
+    render :json => {:success => false, :errors => current_user.errors}
   end
 
 end

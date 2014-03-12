@@ -89,7 +89,7 @@ body {
 }
 
 .home-container .libr img {
-    max-width: 30%;
+    max-width: 35%;
 }
 
 .libr h1 {
@@ -97,14 +97,22 @@ body {
 
 }
 
+.libr h2 {
+    font-size: 1.3em;
+    text-align: center;
+    line-height: 1.5em;
+}
+
 .downloads {
     margin: auto 0;
 }
 
-.downloads a{
-    margin:0 20px;
+.downloads a {
+    margin: 10px 20px;
 }
 
-#footer{
+#footer {
     text-align: right;
 }
+
+
