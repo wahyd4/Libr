@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  before_save :set_avatar
+  before_save :set_avatar, :set_preferred_name
 
   after_save :ensure_authentication_token
 
@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
 
   def set_avatar
     self.avatar = Gravatar.new(self.email).image_url
+  end
+
+  def set_preferred_name
+    self.preferred_name = email.split('@')[0]
   end
 
 
