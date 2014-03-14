@@ -10,7 +10,7 @@ class Api::V1::RecommendController < ApplicationController
       render json: {status: 'error', message: 'Cannot find the location'}
       return
     end
-    users = location.users_within_kilos_of 5
+    users = location.users_within_kilos_of 10
     recommend_service = RecommendService.new
     books = recommend_service.sort_users_books_by_popularity users
     render json: books
