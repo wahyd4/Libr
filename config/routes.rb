@@ -71,6 +71,8 @@ Libr::Application.routes.draw do
       post 'books/:book_id/comments' => 'comments#create'
       get 'books/:book_id/comments' => 'comments#index'
 
+      post 'link/douban/:name' => 'books#import_douban_books'
+
     end
   end
 

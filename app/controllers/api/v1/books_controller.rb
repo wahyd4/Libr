@@ -2,7 +2,7 @@ class Api::V1::BooksController < ApplicationController
 
   before_filter :allow_cors
   before_filter :authenticate_user_from_token!, except: :book_info
-  skip_before_filter :verify_authenticity_token, :only => [:create]
+  skip_before_filter :verify_authenticity_token, :only => [:create, :import_douban_books]
 
 
   def create
@@ -53,6 +53,12 @@ class Api::V1::BooksController < ApplicationController
     books = user.fetch_new_books params[:after_book_id]
     books = books.map! { |book_instance| book_instance.sortable_book }
     render json: {books: books}
+  end
+
+  def import_douban_books
+    user = User.find_by_email params[:user_email]
+    user.douban_user params[:name]
+    render json: {status: 'success', msg: 'link Douban successful'}
   end
 
 end

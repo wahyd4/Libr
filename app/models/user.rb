@@ -8,11 +8,11 @@ class User < ActiveRecord::Base
 
   after_save :ensure_authentication_token
 
+  has_many :third_party_user_datas
 
   include Utils
   attr_accessible :email, :name, :avatar, :id, :location, :preferred_name, :encrypted_password, :password,
                   :password_confirmation, :remember_me
-
 
   has_many :book_instances
   has_many :borrow_records
@@ -121,6 +121,17 @@ class User < ActiveRecord::Base
 
   def avatar_url
     Gravatar.new(:email).image_url
+  end
+
+
+  def douban_user(name)
+    if !third_party_user_datas.empty?
+      user_data = third_party_user_datas.first
+      user_data.douban_user_name = name
+      user_data.save
+    else
+      third_party_user_datas.create douban_user_name: name
+    end
   end
 
 end

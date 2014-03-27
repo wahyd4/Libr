@@ -95,7 +95,14 @@ describe :User do
       @user.fetch_new_books(2).count.should ==1
       @user.fetch_new_books(3).should == []
 
+    end
 
+  end
+
+  describe 'add douban user info' do
+    it 'should create third party user data for add douban user when first time to do this ' do
+      @user.douban_user('s')
+      @user.third_party_user_datas.empty? ==false
     end
 
   end
