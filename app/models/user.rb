@@ -132,6 +132,8 @@ class User < ActiveRecord::Base
     else
       third_party_user_datas.create douban_user_name: name
     end
+    # Temp disabled
+    #DoubanBooksWorker.perform_async name
   end
 
 end
