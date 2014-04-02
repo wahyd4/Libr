@@ -60,7 +60,7 @@ Libr::Application.routes.draw do
       resource :books, :only => [:create]
       get 'books' => 'books#index'
 
-      get 'books/bookinfo/:isbn' => 'books#book_info'
+      get 'books/:isbn' => 'books#book_info'
 
       get 'books/newbooks/:after_book_id' => 'books#fetch_new_books'
 
