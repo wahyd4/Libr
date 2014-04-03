@@ -4,7 +4,7 @@ class DoubanBooksWorker
 
   def perform(user_id, name)
     user = User.find_by_id user_id
-    count = 50
+    count = 40
     total = 0
     start = 0
     while (start == 0) || (total-start > count)
