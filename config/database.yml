@@ -51,8 +51,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: libr_production
+  database: db
   pool: 5
-  host: localhost
-  user: postgres
-  password:
+#  host: localhost
+#  user: postgres
+#  password:
