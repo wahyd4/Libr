@@ -99,11 +99,11 @@ describe :User do
 
   end
 
-  describe 'add douban user info' do
-    it 'should create third party user data for add douban user when first time to do this ' do
-      @user.douban_user('s')
-      @user.third_party_user_datas.empty? ==false
-    end
-
-  end
+  #describe 'add douban user info' do
+  #  it 'should create third party user data for add douban user when first time to do this ' do
+  #    @user.douban_user('s')
+  #    @user.third_party_user_datas.empty? ==false
+  #  end
+  #
+  #end
 end
