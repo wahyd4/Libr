@@ -2,8 +2,9 @@ class DoubanBooksWorker
 
   include Sidekiq::Worker
 
-  def perform(user, name)
-    count = 30
+  def perform(user_id, name)
+    user = User.find_by_id user_id
+    count = 50
     total = 0
     start = 0
     while (start == 0) || (total-start > count)

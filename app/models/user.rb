@@ -133,7 +133,7 @@ class User < ActiveRecord::Base
       third_party_user_datas.create douban_user_name: name
     end
     # Temp disabled
-    DoubanBooksWorker.perform_async self, name
+    DoubanBooksWorker.perform_async id, name
   end
 
 end
