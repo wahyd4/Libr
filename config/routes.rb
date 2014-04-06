@@ -57,7 +57,12 @@ Libr::Application.routes.draw do
 
       resource :locations, :only => [:create, :destroy]
       get 'locations' => 'locations#index'
-      resource :books, :only => [:create]
+
+      resources :users do
+        resources :books, :only => [:create, :index]
+      end
+
+
       get 'books' => 'books#index'
 
       get 'books/:isbn' => 'books#book_info'

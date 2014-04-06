@@ -50,7 +50,7 @@ gem 'gis-distance'
 gem 'acts_as_commentable_with_threading'
 
 gem 'gravatar-ultimate'
-gem 'sidekiq'
+#gem 'sidekiq'
 
 
 group :development, :test do
