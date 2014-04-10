@@ -7,7 +7,7 @@ $(document).ready(function () {
             return;
         }
         $.ajax({
-            url:'https://api.douban.com/v2/book/isbn/' + isbn + '?alt=xd',
+            url:'https://api.douban.com/v2/book/isbn/' + isbn + '?callback=displayBookInfo&alt=xd',
             dataType:"jsonp",
             success:function (json) {
                 console.log(json)
@@ -43,7 +43,7 @@ $(document).ready(function () {
 
     }
 
-    loadBook();
+//    loadBook();
 
 });
 

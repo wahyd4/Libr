@@ -8,10 +8,29 @@ div.detail.row-fluid
   input.isbn hidden="true" value="#{@book.isbn}"
   div.span3
     a.douban-link
-      img.cover
+      img.cover src="#{@book.image_large}"
   div.span4
-     ul.unstyled
+     ul.well.unstyled
+       li
+         b 副标题:
+         =@book.sub_title
+       li
+         b ISBN:
+         =@book.isbn
+       li
+         b 作者:
+         = @book.author
+       li
+         b 出版社:
+         = @book.publisher
+       li
+         b 出版日期:
+         = @book.publish_date
+       li
+         b 售价:
+         = @book.price
      div.well.tags
+
   div.span4
     div.action style="text-align:center"
       = form_tag controller: 'book', action: 'borrow' do

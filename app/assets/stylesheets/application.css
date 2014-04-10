@@ -152,10 +152,16 @@ select {
     width: 120px;
 }
 
-
-.borrow-btn{
+.borrow-btn {
     margin: -0.79em 0 0 0.7em;
 }
-.a-record span{
+
+.a-record span {
     margin-right: 20px;
+}
+
+.detail .span4 ul li b {
+    width: 70px;
+    text-align: left;
+    float: left;
 }
