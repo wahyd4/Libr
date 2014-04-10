@@ -73,6 +73,8 @@ Build Status
  * 2014.4.10 由于豆瓣API的变动，导致jquery jsonp方式不再工作了，因此，在图书详情页面只使用了自带的一些图书属性。
 
 
+
+
 #### JSON API使用指南（下面的API已不再准确，请暂时不要使用）
 
         * GET /api/userinfo/:user_id 用户用户的相关信息
