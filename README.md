@@ -1,7 +1,7 @@
 Libr
 ====
 
-基于图书与阅读的社交应用。
+基于图书与阅读的社交应用,目前主要focus 在移动客户端
 
 Website:
 ====
@@ -26,7 +26,7 @@ Build Status
 #### 移动平台客户端
 
 * [Android][3]
-* [IOS][4]
+* [IOS]
 
 #### 更新日志
  * 2013.2.17 添加个人信息编辑，设置昵称、电子邮箱、所在城市
@@ -95,9 +95,7 @@ Build Status
 #### License
         The MIT License (MIT)
 
-[1]:https://github.com/hoverruan
-[2]:https://github.com/xiaoboa
-[3]:https://github.com/hoverruan/libr-android
+[3]:http://librme.com/dist/android/libr-v01.apk
 [4]:https://github.com/xiaoboa/Libr-client
 
 
