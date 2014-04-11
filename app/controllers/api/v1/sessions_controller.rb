@@ -9,10 +9,11 @@ class Api::V1::SessionsController < Devise::SessionsController
     render :json => {
         success: true,
         user: {
+            id: current_user.id,
             token: current_user.auth_keys.last.value,
             avatar: current_user.avatar,
             name: current_user.preferred_name ? current_user.preferred_name : '匿名'
-        }
+        }, status: :ok
 
     }
   end
@@ -23,7 +24,8 @@ class Api::V1::SessionsController < Devise::SessionsController
   end
 
   def failure
-    render :json => {:success => false, :errors => current_user.errors}
+
+    render :json => {:success => false, :errors => '用户名或者密码错误,请重试'}, status: :forbidden
   end
 
 end

@@ -7,7 +7,7 @@ class Api::V1::RecommendController < ApplicationController
     user = User.find_by_email params[:user_email]
     location = Location.find_by_id params[:location_id]
     if location == nil or !user.locations.include? location
-      render json: {status: 'error', message: 'Cannot find the location'}
+      render json: {status: 'error', message: '不能找到当前地点'}
       return
     end
     users = location.users_within_kilos_of 10

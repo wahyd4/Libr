@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   def same_user(controller)
     user = User.find_by_id params[:id]
     if user== nil || user!= @current_user
-      redirect_to :root, notice: 'You do not have the right to see others keys.'
+      redirect_to :root, notice: '你没有权限查看其他token'
     end
   end
 
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     if user && user.auth_keys.include?(token)
       sign_in user, store: false
     else
-      render :json => {:success => false, msg: "Authentication failed"}
+      render :json => {:success => false, msg: 'token验证失败'}, status: :forbidden
     end
   end
 

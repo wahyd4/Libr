@@ -8,15 +8,15 @@ class Api::V1::BooksController < ApplicationController
   def create
     book_info = Book.find_book params[:isbn]
     if book_info['code'] == 6000
-      render json: {status: 'error', message: 'ISBN is invalid, we can not find your book.'}
+      render json: {status: 'error', message: 'ISBN 不存在，不能找到当前图书'}, status: :not_found
       return
     end
     user = User.find_by_email params[:user_email]
     instance = user.create_book_instance params[:isbn]
     if instance
-      render json: {status: 'success', book: instance.sortable_book}
+      render json: {status: 'success', book: instance.sortable_book}, status: :ok
     else
-      render json: {status: 'error', message: 'please do not create duplicated book  instance.'}
+      render json: {status: 'error', message: '请不要重复添加相同书籍'},status: :forbidden
     end
   end
 
@@ -40,7 +40,7 @@ class Api::V1::BooksController < ApplicationController
   def book_info
     book = Book.find_book params[:isbn]
     if book == nil
-      render json: {book: nil, message: 'Cannot find mathched book.'}
+      render json: {book: nil, message: '不同找到匹配的图书'}, status: :not_found
       return
     end
     render json: book.to_json(include: [{:users =>
@@ -58,7 +58,7 @@ class Api::V1::BooksController < ApplicationController
   def import_douban_books
     user = User.find_by_email params[:user_email]
     user.douban_user params[:name]
-    render json: {status: 'success', msg: 'link Douban successful'}
+    render json: {status: 'success', msg: '成功连接豆瓣用户'}
   end
 
 end

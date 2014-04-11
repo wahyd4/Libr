@@ -99,7 +99,7 @@ class UserController < ApplicationController
     @current_user.update_preferred_name params[:username]
     @current_user.update_email params[:email]
     @current_user.update_location params[:city]
-    redirect_to :back, :alert => 'Update information success.'
+    redirect_to :back, :alert => '更新个人信息成功'
 
   end
 
