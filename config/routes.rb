@@ -53,33 +53,28 @@ Libr::Application.routes.draw do
         resources :registrations, :only => [:create]
       end
 
-      get 'locations/detail' => 'locations#get_location'
-
       resource :locations, :only => [:create, :destroy]
+      get 'locations/detail' => 'locations#get_location'
       get 'locations' => 'locations#index'
 
 
-      resource :books, :only => [:create]
-
-      #resources :users do
-      #  resources :books, :only => [:create, :index]
-      #end
-
-
-      get 'books' => 'books#index'
-
-      get 'books/:isbn' => 'books#book_info'
 
       get 'books/newbooks/:after_book_id' => 'books#fetch_new_books'
+      resources :users do
+        resources :books, :only => [:create, :index]
+        get 'books/:isbn' => 'books#book_info'
+        post 'link/douban/:name' => 'books#import_douban_books'
+
+      end
+
+
 
       get 'recommend/locations/:location_id' => 'recommend#popular_books_around_me'
-
       get 'recommend/me' => 'recommend#recommend_books_by_similarity_for_me'
 
       post 'books/:book_id/comments' => 'comments#create'
       get 'books/:book_id/comments' => 'comments#index'
 
-      post 'link/douban/:name' => 'books#import_douban_books'
 
     end
   end

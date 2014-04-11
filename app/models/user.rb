@@ -32,7 +32,9 @@ class User < ActiveRecord::Base
   end
 
   def set_preferred_name
-    self.preferred_name = email.split('@')[0]
+    email_name = email.split('@')[0]
+    self.preferred_name = email_name
+    self.name = email_name
   end
 
 
