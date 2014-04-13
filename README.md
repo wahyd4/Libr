@@ -72,6 +72,7 @@ Build Status
  * 2014.4.3  部署应用到Dokku 容器，不需要修改database.yml ,只需要在dokku 里面配置 DATABASE_URL 环境变量就可以了
  * 2014.4.10 由于豆瓣API的变动，导致jquery jsonp方式不再工作了，因此，在图书详情页面只使用了自带的一些图书属性。
  * 2014.4.11 让部分API变得更符合restful规范
+ * 2014.4.13 返回用户绑定的豆瓣账号信息
 
 
 

@@ -12,7 +12,9 @@ class Api::V1::SessionsController < Devise::SessionsController
             id: current_user.id,
             token: current_user.auth_keys.last.value,
             avatar: current_user.avatar,
-            name: current_user.preferred_name ? current_user.preferred_name : '匿名'
+            name: current_user.preferred_name ? current_user.preferred_name : '匿名',
+            email: current_user.email,
+            douban_user: current_user.get_douban_user
         }, status: :ok
 
     }

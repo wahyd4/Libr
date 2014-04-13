@@ -138,4 +138,12 @@ class User < ActiveRecord::Base
     DoubanBooksWorker.perform_async id, name
   end
 
+  def get_douban_user
+    if third_party_user_datas.empty?
+      nil
+    else
+      third_party_user_datas.first.douban_user_name
+    end
+  end
+
 end
