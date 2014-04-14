@@ -1,75 +1,69 @@
 html lang="en"
 head
-    meta charset="utf-8"
-    meta http-equiv="X-UA-Compatible" content="IE=edge"
-    meta name="viewport" content="width=device-width, initial-scale=1"
-    meta name="description" content="移动端图书社交软件，帮你推荐附近流行的书籍，推荐与你兴趣相仿的用户，推荐你最可能喜欢的书籍"
-    meta name="Keywords" content="Android, IOS, iphone, 移动应用, 图书, 社交, 兴趣, 推荐, 安卓, 免费, 书籍, WEB, 互联网"
-    link rel="shortcut icon" href="../../assets/ico/favicon.ico"
+  meta charset="utf-8"
+  meta http-equiv="X-UA-Compatible" content="IE=edge"
+  meta name="viewport" content="width=device-width, initial-scale=1"
+  meta name="description" content="移动端图书社交软件，帮你推荐附近流行的书籍，推荐与你兴趣相仿的用户，推荐你最可能喜欢的书籍"
+  meta name="Keywords" content="Android, IOS, iphone, 移动应用, 图书, 社交, 兴趣, 推荐, 安卓, 免费, 书籍, WEB, 互联网"
+  link rel="shortcut icon" href="../../assets/ico/favicon.ico"
 
-    title Libr
+  title Libr
 
-    link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
-    = stylesheet_link_tag 'home', media: 'all'
+  link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+  = stylesheet_link_tag 'home', media: 'all'
 
 
 body
 
 div class="navbar navbar-default navbar-static-top" role="navigation"
-    div class="container"
-        div class="navbar-header"
-            button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+  div class="container"
+    div class="navbar-header"
+      button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
 
-            a class="navbar-brand" href="#" Libr
-        div class="navbar-collapse collapse"
-            ul class="nav navbar-nav"
-                li
-                  a href="/books/new" 添加图书
-                li
-                  a href="/books" 图书列表
-                li
-                  a href="" 书单
-                li
-                  a href="/records/" 历史记录
-                - if  @current_user != nil
-                  li
-                    a href="/users/#{@current_user.id}/books" 我的书架
-                -if @current_user != nil
-                  li
-                    a href="/users/#{@current_user.id}"
-                      img.img-circle style="max-width:30px;margin:-5px" src="#{@current_user.avatar}" title="#{@current_user.preferred_name}"
-                      = @current_user.email
-                  li
-                    =link_to '注销',destroy_user_session_path, :method => :delete
-                - else
-                  li
-                    =link_to '登录', new_user_session_path
-                  li
-                    =link_to '注册',new_user_registration_path
+      a class="navbar-brand" href="#" Libr
+    div class="navbar-collapse collapse"
+      ul class="nav navbar-nav"
 
+        li
+          a href="/books" 图书列表
+        - if  @current_user != nil
+          li
+            a href="/users/#{@current_user.id}/books" 我的书架
+        -if @current_user != nil
+          li
+            a href="/users/#{@current_user.id}"
+              img.img-circle style="max-width:30px;margin:-5px" src="#{@current_user.avatar}" title="#{@current_user.preferred_name}"
+              = @current_user.email
+          li
+            =link_to '注销',destroy_user_session_path, :method => :delete
+        - else
+          li
+            =link_to '登录', new_user_session_path
+          li
+            =link_to '注册',new_user_registration_path
 
 
 div.container.home-container
 
-    div.libr
-      =image_tag 'libr.png'
-      h2 图书社交；帮你找到你附近的好人、好书；推荐你最爱的书
-      p  欢迎下载Android版，并提供反馈，IOS 版本稍后发布
-      div.downloads
-        a href="/dist/android/libr-v01.apk" class="btn btn-default btn-large" Android版应用下载
-        a href="#" class="btn btn-default btn-large" iPhone版(即将开放)
+  div.libr
+    =image_tag 'libr.png'
+    h2 图书社交；帮你找到你附近的好人、好书；推荐你最爱的书
+    p  欢迎下载Android版，并提供反馈，IOS 版本稍后发布
+    div.downloads
+      a href="#" class="btn btn-default btn-large" Android版应用（即将开放）
+      a href="#" class="btn btn-default btn-large" iPhone版(即将开放)
 
 div#footer
-       div.container
-          p.muted.credit  © 2014 Junv
-          span
-            a  href="https://github.com/wahyd4/Libr/blob/master/README.md" 了解更多信息
-          span style="margin-left:20px;"
-            a href="https://github.com/wahyd4/Libr/commits/master" 更新日志
+  div.container
+    p.muted.credit  © 2014 Junv
+    span
+      a href="https://github.com/wahyd4/Libr/blob/master/README.md" 了解更多信息
+    span style="margin-left:20px;"
+      a href="https://github.com/wahyd4/Libr/commits/master" 更新日志
 
-
-script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"
+= javascript_include_tag 'application'
 script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"
+
 = javascript_include_tag 'ga'
 
 
