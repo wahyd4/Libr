@@ -20,7 +20,19 @@ class Api::V1::RecommendController < ApplicationController
     user = User.find_by_email params[:user_email]
     recommend_service = RecommendService.new
     books = recommend_service.recommend_books_by_similarity user
-    render json: books
+    if books.size > 30
+      filtered_books = books[0, 30]
+    else
+      filtered_books = books
+    end
+
+    render json: filtered_books
+  end
+
+  def random
+    recommend_service = RecommendService.new
+    random_books = recommend_service.random_books
+    render json: random_books
   end
 
 end

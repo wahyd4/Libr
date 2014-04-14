@@ -31,4 +31,10 @@ class RecommendService
     sort_users_books_by_popularity users
   end
 
+  def random_books
+    books = BookInstance.all.sample(GlobalConstants::RANDOM_BOOKS_COUNT)
+    books.map! { |book| book.sortable_book }
+    sort_books_by_popularity books
+  end
+
 end

@@ -58,7 +58,6 @@ Libr::Application.routes.draw do
       get 'locations' => 'locations#index'
 
 
-
       get 'books/newbooks/:after_book_id' => 'books#fetch_new_books'
       resources :users do
         resources :books, :only => [:create, :index]
@@ -68,9 +67,9 @@ Libr::Application.routes.draw do
       end
 
 
-
       get 'recommend/locations/:location_id' => 'recommend#popular_books_around_me'
       get 'recommend/me' => 'recommend#recommend_books_by_similarity_for_me'
+      get 'recommend/random' => 'recommend#random'
 
       post 'books/:book_id/comments' => 'comments#create'
       get 'books/:book_id/comments' => 'comments#index'
