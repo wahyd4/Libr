@@ -165,3 +165,7 @@ select {
     text-align: left;
     float: left;
 }
+
+.detail .span4 ul li {
+    display: flex;
+}
