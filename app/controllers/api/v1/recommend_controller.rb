@@ -13,7 +13,12 @@ class Api::V1::RecommendController < ApplicationController
     users = location.users_within_kilos_of 10
     recommend_service = RecommendService.new
     books = recommend_service.sort_users_books_by_popularity users
-    render json: books
+    if books.size > 30
+      filtered_books = books[0, 30]
+    else
+      filtered_books = books
+    end
+    render json: filtered_books
   end
 
   def recommend_books_by_similarity_for_me
