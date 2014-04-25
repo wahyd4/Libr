@@ -11,17 +11,16 @@ Build Status
 ====
 [![Build Status](https://travis-ci.org/wahyd4/Libr.png?branch=master)](https://travis-ci.org/wahyd4/Libr)
 [![Code Climate](https://codeclimate.com/github/wahyd4/Libr.png)](https://codeclimate.com/github/wahyd4/Libr)
-#### Export System variable
+#### 如果在本地运行服务端应用
 
-        export CLIENT_ID=***
-        export CLIENT_SECRET=***
-        export REDIRECT_URI=***
+  * git clone 代码
+  * 下载postgres 数据库软件（mac:<http://postgresapp.com/>）
+  * 进入代码目录，执行 bundle install 下载安装依赖
+  * rails s 启动服务器
+  * 如需支持导入豆瓣图书还需额外安装 redis 数据库（mac: brew install redis）
+  * redis-server 启动redis
+  * 进入项目目录并另外执行 bundle exec sidekiq (执行后台job，用于导入豆瓣图书)
 
-
-        export QQ_CLIENT_ID=***
-        export QQ_CLIENT_SECRET=***
-        export QQ_REDIRECT_URI=***
-        export export BAIDU_MAP_KEY= ***
 
 #### 移动平台客户端
 
