@@ -25,8 +25,8 @@ Build Status
 
 #### 移动平台客户端
 
-* [Android][3]
-* [IOS]
+* [Android, iOS and more][3]
+
 
 #### 更新日志
  * 2013.2.17 添加个人信息编辑，设置昵称、电子邮箱、所在城市
@@ -96,7 +96,7 @@ Build Status
 #### License
         The MIT License (MIT)
 
-[3]:http://librme.com/dist/android/libr-v01.apk
+[3]:https://github.com/wahyd4/Libr-mobile
 [4]:https://github.com/xiaoboa/Libr-client
 
 
