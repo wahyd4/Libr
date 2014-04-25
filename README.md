@@ -5,7 +5,8 @@ Libr
 
 Website:
 ====
-[http://libr.herokuapp.com/](http://libr.herokuapp.com/)
+
+Libr: <http://librme.com>
 
 Build Status
 ====
