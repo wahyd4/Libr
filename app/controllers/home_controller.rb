@@ -8,7 +8,7 @@ class HomeController < ApplicationController
 
   def index
     #@books = Book.order('id DESC').limit(20)
-    render :index, :layout => 'index_layout'
+    render :index, :layout => 'parallax_scroll_landing'
   end
 
   def douban_callback

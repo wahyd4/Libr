@@ -20,13 +20,11 @@ class Api::V1::SessionsController < Devise::SessionsController
     }
   end
 
-
   def destroy
     sign_out(resource_name)
   end
 
   def failure
-
     render :json => {:success => false, :errors => '用户名或者密码错误,请重试'}, status: :forbidden
   end
 

@@ -1,0 +1,83 @@
+html lang="en"
+head
+  meta charset="utf-8"
+  meta http-equiv="X-UA-Compatible" content="IE=edge"
+  meta name="viewport" content="width=device-width, initial-scale=1"
+  meta name="description" content="移动端图书社交软件，帮你推荐附近流行的书籍，推荐与你兴趣相仿的用户，推荐你最可能喜欢的书籍"
+  meta name="Keywords" content="Android, IOS, iphone, 移动应用, 图书, 社交, 兴趣, 推荐, 安卓, 免费, 书籍, WEB, 互联网"
+  link rel="shortcut icon" href="../../assets/ico/favicon.ico"
+
+  title Libr
+
+  link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+  link rel="stylesheet" href="http://cdn.staticfile.org/jquery-fullPage/1.7.5/jquery.fullPage.css"
+  = stylesheet_link_tag 'home', media: 'all'
+
+
+body
+
+div class="navbar navbar-default navbar-static-top parallax" role="navigation"
+  div class="container"
+    div class="navbar-header"
+      button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+
+      a class="navbar-brand" href="#" Libr
+    div class="navbar-collapse collapse"
+      ul class="nav navbar-nav"
+
+        li
+          a href="/books" 图书列表
+        - if  @current_user != nil
+          li
+            a href="/users/#{@current_user.id}/books" 我的书架
+        -if @current_user != nil
+          li
+            a href="/users/#{@current_user.id}"
+              img.img-circle style="max-width:30px;margin:-5px" src="#{@current_user.avatar}" title="#{@current_user.preferred_name}"
+              = @current_user.email
+          li
+            =link_to '注销',destroy_user_session_path, :method => :delete
+        - else
+          li
+            =link_to '登录', new_user_session_path
+          li
+            =link_to '注册',new_user_registration_path
+
+div.full-page
+  div.section
+      div.description
+        p Libr-图书社交、附近热门图书、根据兴趣推荐图书、导入豆瓣图书、二维码添加图书
+        a href="#" class="btn btn-default btn-large" iPhone版(即将开放)
+      div.my-img
+        =image_tag 'libr.png'
+  div.section
+    div.description
+      p 基于用户提交的地理位置，推荐附近流行的书籍，让你了解你周边的图书流行趋势。如：学校、IT园区、住宅小区
+    div.around-img
+      =image_tag 'around.png'
+  div.section
+    div.description
+      p 通过二维码扫描书籍，你可以轻松完成将你读过的纸质书籍快速添加到系统中来，你添加图书越多，那么就能得到越精准的图书推荐。
+    div.around-img
+        =image_tag 'scan.png'
+  div.section
+    div.description
+      p 通过新浪微博、腾讯微博、Facebook快速分享书籍给你的朋友，分享阅读的喜悦与快乐。
+    div.around-img
+      =image_tag 'share.png'
+div#footer
+  div.container
+    p.muted.credit  © 2014 Junv
+    span
+      a href="https://github.com/wahyd4/Libr/blob/master/README.md" 了解更多信息
+    span style="margin-left:20px;"
+      a href="https://github.com/wahyd4/Libr/commits/master" 更新日志
+
+= javascript_include_tag 'application'
+script src="//upcdn.b0.upaiyun.com/libs/jqueryui/jquery.ui-1.10.3.min.js"
+script src="//cdn.staticfile.org/jquery-fullPage/1.7.5/jquery.fullPage.min.js"
+
+
+= javascript_include_tag 'ga'
+
+
