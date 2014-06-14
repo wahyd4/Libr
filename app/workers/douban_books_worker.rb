@@ -10,6 +10,7 @@ class DoubanBooksWorker
     while (start == 0) || (total-start > count)
       result = RestClient.get "http://api.douban.com/v2/book/user/#{name}/collections?start=#{start}&count=#{count}"
       json = JSON.parse(result)
+      Rails.logger.info "get books from douban user:==== #{json}"
       logger.info "get books from douban user:==== #{json}"
       storeBooks(json, user)
       total = json['total']

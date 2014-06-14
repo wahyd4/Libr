@@ -96,6 +96,7 @@ GEM
     kgio (2.8.0)
     launchy (2.4.2)
       addressable (~> 2.3)
+    le (2.2.9)
     machinist (2.0)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -246,6 +247,7 @@ DEPENDENCIES
   gravatar-ultimate
   jquery-rails
   kgio
+  le
   machinist
   memcachier
   newrelic_rpm

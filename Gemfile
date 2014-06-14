@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-#source 'http://ruby.taobao.org'
+# source 'http://ruby.taobao.org'
 
 ruby '2.0.0'
 
@@ -51,6 +51,7 @@ gem 'acts_as_commentable_with_threading'
 
 gem 'gravatar-ultimate'
 gem 'sidekiq'
+gem 'le'
 
 
 group :development, :test do
