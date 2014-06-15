@@ -1,6 +1,6 @@
-source 'https://rubygems.org'
+# source 'https://rubygems.org'
 
-# source 'http://ruby.taobao.org'
+source 'http://ruby.taobao.org'
 
 ruby '2.1.0'
 
@@ -56,6 +56,13 @@ gem 'le'
 # gem 'awesome_nested_set'
 gem 'awesome_nested_set', '3.0.0.rc.3'
 
+#admin interface
+gem 'activeadmin', github: 'gregbell/active_admin'
+#lock version
+gem 'sass-rails', github: 'rails/sass-rails'
+gem 'bourbon', '< 4'
+gem 'activeresource', require: 'active_resource'
+gem 'active-resource-pagination'
 group :development, :test do
   gem 'rspec-rails'
   gem 'tddium'
