@@ -33,8 +33,8 @@ GEM
       awesome_nested_set (>= 2.0)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
-    awesome_nested_set (2.1.6)
-      activerecord (>= 3.0.0)
+    awesome_nested_set (3.0.0.rc.3)
+      activerecord (>= 4.0.0, < 5)
     awesome_print (1.2.0)
     bcrypt (3.1.7)
     builder (3.2.2)
@@ -269,6 +269,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport (= 4.1.0)
   acts_as_commentable_with_threading
+  awesome_nested_set (= 3.0.0.rc.3)
   capybara
   cucumber-rails
   dalli

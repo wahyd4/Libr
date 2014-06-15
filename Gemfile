@@ -53,6 +53,8 @@ gem 'gravatar-ultimate'
 gem 'sidekiq'
 gem 'le'
 
+# gem 'awesome_nested_set'
+gem 'awesome_nested_set', '3.0.0.rc.3'
 
 group :development, :test do
   gem 'rspec-rails'
