@@ -81,8 +81,8 @@ describe :Book do
       instance_2 = BookInstance.create book_id: book_1.id, user_id: user_1.id
       instance.be_private
       temp_instance = BookInstance.find_by_id(instance.id)
-      temp_instance.public.should be_false
-      book_1.total_available_instances.include?(instance).should be_false
+      temp_instance.public.should  == false
+      book_1.total_available_instances.include?(instance).should  == false
       book_1.total_available_instances.count.should == 1
     end
 

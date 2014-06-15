@@ -5,7 +5,7 @@ class Location < ActiveRecord::Base
 
 
   def locations_within_kilos_of(kilo)
-    Location.all.keep_if { |location|
+    Location.all.to_a.keep_if { |location|
       GIS::Distance.new(self.lat, self.lng, location.lat, location.lng).distance <= kilo and location != self
     }
   end

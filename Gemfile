@@ -1,10 +1,10 @@
-source 'https://rubygems.org'
+# source 'https://rubygems.org'
 
-# source 'http://ruby.taobao.org'
+source 'http://ruby.taobao.org'
 
-ruby '2.0.0'
+ruby '2.1.0'
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.1.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -18,7 +18,7 @@ gem 'unicorn'
 gem 'devise'
 
 
-gem 'activesupport', '4.0.0'
+gem 'activesupport', '4.1.0'
 
 gem 'jquery-rails'
 gem 'rest-client'

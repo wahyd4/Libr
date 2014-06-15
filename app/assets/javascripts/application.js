@@ -9,15 +9,18 @@ $(document).ready(function () {
         }
     }
 
-    $('.full-page').fullpage({
-        slidesColor: ['9370db','#6abce1', '#00ced1', '#6495ed'],
-        verticalCentered: true,
-        resize : true,
-        navigation: true,
-        scrollingSpeed: 800,
-        css3:true,
-        loopHorizontal: true,
-        autoScrolling: true,
-        paddingBottom: '10px'
-    });
+    if ($('.full-page').length !== 0) {
+
+        $('.full-page').fullpage({
+            slidesColor: ['9370db', '#6abce1', '#00ced1', '#6495ed'],
+            verticalCentered: true,
+            resize: true,
+            navigation: true,
+            scrollingSpeed: 800,
+            css3: true,
+            loopHorizontal: true,
+            autoScrolling: true,
+            paddingBottom: '10px'
+        });
+    }
 });
