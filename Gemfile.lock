@@ -26,7 +26,7 @@ GIT
       sprockets-rails (~> 2.0)
 
 GEM
-  remote: http://ruby.taobao.org/
+  remote: https://rubygems.org/
   specs:
     actionmailer (4.1.0)
       actionpack (= 4.1.0)
