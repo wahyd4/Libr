@@ -24,7 +24,7 @@ class Api::V1::BooksController < ApplicationController
     user = User.find_by_email params[:user_email]
     count = GlobalConstants::BOOKS_PER_PAGE_MOBILE
     @books = user.open_books.paginate(:page => params[:page], :per_page => count)
-    books = @books.map! { |book_instance| book_instance.sortable_book }
+    books = @books.to_a.map! { |book_instance| book_instance.sortable_book }
     params[:page] ? current_page = params[:page] : current_page = '1'
     render json: {books: books,
                   current_page: current_page,
