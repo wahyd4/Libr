@@ -10,7 +10,6 @@ class DoubanBooksWorker
     while (start == 0) || (total-start > count)
       result = RestClient.get "http://api.douban.com/v2/book/user/#{name}/collections?start=#{start}&count=#{count}"
       json = JSON.parse(result)
-      Rails.logger.info "get books from douban user:==== #{json}"
       logger.info "get books from douban user:==== #{json}"
       storeBooks(json, user)
       total = json['total']
@@ -21,7 +20,11 @@ class DoubanBooksWorker
 
   def storeBooks(json, user)
     collections = json['collections']
+    logger.error "--------------------#{collections}"
     collections.each { |collection|
+
+      logger.warn "!!!!!!!!!!!! #{collection}\n"
+
       book = collection['book']
       Book.create_book_by_isbn book unless Book.find_by_isbn book['isbn13']
       user.create_book_instance book['isbn13']

@@ -1,35 +1,6 @@
 - content_for :javascript_includes do
   = javascript_include_tag 'user'
 
-- if @user == @current_user
-  - case @query
-  - when 'borrowed'
-    div.btn-group
-      a.btn href="?query=owned" 开放图书
-      a.btn href="?query=private" 私有图书
-      a.btn.active 已借阅图书
-    = render 'shared/borrowed-books'
-  - when 'private'
-    div.btn-group
-      a.btn href="?" 开放图书
-      a.btn.active 私有图书
-      a.btn href="?query=borrowed" 已借阅图书
-    = render 'shared/booklist'
-  - else
-    div.btn-group
-      a.btn.active 开放图书
-      a.btn href="?query=private" 私有图书
-      a.btn href="?query=borrowed" 已借阅图书
-    = render 'shared/booklist'
-- else
-   - case @query
-   - when 'borrowed'
-     div.btn-group
-       a.btn href="?query=owned" 开放图书
-       a.btn.active 已借阅图书
-     = render 'shared/borrowed-books'
-   - else
-     div.btn-group
-       a.btn.active 开放图书
-       a.btn href="?query=borrowed" 已借阅图书
-     =render 'shared/booklist'
+div.btn-group
+  a.btn.active 开放图书
+= render 'shared/booklist'
