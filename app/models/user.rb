@@ -134,8 +134,21 @@ class User < ActiveRecord::Base
     else
       third_party_user_datas.create douban_user_name: name
     end
-    # Temp disabled
-    DoubanBooksWorker.perform_async id, name
+    begin
+      DoubanBooksWorker.perform_async id, name
+      import_double_user_done
+    rescue RuntimeError => error
+      logger.error "绑定豆瓣用户图书失败:#{error}"
+      true
+    rescue TypeError => type_error
+      logger.error "绑定豆瓣用户图书失败,类型错误:\n#{type_error}"
+      true
+    rescue RestClient::Forbidden
+      logger.error "豆瓣禁止访问API了"
+      true
+    rescue Exception => ex
+      logger.error "出错了:#{ex.to_s}"
+    end
   end
 
   def get_douban_user
@@ -144,6 +157,10 @@ class User < ActiveRecord::Base
     else
       third_party_user_datas.first.douban_user_name
     end
+  end
+
+  def import_double_user_done
+    third_party_user_datas.first.import_douban_user_done
   end
 
 end

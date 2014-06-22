@@ -11,7 +11,7 @@ describe :User do
     it 'ensure user can borrow a existed book' do
       instance = BookInstance.create book_id: @book.id, user_id: @user.id
       @user.borrow instance
-      @user.borrowed_and_not_returned_books.empty?.should  == false
+      @user.borrowed_and_not_returned_books.empty?.should == false
       @user.borrowed_and_not_returned_books.count.should == 1
     end
     it 'ensure when there are two books,users can borrow these two books.' do
@@ -21,7 +21,7 @@ describe :User do
       instance_2 = BookInstance.create book_id: book_1.id, user_id: user_1.id
       user_1.borrowed_and_not_returned_books.count.should == 0
       user_1.borrow instance
-      user_1.borrowed_and_not_returned_books.empty?.should  == false
+      user_1.borrowed_and_not_returned_books.empty?.should == false
       user_1.borrowed_and_not_returned_books.count.should == 1
 
     end
@@ -106,4 +106,12 @@ describe :User do
   #  end
   #
   #end
+
+  it 'should update user third party import douban user status' do
+
+    @user.douban_user 'test'
+    @user.third_party_user_datas.first.import_douban_done.should == false
+    @user.import_double_user_done
+    @user.third_party_user_datas.first.import_douban_done.should == true
+  end
 end

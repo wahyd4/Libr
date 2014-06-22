@@ -16,7 +16,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: libr_development
-  pool: 5
+  pool: 20
   host: localhost
   user: postgres
   password:
@@ -52,7 +52,7 @@ production:
   adapter: postgresql
   encoding: unicode
   database: libr_production
-  pool: 5
+  pool: 20
   host: localhost
   user: postgres
   password:

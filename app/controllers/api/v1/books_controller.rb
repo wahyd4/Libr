@@ -58,7 +58,7 @@ class Api::V1::BooksController < ApplicationController
   def import_douban_books
     user = User.find_by_email params[:user_email]
     user.douban_user params[:name]
-    render json: {status: 'success', msg: '成功连接豆瓣用户'}
+    render json: {status: 'success', msg: '成功连接豆瓣用户,稍后您将可以图书列表看到你的图书'}
   end
 
 end
